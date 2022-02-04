@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WGPGkt">
-        <activity android:name=".views.main.MainActivity"
+
+        <activity android:name=".views.main.main_.MainActivity" android:exported="true"></activity>
+        <activity android:name=".views.main.main_find.MainFindActivity" android:exported="true"></activity>
+        <activity android:name=".views.main.main_join.MainJoinActivity" android:exported="true"></activity>
+        <activity android:name=".views.main.main_login.MainLoginActivity" android:exported="true"></activity>
+
+
+        <activity android:name=".views.main.main_prepare.MainPrepareActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
