@@ -1,10 +1,10 @@
-package com.example.wgpgkt.views.main.main_prepare
+package com.example.wgpgkt.views.main.prepare
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.wgpgkt.R
-import com.example.wgpgkt.views.main.main_.MainActivity
+import com.example.wgpgkt.views.main.MainActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

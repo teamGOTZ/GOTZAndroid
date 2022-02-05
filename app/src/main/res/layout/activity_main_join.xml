@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.wgpgkt.views.main.main_join.MainJoinViewModel" />
+            type="com.example.wgpgkt.views.main.join.MainJoinViewModel" />
     </data>
 
 

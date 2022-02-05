@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.wgpgkt.views.main.main_find.MainFindViewModel" />
+            type="com.example.wgpgkt.views.main.find.MainFindViewModel" />
     </data>
 
 
@@ -29,6 +29,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/main_find_pw"/>
         </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#aaaaaa"
+            android:layout_margin="10dp"/>
 
 
         <FrameLayout

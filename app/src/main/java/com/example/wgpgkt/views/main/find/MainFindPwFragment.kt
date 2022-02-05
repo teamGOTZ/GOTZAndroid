@@ -1,4 +1,4 @@
-package com.example.wgpgkt.views.main.main_find
+package com.example.wgpgkt.views.main.find
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +12,6 @@ class MainFindPwFragment : BaseFragment<FragmentMainFindPwBinding>() {
     override val layoutResID: Int = R.layout.fragment_main_find_pw
 
     override fun initView() {
-        TODO("Not yet implemented")
+
     }
 }

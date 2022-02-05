@@ -6,13 +6,13 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.wgpgkt.views.main.main_.MainViewModel" />
+            type="com.example.wgpgkt.views.main.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.main.main_.MainActivity">
+        tools:context=".views.main.MainActivity">
 
         <ImageView
             android:id="@+id/iv_main_logo"

@@ -1,4 +1,4 @@
-package com.example.wgpgkt.views.main.main_
+package com.example.wgpgkt.views.main
 
 import android.content.Intent
 import com.example.wgpgkt.base.BaseViewModel

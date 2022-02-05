@@ -1,4 +1,4 @@
-package com.example.wgpgkt.views.main.main_find
+package com.example.wgpgkt.views.main.find
 
 import android.os.Bundle
 import android.view.LayoutInflater

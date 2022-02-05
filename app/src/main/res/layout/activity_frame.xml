@@ -5,21 +5,13 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.wgpgkt.views.main.main_login.MainLoginViewModel" />
+            type="com.example.wgpgkt.views.main.frame.FrameViewModel" />
     </data>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="MAIN_LOGIN"
-            android:textSize="30dp"
-            android:textStyle="bold"/>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
