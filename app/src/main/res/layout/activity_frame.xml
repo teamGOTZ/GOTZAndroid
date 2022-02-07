@@ -1,17 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="viewmodel"
             type="com.example.wgpgkt.views.main.frame.FrameViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/navigation_frame" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_test1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BUTTON1"/>
+
+            <Button
+                android:id="@+id/btn_test2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BUTTON2"/>
+
+            <Button
+                android:id="@+id/btn_test3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BUTTON3"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 </layout>

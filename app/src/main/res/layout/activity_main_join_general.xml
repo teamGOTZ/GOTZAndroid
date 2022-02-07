@@ -17,9 +17,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ID"/>
+            android:text="@string/str_id"/>
 
         <EditText
+            android:id="@+id/et_main_join_general_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ID를 입력해주세요."/>
@@ -27,14 +28,16 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="PW"/>
+            android:text="@string/str_pw"/>
 
         <EditText
+            android:id="@+id/et_main_join_general_pw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="PW를 입력해주세요."/>
 
         <EditText
+            android:id="@+id/et_main_join_general_pw2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="PW를 다시한번 입력해주세요."/>
@@ -42,9 +45,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="이름"/>
+            android:text="@string/str_name"/>
 
         <EditText
+            android:id="@+id/et_main_join_general_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="이름을 입력해주세요."/>
@@ -52,9 +56,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="생년월일"/>
+            android:text="@string/str_birth"/>
 
         <EditText
+            android:id="@+id/et_main_join_general_birth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="생년월일을 입력해주세요."/>
@@ -62,19 +67,22 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="전화번호"/>
+            android:text="@string/str_phone"/>
 
         <EditText
+            android:id="@+id/et_main_join_general_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="전화번호를 입력해주세요."/>
 
         <Button
+            android:id="@+id/btn_main_join_general_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="인증하기"/>
 
         <Button
+            android:id="@+id/btn_main_join_general_join"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="가입하기"/>

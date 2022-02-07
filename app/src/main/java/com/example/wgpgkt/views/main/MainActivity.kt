@@ -9,6 +9,7 @@ import com.example.wgpgkt.R
 import com.example.wgpgkt.base.BaseActivity
 import com.example.wgpgkt.databinding.ActivityMainBinding
 import com.example.wgpgkt.views.main.find.MainFindActivity
+import com.example.wgpgkt.views.main.frame.FrameActivity
 import com.example.wgpgkt.views.main.join.MainJoinActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -24,7 +25,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun btnClick(){
         binding.btnMainLogin.setOnClickListener {
             //로그인 API 호출
-            makeToast("로그인")
+            //makeToast("로그인")
+            val intent = Intent(this, FrameActivity::class.java)
+            startActivity(intent)
         }
 
         binding.btnMainJoin.setOnClickListener {

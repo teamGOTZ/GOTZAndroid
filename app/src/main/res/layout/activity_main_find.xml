@@ -21,13 +21,13 @@
                 android:id="@+id/btn_main_find_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/main_find_id"/>
+                android:text="@string/str_id"/>
 
             <Button
                 android:id="@+id/btn_main_find_pw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/main_find_pw"/>
+                android:text="@string/str_pw"/>
         </LinearLayout>
 
         <ImageView
