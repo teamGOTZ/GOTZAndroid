@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.wgpgkt.views.main.frame.FrameViewModel" />
+            type="com.example.wgpgkt.views.frame.FrameViewModel" />
     </data>
 
     <LinearLayout

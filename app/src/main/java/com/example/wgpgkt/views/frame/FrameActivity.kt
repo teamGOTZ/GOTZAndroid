@@ -1,4 +1,4 @@
-package com.example.wgpgkt.views.main.frame
+package com.example.wgpgkt.views.frame
 
 import android.os.Bundle
 import com.example.wgpgkt.R

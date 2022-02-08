@@ -1,4 +1,7 @@
 package com.example.wgpgkt.views.main.join
 
-class MainJoinViewModel {
+import com.example.wgpgkt.base.BaseViewModel
+
+class MainJoinViewModel: BaseViewModel() {
+
 }
