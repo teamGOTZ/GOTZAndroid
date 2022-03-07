@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <!--    텍스트 속성 정의-->
+    <style name="ButtonBaseTextStyle" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/style_button_base</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:text">다음</item>
+        <item name="android:textColor">@color/selector_button_base</item>
+    </style>
 </resources>

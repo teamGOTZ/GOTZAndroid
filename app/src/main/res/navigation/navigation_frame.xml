@@ -2,6 +2,16 @@
 <navigation
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigation_frame">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_frame"
+    app:startDestination="@id/fragment_calendar">
+
+    <fragment
+        android:id="@+id/fragment_calendar"
+        android:name="com.example.wgpgkt.views.calendar.CalendarFragment"
+        android:label="CalendarFragment"
+        tools:layout="@layout/fragment_calendar">
+
+    </fragment>
 
 </navigation>

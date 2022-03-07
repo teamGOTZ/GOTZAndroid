@@ -24,6 +24,7 @@ class MainJoinActivity: BaseActivity<ActivityMainJoinBinding>() {
 
     override fun btnClick() {
         //버튼 클릭 조건 정해줘야됨
+        //일반 가입 + 네이버 가입
         val intent = Intent(this,MainJoinGeneralActivity::class.java)
         startActivity(intent)
     }

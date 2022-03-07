@@ -16,13 +16,17 @@
 
         <activity android:name=".views.frame.FrameActivity" android:exported="true"></activity>
 
-        <activity android:name=".views.main.MainActivity" android:exported="true"></activity>
+        <activity android:name=".views.main.prepare.MainPrepareIntroActivity" android:exported="true"></activity>
+        <activity android:name=".views.main.prepare.MainPrepareNameActivity" android:exported="true"></activity>
+        <activity android:name=".views.main.prepare.MainPrepareHelloActivity" android:exported="true"></activity>
+
+
         <activity android:name=".views.main.find.MainFindActivity" android:exported="true"></activity>
         <activity android:name=".views.main.join.MainJoinActivity" android:exported="true"></activity>
         <activity android:name=".views.main.join.general.MainJoinGeneralActivity" android:exported="true"></activity>
 
 
-        <activity android:name=".views.main.prepare.MainPrepareActivity"
+        <activity android:name=".views.main.prepare.MainPrepareSplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

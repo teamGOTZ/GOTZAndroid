@@ -1,10 +1,11 @@
 package com.example.wgpgkt.api
 
-import com.example.wgpgkt.model.RegisterBody
-import com.example.wgpgkt.model.RegisterModel
+import com.example.wgpgkt.model.*
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.Header
+import retrofit2.http.Headers
 import retrofit2.http.POST
 
 interface ApiInterface {
@@ -12,8 +13,17 @@ interface ApiInterface {
     @POST("v1/register")
     suspend fun postRegister(@Body registerBody: RegisterBody): Response<RegisterModel>
 
+    @POST("login")
+    @Headers("X-Requested-With: BasicHttpRequest")
+    suspend fun postLogin(@Body loginBody: LoginBody): Response<LoginModel>
+
+    //suspend fun postFindEmail(@Body findEmailBody: FindEmailBody): Response<FindEmailModel>
+
+    //suspend fun postFindPassword(@Body findPasswordBody: FindPasswordBody): Response<FindPasswordModel>
+    /*
     @POST("v1/register")
     fun test(@Body registerBody: RegisterBody) : Call<RegisterModel>
+    */
 
     /*
     @GET("getUltraSrtNcst")

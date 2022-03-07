@@ -11,7 +11,7 @@ class FrameActivity: BaseActivity<ActivityFrameBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        btnClick()
+        //btnClick()
     }
 
     override fun btnClick() {
@@ -20,9 +20,6 @@ class FrameActivity: BaseActivity<ActivityFrameBinding>() {
         }
         binding.btnTest2.setOnClickListener {
             makeToast("BUTTON2")
-        }
-        binding.btnTest3.setOnClickListener {
-            makeToast("BUTTON3")
         }
 
     }

@@ -25,29 +25,32 @@ class MainJoinGeneralViewModel: BaseViewModel() {
     val str_phone = MutableLiveData<String>()
 
     fun btnJoinClick(){
-        test()
-        /*
-        viewModelScope.launch {
-            ApiRepositoryImpl.testAPI("","","","","")
-        }
+        //test()
 
-         */
-        /*
         Log.e("ViewModel : ", "start")
         viewModelScope.launch {
             try{
-                val result = async { ApiRepositoryImpl.postRegister(str_birth.value.toString() ,str_id.value.toString(), str_pw.value.toString(), str_phone.value.toString(), str_name.value.toString())}.await()
-                Log.e("ViewModel : ", result.code.toString() + "\n" + result.message.toString() )
-                //if(result.code == 200) Log.e("MainGeneralViewModel : ", result.response.id.toString())
+                val response = async { ApiRepositoryImpl.postRegister(str_birth.value.toString()
+                    , str_id.value.toString()
+                    , str_pw.value.toString()
+                    , str_phone.value.toString()
+                    , str_name.value.toString())}.await()
+                Log.e("ViewModel : ", "success")
+
+                if(response.code() == 200){
+                    Log.e("MainGeneralViewModel : ", response.code().toString())
+                    Log.e("MainGenrealViewModel : ", response.body().toString())
+                }
+                else if(response.code() == 400){
+                    Log.e("MainGeneralViewModel : ", response.code().toString())
+                    Log.e("MainGeneralViewModel : ", NetworkUtil.getErrorResponse(response.errorBody()!!).toString())
+                }
             }catch (e:Exception){
                 Log.e("ViewModel : ", e.message.toString())
             }
-
         }
-
-         */
     }
-
+/*
     fun test(){
         Log.e("TEST :: ", "start")
         try{
@@ -75,4 +78,5 @@ class MainJoinGeneralViewModel: BaseViewModel() {
             Log.e("Exception :: ", e.message.toString())
         }
     }
+ */
 }

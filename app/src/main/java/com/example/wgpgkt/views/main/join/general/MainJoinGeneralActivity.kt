@@ -16,4 +16,6 @@ class MainJoinGeneralActivity: BaseActivity<ActivityMainJoinGeneralBinding>() {
 
         binding.viewmodel = viewModel
     }
+
+
 }
