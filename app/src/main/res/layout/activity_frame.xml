@@ -5,10 +5,11 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.wgpgkt.views.frame.FrameViewModel" />
+            type="com.wedid.views.frame.FrameViewModel" />
     </data>
 
     <LinearLayout
+        android:id="@+id/ll_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -18,28 +19,18 @@
             android:layout_width="match_parent"
             android:layout_height="56dp">
             <ImageView
-                android:id="@+id/iv_frame"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/appbar_delete_fill"
+                android:id="@+id/btn_frame_calendar_logo"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/logo_black_36"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginLeft="19dp" />
-            <TextView
-                android:id="@+id/tv_frame"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="WGPG"
-                android:textSize="21dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/iv_frame"
-                android:layout_marginLeft="7dp"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/appbar_setting"
+            <com.wedid.custom.CustomTodayButton
+                android:id="@+id/btn_frame_calendar_today"
+                android:layout_width="58dp"
+                android:layout_height="40dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -53,32 +44,30 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-
             app:defaultNavHost="true"
             app:navGraph="@navigation/navigation_frame"/>
 
         <LinearLayout
+            android:id="@+id/ll_appbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center">
 
-            <com.example.wgpgkt.custom.CustomBarButton
+            <com.wedid.custom.CustomBarButton
                 android:id="@+id/btn_test1"
                 android:layout_width="0dp"
                 android:layout_height="58dp"
                 android:layout_weight="1"
-                app:img="@drawable/bottom_calendar_900"
+                app:img="@drawable/ic_calendar"
                 app:text="캘린더"/>
 
-            <com.example.wgpgkt.custom.CustomBarButton
+            <com.wedid.custom.CustomBarButton
                 android:id="@+id/btn_test2"
                 android:layout_width="0dp"
                 android:layout_height="58dp"
                 android:layout_weight="1"
-                app:img="@drawable/bottom_calendar_900"
+                app:img="@drawable/ic_calendar"
                 app:text="캘린더"/>
-
-
         </LinearLayout>
 
 

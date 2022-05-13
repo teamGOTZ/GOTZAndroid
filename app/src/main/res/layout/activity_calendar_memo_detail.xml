@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.wedid.views.calendar.memo.CalendarMemoDetailViewModel" />
+    </data>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/black_100">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/white">
+            <ImageView
+                android:id="@+id/btn_calendar_memo_detail_back"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_arrow_left"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginLeft="19dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="일정 내용"
+                style="@style/Text16Bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/btn_calendar_memo_detail_back"
+                android:layout_marginLeft="7dp"/>
+
+            <ImageView
+                android:id="@+id/btn_calendar_memo_detail_menu"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_3dots"
+                android:layout_marginRight="12dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="24dp">
+                <TextView
+                    android:id="@+id/tv_calendar_memo_detail_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="스터디 회의 서울역"
+                    style="@style/Text24Bold"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/ic_calendar"
+                        android:backgroundTint="@color/black_600"
+                        android:layout_marginRight="8dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_calendar_memo_detail_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="2022년 3월 20일 (월)"
+                        style="@style/Text14Regular"
+                        android:textColor="@color/black_600"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_calendar_memo_detail_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/ic_clock"
+                        android:backgroundTint="@color/black_600"
+                        android:layout_marginRight="8dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_calendar_memo_detail_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="오전 11:00 - 오후 4:00"
+                        style="@style/Text14Regular"
+                        android:textColor="@color/black_600"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_calendar_memo_detail_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="\비즈니스\n이 직업, 내 길이 아닌 것 같아요…어쩌죠?\n[이직상담소] 다들 경력만 뽑는데…신입 준비는 어떻게?\n2022. 02. 21 (월) 17:10 | 최종 업데이트 2022. 02. 24 (목) 19:25\n\n\n오늘도 출근 잘 하셨나요?\n\n2022년 새로운 해가 떠오른지 벌써 2달이 훌쩍 지났습니다. 혹시 올해 취업과 이직을 꿈꾸고 있지는 않으신가요? 기업들은 3월부터 본격적으로 신입과 경력 채용에 들어간다는데, 준비는 잘 되고 계시나요?\n\n직장인이라면 누구나 취업과 이직에 대한 고민 하나쯤은 마음 속에 품고 있다죠? '나는 지금 여기서 잘 하고 있는 걸까, 이렇게 지내면 되는 걸까' 고민이 되기도 하고, 회사 생활이 만족스럽지 않다면 '다른 회사로 옮겨야 하나' 고민도 되고요. 지금 회사 생활이 꽤 편안해도 문득 '이렇게 안주하고 지내도 되는 걸까, 이러다 나 도태되는 거 아닐까' 고민이 되는 것이 직장인이니까요. "
+                style="@style/Text15Regular"
+                android:textColor="@color/black_800"
+                android:background="@color/white"
+                android:paddingTop="24dp"
+                android:paddingBottom="24dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"/>
+
+        </LinearLayout>
+</layout>

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.wedid.views.calendar.memo.CalendarMemoViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="@color/black_100">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/white">
+            <ImageView
+                android:id="@+id/btn_calendar_memo_back"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_arrow_left"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginLeft="19dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="일정 추가"
+                style="@style/Text16Bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/btn_calendar_memo_back"
+                android:layout_marginLeft="7dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="24dp"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/Text16Regular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="어떤 일정인가요?" />
+
+                        <TextView
+                            style="@style/Text16Bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:text="*"
+                            android:textColor="#f44336" />
+                    </LinearLayout>
+
+
+
+                    <com.wedid.custom.CustomEditText
+                        android:id="@+id/et_calendar_memo_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:hint="입력하세요" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="24dp"
+                    android:paddingBottom="24dp"
+                    android:background="@color/white">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:background="@drawable/ic_flag"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="하루종일"
+                            style="@style/Text16Regular"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="12dp"/>
+
+                        <Switch
+                            android:id="@+id/sw_calendar_memo_allday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center_vertical">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:background="@drawable/ic_calendar"
+                            android:layout_marginRight="12dp"/>
+
+                        <LinearLayout
+                            android:id="@+id/ll_calendar_memo_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="58dp"
+                            android:background="@drawable/style_edittext_white"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:id="@+id/tv_calendar_memo_date"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="2022년 3월 21일 (화)"
+                                style="@style/Text16Regular"
+                                android:gravity="center_vertical"
+                                android:padding="12dp"/>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ic_arrow_down"
+                                android:backgroundTint="@color/black_400"
+                                android:layout_marginRight="12dp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <CalendarView
+                        android:id="@+id/cv_calendar_memo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <LinearLayout
+                        android:id="@+id/ll_calendar_memo_settime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:background="@drawable/ic_clock"
+                            android:layout_marginRight="12dp"/>
+
+                        <com.wedid.custom.CustomTimepickerLayout
+                            android:id="@+id/ll_calendar_memo_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="58dp"
+                            android:weightSum="100">
+
+                            <TextView
+                                android:id="@+id/tv_calendar_memo_time_start"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="44.36"
+                                android:text="오전 10:00"
+                                android:layout_gravity="left"
+                                android:gravity="center_vertical"
+                                style="@style/Text16Regular"
+                                android:padding="12dp"/>
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="9.15"/>
+
+                            <TextView
+                                android:id="@+id/tv_calendar_memo_time_end"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="46.49"
+                                android:text="오전 11:00"
+                                android:layout_gravity="right"
+                                android:gravity="center_vertical"
+                                style="@style/Text16Regular"
+                                android:padding="12dp"/>
+                        </com.wedid.custom.CustomTimepickerLayout>
+                    </LinearLayout>
+
+                    <TimePicker
+                        android:id="@+id/tp_calendar_memo_start"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:timePickerMode="spinner"
+                        android:descendantFocusability="blocksDescendants"/>
+                    
+                    <TimePicker
+                        android:id="@+id/tp_calendar_memo_end"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:timePickerMode="spinner"
+                        android:descendantFocusability="blocksDescendants"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:background="@color/white">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="일정 설명"
+                        style="@style/Text16Regular"
+                        android:layout_marginBottom="12dp"/>
+
+                    <EditText
+                        android:id="@+id/et_calendar_memo_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="500dp"
+                        android:background="@drawable/style_edittext_base"
+                        android:hint="입력하세요"
+                        android:text="@={viewmodel.content}"
+                        android:padding="12dp"
+                        android:gravity="left|top"
+                        android:textCursorDrawable="@drawable/style_cursor_black"
+                        style="@style/Text16Regular"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black_100"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+            <Button
+                android:id="@+id/btn_calendar_memo_save"
+                android:text="저장"
+                style="@style/BaseButtonStyle"
+                android:enabled="false"
+                android:onClick="@{() -> viewmodel.saveData()}"
+                app:backgroundTint="@null"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</layout>
