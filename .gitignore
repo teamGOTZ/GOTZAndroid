@@ -1,3 +1,9 @@
+*apk
+*.ap_
+*.aab
+*dex
+*class
+
 *.iml
 .gradle
 /local.properties
@@ -14,5 +20,3 @@
 .cxx
 local.properties
 
-*.apk
-*.aab
