@@ -22,11 +22,8 @@ class FrameActivity: BaseActivity<ActivityFrameBinding>() {
         binding.llAppbar.visibility= View.GONE
 
         binding.btnFrameCalendarToday.setOnClickListener {
-            val fragment = supportFragmentManager.fragments.get(0).childFragmentManager.fragments.get(0)
-            val navController = fragment.findNavController()
-            val id = navController.currentDestination?.id
-            navController.popBackStack(id!!, true)
-            navController.navigate(id)
+            val fragment = supportFragmentManager.fragments.get(0).childFragmentManager.fragments.get(0) as CalendarFragment
+            fragment.refreshFragment()
         }
 
         binding.btnFrameCalendarLogo.setOnClickListener {

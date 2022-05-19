@@ -11,6 +11,5 @@ class CalendarViewModelFactory(private val repository: RoomCalendarMemoRepositor
             return CalendarViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
-
     }
 }

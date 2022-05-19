@@ -18,7 +18,8 @@ class MainPrepareHelloViewModel(private val repository: RoomCalendarMemoReposito
 
     fun saveData(){
         lateinit var calendarMemo: CalendarMemo
-        calendarMemo = CalendarMemo(0,str,"", true, DateTime.now().millis, DateTime.now().millis)
+        val dateTime = DateTime(DateTime.now().year, DateTime.now().monthOfYear, DateTime.now().dayOfMonth, 0, 0, 0)
+        calendarMemo = CalendarMemo(0,str,"", true, dateTime.millis, dateTime.millis)
         insert(calendarMemo)
 
         _saveButtonEvent.value = EventUtil(true)

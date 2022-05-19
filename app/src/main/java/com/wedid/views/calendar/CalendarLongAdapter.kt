@@ -13,7 +13,6 @@ class CalendarLongAdapter(fragmentActivity: FragmentActivity): FragmentStateAdap
     override fun createFragment(position: Int): Fragment {
         val millis = getItemId(position)
         return CalendarLongFragment.newInstance(millis)
-        //return CalendarLongFragment()
     }
 
     override fun getItemId(position: Int): Long = DateTime(start).plusMonths(position - START_POSITION).millis

@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.wedid.base.BaseApplication
-import com.wedid.custom.calendar.WeekDayItemView
+import com.wedid.custom.calendar.DayItemShortView
 import com.wedid.database.calendarmemo.CalendarMemo
 import com.wedid.databinding.FragmentCalendarShortBinding
 import com.wedid.util.CalendarUtil
@@ -32,6 +32,7 @@ class CalendarShortFragment:Fragment() {
             millis = it.getLong(CalendarShortFragment.MILLIS_SHORT)
         }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,122 +44,137 @@ class CalendarShortFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         try{
             viewModel.calendarMemo.observe(requireActivity(), Observer {
-                binding.weekCalendarView.initCalendar(DateTime(millis), CalendarUtil.getWeekList(DateTime(millis)),0, it)
-                setPosition()
-                setItmeClicked()
+                binding.calendarShortView.initCalendar(DateTime(millis), CalendarUtil.getWeekList(DateTime(millis)),0, it)
+                setItemClicked()
+
+                viewModel.calendarShortView = binding.calendarShortView
+                viewModel.flagForShortPosition.value = true
             })
         }catch (e:Exception){
             Log.e("CalendarShort", e.message.toString())
         }
     }
 
-    fun drawCalendar(list: List<CalendarMemo>){
-        binding.weekCalendarView.children.forEach { it as WeekDayItemView
-            //it.invalidate()
-            val year = it.getYear()
-            val month = it.getMonth()
-            val day = it.getDay()
-            val start = DateTime(year, month, day, 0, 0,0).millis
-            val end = DateTime(start).plusDays(1).millis
-            var count = 0
-            list.forEach{
-                if(it.start >= start && it.start < end) count++
-            }
-            it.setCount(count)
-            it.invalidate()
-        }
-
-    }
-
     override fun onResume() {
         super.onResume()
+        with(viewModel){
+            if(flagForSelectedItem.value!!){
+                val year = year.value!!
+                val month = month.value!!
+                val day = day.value!!
 
-        if(viewModel.flagForShort.value!!){
-            viewModel.year.value = startDayOfWeek(DateTime(millis)).year
-            viewModel.month.value = startDayOfWeek(DateTime(millis)).monthOfYear
-            viewModel.day.value = startDayOfWeek(DateTime(millis)).dayOfMonth
+                val dateTime1 = startDayOfWeek(DateTime(millis))
+                val dateTime2 = startDayOfWeek(DateTime(year, month, day, 0, 0, 0))
+                if(dateTime1.year == dateTime2.year && dateTime1.monthOfYear == dateTime2.monthOfYear && dateTime1.dayOfMonth == dateTime2.dayOfMonth){
+                    flagForSelectedItem.value = false
 
-            //viewModel.flagForShort.value = false
+                    calendarShortView = binding.calendarShortView
+                    flagForShortPosition.value = true
+                    flagForShortUpdate.value = true
+                }
+            }
+            else{
+                year.value = startDayOfWeek(DateTime(millis)).year
+                month.value = startDayOfWeek(DateTime(millis)).monthOfYear
+                day.value = startDayOfWeek(DateTime(millis)).dayOfMonth
+
+                calendarShortView = binding.calendarShortView
+                flagForShortPosition.value = true
+                flagForShortUpdate.value = true
+            }
+            flagForList.value = true
+
+            flagForShortPosition.observe(requireActivity(), Observer {
+                if(flagForShortPosition.value!!){
+                    if(flagForSelected.value!!) setPosition()
+                    else erasePosition()
+
+                    flagForShortPosition.value = false
+                }
+            })
+
+            flagForShortUpdate.observe(requireActivity(), Observer {
+                if(flagForShortUpdate.value!! && calendarMemo.value != null){
+                    drawCalendar(calendarMemo.value!!)
+                    flagForShortUpdate.value = false
+                }
+            })
         }
-        else{
-
-        }
-
-        val dateTime1 = startDayOfWeek(DateTime(viewModel.year.value!!, viewModel.month.value!!, viewModel.day.value!!, 0, 0, 0))
-        val dateTime2 = startDayOfWeek(DateTime(DateTime(millis).year, DateTime(millis).monthOfYear, DateTime(millis).dayOfMonth, 0, 0, 0))
-
-        if( dateTime1 == dateTime2){
-            viewModel.flagForShort.value = true
-        }
-
-        (requireActivity().supportFragmentManager.fragments.get(0).childFragmentManager.fragments.get(0) as CalendarFragment).setShortFragment(this)
-        setPosition()
     }
 
-    fun setPosition(){
+    fun drawCalendar(list: List<CalendarMemo>){
+        try{
+            viewModel.calendarShortView.children.forEach {it as DayItemShortView
+                val year = it.getYear()
+                val month = it.getMonth()
+                val day = it.getDay()
+                val start = DateTime(year, month, day, 0, 0,0).millis
+                val end = DateTime(start).plusDays(1).millis
+                var count = 0
+                list.forEach{
+                    if(it.start >= start && it.start < end) count++
+                }
+                it.setCount(count)
+                it.invalidate()
+            }
+        }catch (e: Exception){
+            Log.e("CalendarShort", e.message.toString())
+        }
+    }
+
+    private fun setPosition(){
         val year = viewModel.year.value!!
         val month = viewModel.month.value!!
         val day = viewModel.day.value!!
 
-        val dateTime = DateTime(year, month, day, 0, 0, 0)
-
-        if(viewModel.flagForSelect.value!!){
-
-
-            binding.weekCalendarView.children.forEach {
-                (it as WeekDayItemView).setDayOfWeek(0)
-            }
-            var position: Int = DateTime(year!!, month!!, day!!, 0, 0, 0).dayOfWeek
-            if (position == 7) position = 0
-
-            try{
-                (binding.weekCalendarView.getChildAt(position) as WeekDayItemView).setDayOfWeek(DateTime(year!!, month!!, day!!, 0, 0, 0).dayOfWeek)
-            }catch (e: Exception){
-                Log.e("SHORT", e.message.toString())
-            }
-
-
-            binding.weekCalendarView.children.forEach {
-                (it as WeekDayItemView).invalidate()
-            }
-
+        viewModel.calendarShortView.children.forEach { it as DayItemShortView
+            it.setDayOfWeek(0)
         }
-        (requireActivity().supportFragmentManager.fragments.get(0).childFragmentManager.fragments.get(0) as CalendarFragment).setList(dateTime)
+        var position: Int = DateTime(year!!, month!!, day!!, 0, 0, 0).dayOfWeek
+        if (position == 7) position = 0
 
+        try{
+            (viewModel.calendarShortView.getChildAt(position) as DayItemShortView).setDayOfWeek(DateTime(year!!, month!!, day!!, 0, 0, 0).dayOfWeek)
+        }catch (e: Exception){
+            Log.e("CalendarShort", e.message.toString())
+        }
+
+        viewModel.calendarShortView.children.forEach {it as DayItemShortView
+            it.invalidate()
+        }
     }
 
-    fun setItmeClicked(){
+    private fun erasePosition() {
+        viewModel.calendarShortView.children.forEach {it as DayItemShortView
+            it.setDayOfWeek(0)
+            it.invalidate()
+        }
+    }
 
-        binding.weekCalendarView.children.forEach {
-            it.setOnClickListener { (it as WeekDayItemView)
+    private fun setItemClicked(){
+        binding.calendarShortView.children.forEach {
+            it.setOnClickListener { it as DayItemShortView
                 val year = it.getYear()
                 val month = it.getMonth()
                 val day = it.getDay()
 
-                binding.weekCalendarView.children.forEach {
-                    (it as WeekDayItemView).setDayOfWeek(0)
+                binding.calendarShortView.children.forEach {
+                    (it as DayItemShortView).setDayOfWeek(0)
                 }
                 it.setDayOfWeek(DateTime(year, month, day, 0,0,0).dayOfWeek)
-                binding.weekCalendarView.children.forEach {
-                    (it as WeekDayItemView).invalidate()
+                binding.calendarShortView.children.forEach {
+                    (it as DayItemShortView).invalidate()
                 }
 
                 viewModel.year.value = year
                 viewModel.month.value = month
                 viewModel.day.value = day
 
-                viewModel.flagForSelect.value = true
+                if(!viewModel.flagForSelected.value!!) viewModel.flagForSelected.value = true
             }
         }
-    }
-
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     companion object{

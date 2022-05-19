@@ -56,7 +56,7 @@ class CalendarMemoActivity: BaseActivity<ActivityCalendarMemoBinding>() {
         return super.dispatchTouchEvent(ev)
     }
 
-    fun isModify(){
+    private fun isModify(){
         viewModel.updateData(uid)
         viewModel.uidRoomCalendarMemo.observe(this, Observer {
         val start: DateTime = DateTime(it.start)
@@ -115,30 +115,45 @@ class CalendarMemoActivity: BaseActivity<ActivityCalendarMemoBinding>() {
         })
     }
 
-    fun isNew(){
+    private fun isNew(){
         val now: DateTime = DateTime.now().plusHours(1)
 
-        viewModel.year.value = now.year
-        viewModel.month.value = now.monthOfYear
-        viewModel.day.value = now.dayOfMonth
-        viewModel.startTime.value = (now.hourOfDay*100)
-        viewModel.endTime.value = (now.hourOfDay*100)
-
-        setTimeText(now.hourOfDay, 0, true)
-        setTimeText(now.hourOfDay, 0, false)
-
-        binding.tpCalendarMemoStart.hour = now.hourOfDay
-        binding.tpCalendarMemoStart.minute = 0
-        binding.tpCalendarMemoEnd.hour = now.hourOfDay
-        binding.tpCalendarMemoEnd.minute = 0
-
         if(date == 0L){
-            setDateText(now.year, now.monthOfYear-1, now.dayOfMonth)
             binding.cvCalendarMemo.date = DateTime.now().millis
+            setDateText(now.year, now.monthOfYear-1, now.dayOfMonth)
+
+            viewModel.year.value = now.year
+            viewModel.month.value = now.monthOfYear
+            viewModel.day.value = now.dayOfMonth
+            viewModel.startTime.value = (now.hourOfDay*100)
+            viewModel.endTime.value = (now.hourOfDay*100)
+
+            setTimeText(now.hourOfDay, 0, true)
+            setTimeText(now.hourOfDay, 0, false)
+
+            binding.tpCalendarMemoStart.hour = now.hourOfDay
+            binding.tpCalendarMemoStart.minute = 0
+            binding.tpCalendarMemoEnd.hour = now.hourOfDay
+            binding.tpCalendarMemoEnd.minute = 0
         }
         else{
+            val dateTime = DateTime(date)
             binding.cvCalendarMemo.date = date
             setDateText(DateTime(date).year, DateTime(date).monthOfYear-1, DateTime(date).dayOfMonth)
+
+            viewModel.year.value = dateTime.year
+            viewModel.month.value = dateTime.monthOfYear
+            viewModel.day.value = dateTime.dayOfMonth
+            viewModel.startTime.value = (dateTime.hourOfDay*100)
+            viewModel.endTime.value = (dateTime.hourOfDay*100)
+
+            setTimeText(dateTime.hourOfDay, 0, true)
+            setTimeText(dateTime.hourOfDay, 0, false)
+
+            binding.tpCalendarMemoStart.hour = dateTime.hourOfDay
+            binding.tpCalendarMemoStart.minute = 0
+            binding.tpCalendarMemoEnd.hour = dateTime.hourOfDay
+            binding.tpCalendarMemoEnd.minute = 0
         }
 
         binding.cvCalendarMemo.setOnDateChangeListener { calendarView, year, month, day ->
@@ -178,12 +193,12 @@ class CalendarMemoActivity: BaseActivity<ActivityCalendarMemoBinding>() {
         binding.tpCalendarMemoEnd.visibility = View.GONE
     }
 
-    fun setDateText(year: Int, month: Int, day: Int){
+    private fun setDateText(year: Int, month: Int, day: Int){
         var str = year.toString() + "년 " + (month+1).toString() + "월 " + day.toString() + "일 (" + charDayOfWeek(DateTime(year, month+1, day, 0, 0, 0).dayOfWeek) + ")"
         binding.tvCalendarMemoDate.setText(str)
     }
 
-    fun setTimeText(hour: Int, minute: Int, flag: Boolean){
+    private fun setTimeText(hour: Int, minute: Int, flag: Boolean){
         var str: String = ""
         if(hour > 11){
             str += "오후 "

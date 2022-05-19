@@ -12,9 +12,7 @@ class CalendarShortAdapter(fragmentActivity: FragmentActivity): FragmentStateAda
 
     override fun createFragment(position: Int): Fragment {
         val millis = getItemId(position)
-        // SHORT : 604800000
         return CalendarShortFragment.newInstance(millis)
-        //return CalendarLongFragment()
     }
 
     override fun getItemId(position: Int): Long = DateTime(start).plusWeeks(position - START_POSITION).millis

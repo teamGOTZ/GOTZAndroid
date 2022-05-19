@@ -30,11 +30,8 @@ class CalendarFragment: Fragment(){
     private lateinit var calendarLongAdapter: CalendarLongAdapter
     private lateinit var calendarShortAdapter: CalendarShortAdapter
 
-    private val list: ArrayList<CalendarRecyclerItem> = ArrayList<CalendarRecyclerItem>()
-    private val doublelist: ArrayList<ArrayList<CalendarRecyclerItem>> = ArrayList<ArrayList<CalendarRecyclerItem>>()
-
-    private var calendarShortFragment: CalendarShortFragment? = null
-    private var calendarLongFragment: CalendarLongFragment? = null
+    private val list: ArrayList<CalendarRecyclerItem> = ArrayList()
+    private val doublelist: ArrayList<ArrayList<CalendarRecyclerItem>> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,7 +44,6 @@ class CalendarFragment: Fragment(){
         calendarRecyclerAdapter = CalendarRecyclerAdapter(requireActivity())
 
         binding.rvList.adapter = calendarRecyclerAdapter
-
 
         binding.vpCalendarLong.adapter = calendarLongAdapter
         binding.vpCalendarShort.adapter = calendarShortAdapter
@@ -63,71 +59,62 @@ class CalendarFragment: Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         binding.tvFragmentCalendarDate.text = viewModel.year.toString() + "년 " + viewModel.month.toString() + "월"
-        //binding.mlCalendarLong.transitionToEnd()
         initObserver()
         btnClick()
         setDecoration()
-        initListener()
         initViewModel()
     }
-
-    fun setShortFragment(fragment: CalendarShortFragment){
-        calendarShortFragment = fragment
-    }
-
-    fun setLongFragment(fragment: CalendarLongFragment){
-        calendarLongFragment = fragment
-    }
-
 
     override fun onResume() {
         super.onResume()
         try{
             val dateTime = DateTime(viewModel.year.value!!, viewModel.month.value!!, viewModel.day.value!!, 0, 0, 0)
             setList(dateTime)
+
+            viewModel.calendarMemo.observe(requireActivity(), Observer {
+                viewModel.flagForShortUpdate.value = true
+                viewModel.flagForLongUpdate.value = true
+            })
         }catch (e: Exception){
             Log.e("CalendarFragment", e.message.toString())
         }
 
-        viewModel.calendarMemo.observe(requireActivity(), Observer {
-            try{
-                calendarShortFragment!!.drawCalendar(it)
-                calendarLongFragment!!.drawCalendar(it)
-            }catch (e: Exception){
-                Log.e("CalendarFragment", e.message.toString())
+        viewModel.flagForList.observe(requireActivity(), Observer {
+            if(viewModel.flagForList.value!!){
+                setList(DateTime(viewModel.year.value!!, viewModel.month.value!!, viewModel.day.value!!,0,0,0))
+                viewModel.flagForList.value = false
             }
         })
+
     }
 
-    fun initViewModel(){
+    fun refreshFragment(){
+        with(viewModel){
+            val dateTime = DateTime.now()
+            if(year.value != dateTime.year || month.value != dateTime.monthOfYear || day.value != dateTime.dayOfMonth){
+                flagForSelectedItem.value = true
+                flagForSelected.value = false
 
-        viewModel.year.value = DateTime.now().year
-        viewModel.month.value = DateTime.now().monthOfYear
-        viewModel.day.value = DateTime.now().dayOfMonth
-
-        viewModel.flagForShort.value = false
-        viewModel.flagForSelect.value = false
-    }
-
-    fun initListener(){
-        binding.rvList.setOnTouchListener(object: OnSwipeTouchListener(requireActivity()){
-            override fun onSwipeRight() {
-                viewModel.flagForShort.value = true
-                var dateTime = DateTime(viewModel.year.value!!, viewModel.month.value!!, viewModel.day.value!!, 0, 0, 0)
-                dateTime = dateTime.minusWeeks(1)
-                setCalendar(dateTime)
+                year.value = dateTime.year
+                month.value = dateTime.monthOfYear
+                day.value = dateTime.dayOfMonth
+                closeCalendar()
             }
-
-            override fun onSwipeLeft() {
-                viewModel.flagForShort.value = true
-                var dateTime = DateTime(viewModel.year.value!!, viewModel.month.value!!, viewModel.day.value!!, 0, 0, 0)
-                dateTime = dateTime.plusWeeks(1)
-                setCalendar(dateTime)
-            }
-        })
+        }
     }
 
-    fun initObserver(){
+    private fun initViewModel(){
+        with(viewModel){
+            year.value = DateTime.now().year
+            month.value = DateTime.now().monthOfYear
+            day.value = DateTime.now().dayOfMonth
+
+            flagForSelectedItem.value = true
+            flagForSelected.value = false
+        }
+    }
+
+    private fun initObserver(){
         viewModel.year.observe( viewLifecycleOwner, Observer {
             binding.tvFragmentCalendarDate.text = viewModel.year.value.toString() + "년 " + viewModel.month.value.toString() + "월"
         })
@@ -137,17 +124,17 @@ class CalendarFragment: Fragment(){
         })
     }
 
-    fun btnClick(){
+    private fun btnClick(){
 
         binding.btnFragmentCalendarBefore.setOnClickListener{
-            viewModel.flagForShort.value = false
+            viewModel.flagForSelectedItem.value = true
             var dateTime = DateTime(viewModel.year.value!!, viewModel.month.value!!, 1, 0, 0, 0)
             dateTime = dateTime.minusMonths(1)
             setCalendar(dateTime)
         }
 
         binding.btnFragmentCalendarAfter.setOnClickListener {
-            viewModel.flagForShort.value = false
+            viewModel.flagForSelectedItem.value = true
             var dateTime = DateTime(viewModel.year.value!!, viewModel.month.value!!, 1, 0, 0, 0)
             dateTime = dateTime.plusMonths(1)
             setCalendar(dateTime)
@@ -155,39 +142,37 @@ class CalendarFragment: Fragment(){
 
         binding.btnOpen.setOnClickListener {
             openCalendar()
-            viewModel.flagForShort.value = false
         }
 
         binding.btnClose.setOnClickListener {
             closeCalendar()
-            viewModel.flagForShort.value = true
         }
 
         binding.fabFragmentCalendar.setOnClickListener {
-            if(viewModel.flagForSelect.value!!) (requireActivity() as FrameActivity).openActivityForResult(CalendarMemoActivity(),-1, DateTime(viewModel.year.value!!, viewModel.month.value!!, viewModel.day.value!!, 0, 0, 0).millis)
+            if(viewModel.flagForSelected.value!!) (requireActivity() as FrameActivity).openActivityForResult(CalendarMemoActivity(),-1, DateTime(viewModel.year.value!!, viewModel.month.value!!, viewModel.day.value!!, 0, 0, 0).millis)
             else (requireActivity() as FrameActivity).openActivityForResult(CalendarMemoActivity(),-1)
         }
     }
 
-    fun setCalendar(dateTime:DateTime){
-
+    private fun setCalendar(dateTime:DateTime){
         viewModel.year.value = dateTime.year
         viewModel.month.value = dateTime.monthOfYear
         viewModel.day.value = dateTime.dayOfMonth
 
-        if(binding.vpCalendarLong.visibility == View.VISIBLE){
-            binding.vpCalendarLong.currentItem = CalendarLongAdapter.START_POSITION + getLongPosition(dateTime)
-            calendarLongFragment!!.setPosition()
-
-        }
-        if(binding.vpCalendarShort.visibility == View.VISIBLE){
+        val startState = binding.mlCalendar.startState
+        val endState = binding.mlCalendar.endState
+        if(binding.mlCalendar.currentState.equals(startState)){
             binding.vpCalendarShort.currentItem = CalendarShortAdapter.START_POSITION + getShortPosition(dateTime)
-            calendarShortFragment!!.setPosition()
+            viewModel.flagForShortPosition.value = true
+        }
 
+        if(binding.mlCalendar.currentState.equals(endState)){
+            binding.vpCalendarLong.currentItem = CalendarLongAdapter.START_POSITION + getLongPosition(dateTime)
+            viewModel.flagForLongPosition.value = true
         }
     }
 
-    fun setList(_dateTime:DateTime){
+    private fun setList(_dateTime:DateTime){
             val dateTime = startDayOfWeek(_dateTime)
 
             viewModel.calendarMemo.observe(requireActivity(), Observer {
@@ -225,16 +210,15 @@ class CalendarFragment: Fragment(){
                 calendarRecyclerAdapter.setData(list)
                 binding.rvList.scrollToPosition(0)
             })
-
     }
 
-    fun setDecoration(){
+    private fun setDecoration(){
         val decoration = CalendarRecyclerItemDecoration(requireContext())
         binding.rvList.addItemDecoration(decoration)
     }
 
     fun openCalendar(){
-        binding.mlCalendarLong.transitionToEnd()
+        binding.mlCalendar.transitionToEnd()
         binding.fabFragmentCalendar.visibility = View.GONE
 
         val dateTime = DateTime(viewModel.year.value!!, viewModel.month.value!!, viewModel.day.value!!, 0, 0, 0)
@@ -242,8 +226,9 @@ class CalendarFragment: Fragment(){
     }
 
     fun closeCalendar(){
-        binding.mlCalendarLong.transitionToStart()
+        binding.mlCalendar.transitionToStart()
         binding.fabFragmentCalendar.visibility = View.VISIBLE
+        viewModel.flagForSelectedItem.value = true
 
         val dateTime = DateTime(viewModel.year.value!!, viewModel.month.value!!, viewModel.day.value!!, 0, 0, 0)
         setCalendar(dateTime)

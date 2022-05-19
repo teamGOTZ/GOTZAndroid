@@ -19,7 +19,6 @@ class CalendarRecyclerAdapter(private val context: Context) : RecyclerView.Adapt
 
     inner class ViewHolder(private val binding: RecyclerCalendarBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: CalendarRecyclerItem, flag:Boolean = false) = with(binding){
-            //Log.e("BIND!!", "")
             data = item
 
             if(flag) binding.clRecyclerCalendar.setPadding(dp2px(20F).toInt(), dp2px(32F).toInt(),dp2px(20F).toInt(), dp2px(12F).toInt())

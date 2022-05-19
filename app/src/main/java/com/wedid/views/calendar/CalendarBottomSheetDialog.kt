@@ -20,7 +20,7 @@ class CalendarBottomSheetDialog(): BottomSheetDialogFragment() {
 
     private var year: Int? = null
     private var month: Int? = null
-
+    /*
     private val viewModel: CalendarViewModel by activityViewModels{
         CalendarViewModelFactory((requireActivity().application as BaseApplication).roomCalendarMemoRepositoryImpl)
     }
@@ -71,6 +71,6 @@ class CalendarBottomSheetDialog(): BottomSheetDialogFragment() {
 
     }
 
-
+*/
 
 }
