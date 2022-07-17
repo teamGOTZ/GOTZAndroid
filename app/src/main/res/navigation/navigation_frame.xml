@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/fragment_calendar"
-        android:name="com.wedid.views.calendar.CalendarFragment"
+        android:name="com.gotz.views.calendar.CalendarFragment"
         android:label="CalendarFragment"
         tools:layout="@layout/fragment_calendar">
 

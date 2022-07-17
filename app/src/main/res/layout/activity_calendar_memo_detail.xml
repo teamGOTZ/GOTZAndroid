@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.wedid.views.calendar.memo.CalendarMemoDetailViewModel" />
+            type="com.gotz.views.calendar.memo.CalendarMemoDetailViewModel" />
     </data>
 
     <LinearLayout

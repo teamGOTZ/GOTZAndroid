@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.wedid.views.main.prepare.MainPrepareNameViewModel" />
+            type="com.gotz.views.main.prepare.MainPrepareNameViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,7 +57,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="12dp"/>
 
-            <com.wedid.custom.CustomEditTextBlack100
+            <com.gotz.custom.CustomEditTextBlack100
                 android:id="@+id/et_main_prepare_name"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"

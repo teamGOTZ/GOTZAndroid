@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wedid">
+    package="com.gotz">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
 
     <application
-        android:name="com.wedid.base.BaseApplication"
+        android:name="com.gotz.base.BaseApplication"
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_appicon"
@@ -15,16 +15,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WGPGkt">
 
-        <activity android:name="com.wedid.views.calendar.memo.CalendarMemoActivity" android:exported="true" android:screenOrientation="portrait"></activity>
-        <activity android:name="com.wedid.views.calendar.memo.CalendarMemoDetailActivity" android:exported="true" android:screenOrientation="portrait"></activity>
+        <activity android:name="com.gotz.views.calendar.memo.CalendarMemoActivity" android:exported="true" android:screenOrientation="portrait"></activity>
+        <activity android:name="com.gotz.views.calendar.memo.CalendarMemoDetailActivity" android:exported="true" android:screenOrientation="portrait"></activity>
 
-        <activity android:name="com.wedid.views.frame.FrameActivity" android:exported="true" android:screenOrientation="portrait"></activity>
+        <activity android:name="com.gotz.views.frame.FrameActivity" android:exported="true" android:screenOrientation="portrait"></activity>
 
-        <activity android:name="com.wedid.views.main.prepare.MainPrepareIntroActivity" android:exported="true" android:screenOrientation="portrait"></activity>
-        <activity android:name="com.wedid.views.main.prepare.MainPrepareNameActivity" android:exported="true" android:screenOrientation="portrait"></activity>
-        <activity android:name="com.wedid.views.main.prepare.MainPrepareHelloActivity" android:exported="true" android:screenOrientation="portrait"></activity>
+        <activity android:name="com.gotz.views.main.prepare.MainPrepareIntroActivity" android:exported="true" android:screenOrientation="portrait"></activity>
+        <activity android:name="com.gotz.views.main.prepare.MainPrepareNameActivity" android:exported="true" android:screenOrientation="portrait"></activity>
+        <activity android:name="com.gotz.views.main.prepare.MainPrepareHelloActivity" android:exported="true" android:screenOrientation="portrait"></activity>
 
-        <activity android:name="com.wedid.views.main.prepare.MainPrepareSplashActivity" android:exported="true" android:screenOrientation="portrait">
+        <activity android:name="com.gotz.views.main.prepare.MainPrepareSplashActivity" android:exported="true" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

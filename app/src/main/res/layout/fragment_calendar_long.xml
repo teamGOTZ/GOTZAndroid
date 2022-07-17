@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.wedid.custom.calendar.CalendarLongView
+    <com.gotz.custom.calendar.CalendarLongView
         android:id="@+id/calendarLongView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

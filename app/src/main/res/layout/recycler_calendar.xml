@@ -4,7 +4,7 @@
     <data>
         <variable
             name="data"
-            type="com.wedid.views.calendar.CalendarRecyclerItem" />
+            type="com.gotz.views.calendar.CalendarRecyclerItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.wedid.views.frame.FrameViewModel" />
+            type="com.gotz.views.frame.FrameViewModel" />
     </data>
 
     <LinearLayout
@@ -27,7 +27,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginLeft="19dp" />
-            <com.wedid.custom.CustomTodayButton
+            <com.gotz.custom.CustomTodayButton
                 android:id="@+id/btn_frame_calendar_today"
                 android:layout_width="58dp"
                 android:layout_height="40dp"
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:gravity="center">
 
-            <com.wedid.custom.CustomBarButton
+            <com.gotz.custom.CustomBarButton
                 android:id="@+id/btn_test1"
                 android:layout_width="0dp"
                 android:layout_height="58dp"
@@ -61,7 +61,7 @@
                 app:img="@drawable/ic_calendar"
                 app:text="캘린더"/>
 
-            <com.wedid.custom.CustomBarButton
+            <com.gotz.custom.CustomBarButton
                 android:id="@+id/btn_test2"
                 android:layout_width="0dp"
                 android:layout_height="58dp"
