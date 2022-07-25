@@ -1,4 +1,4 @@
-package com.gotz
+package com.gotz.base
 
 import org.junit.Test
 
