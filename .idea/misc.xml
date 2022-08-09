@@ -4,6 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/ic_appicon_background.xml" value="0.1385" />
+        <entry key="app/src/main/res/layout/activity_calendar_memo_detail.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main_prepare_hello.xml" value="0.21693840579710144" />
+        <entry key="app/src/main/res/layout/activity_main_prepare_intro.xml" value="0.21693840579710144" />
+        <entry key="app/src/main/res/layout/activity_main_prepare_name.xml" value="0.13323201621073963" />
         <entry key="app/src/main/res/layout/activity_main_prepare_splash.xml" value="0.2341485507246377" />
         <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.1265625" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_appicon.xml" value="0.137" />
@@ -14,6 +18,9 @@
         <entry key="presentation/src/main/res/layout/activity_calendar_memo_detail.xml" value="0.2341485507246377" />
         <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.2341485507246377" />
         <entry key="presentation/src/main/res/layout/activity_main_prepare_splash.xml" value="0.2341485507246377" />
+        <entry key="presentation/src/main/res/layout/activity_onboarding_hello.xml" value="0.2246376811594203" />
+        <entry key="presentation/src/main/res/layout/activity_onboarding_intro.xml" value="0.2246376811594203" />
+        <entry key="presentation/src/main/res/layout/activity_onboarding_name.xml" value="0.1" />
         <entry key="presentation/src/main/res/layout/activity_splash.xml" value="0.1" />
       </map>
     </option>

@@ -19,20 +19,20 @@ abstract class BaseActivity<T: ViewDataBinding>(@LayoutRes val layoutResID: Int)
          getSystemService(Context.INPUT_METHOD_SERVICE)
 
          onCreate()
+         initObserver()
          initView()
          initIntent()
-         initObserver()
     }
 
     open fun onCreate(){}
-
-    open fun btnClick(){}
 
     open fun initObserver(){}
 
     open fun initView(){}
 
     open fun initIntent(){}
+
+    open fun btnClick(){}
 
     protected fun makeToast(str:String) {
         Toast.makeText(this, str, Toast.LENGTH_SHORT).show()

@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id "com.google.protobuf" version "0.8.17"
+}
+
+android {
+    compileSdkVersion 32
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 32
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+protobuf {
+    protoc {
+        if (osdetector.os == "osx") {
+            artifact = 'com.google.protobuf:protoc:3.14.0:osx-x86_64'
+        } else {
+            artifact = 'com.google.protobuf:protoc:3.14.0'
+        }
+    }
+
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java { option 'lite' }
+            }
+        }
+    }
+}
+
+dependencies {
+
+    implementation project(":data")
+
+    // dataStore
+    implementation "androidx.datastore:datastore:$rootProject.dataStoreVersion"
+    implementation "androidx.datastore:datastore-core:$rootProject.dataStoreVersion"
+    implementation "androidx.datastore:datastore-rxjava2:$rootProject.dataStoreVersion"
+    implementation 'com.google.protobuf:protobuf-javalite:3.8.0'
+
+}
