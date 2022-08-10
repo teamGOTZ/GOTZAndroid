@@ -40,6 +40,7 @@ android {
 
 dependencies {
 
+    implementation project(":cache")
     implementation project(":data")
     implementation project(":domain")
     implementation project(":presentation")
@@ -87,5 +88,15 @@ dependencies {
 
     // Joda time
     implementation 'joda-time:joda-time:2.10.6'
+
+    // koin
+    implementation "org.koin:koin-android:$rootProject.koinVersion"
+    implementation "org.koin:koin-androidx-viewmodel:$rootProject.koinVersion"
+
+    // dataStore
+    implementation "androidx.datastore:datastore:$rootProject.dataStoreVersion"
+    implementation "androidx.datastore:datastore-core:$rootProject.dataStoreVersion"
+    implementation "androidx.datastore:datastore-rxjava2:$rootProject.dataStoreVersion"
+    implementation 'com.google.protobuf:protobuf-javalite:3.8.0'
 
 }

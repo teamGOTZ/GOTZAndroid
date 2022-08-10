@@ -3,6 +3,8 @@ buildscript {
     ext{
         kotlin_version = '1.5.31'
         dataStoreVersion = '1.0.0'
+        koinVersion = '2.0.1'
+        rxKotlinVersion = '2.4.0'
     }
     repositories {
         google()

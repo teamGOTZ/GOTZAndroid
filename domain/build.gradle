@@ -24,4 +24,5 @@ android {
 
 dependencies {
 
+    implementation "io.reactivex.rxjava2:rxkotlin:$rootProject.rxKotlinVersion"
 }
