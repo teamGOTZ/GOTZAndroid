@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_onboarding"
+    app:startDestination="@id/fragment_onboarding_intro">
+
+    <fragment
+        android:id="@+id/fragment_onboarding_intro"
+        android:name="com.gotz.presentation.view.onboarding.OnboardingIntroFragment"
+        android:label="OnboardingIntroFragment"
+        tools:layout="@layout/fragment_onboarding_intro">
+        <action
+            android:id="@+id/action_fragment_onboarding_intro_to_fragment_onboarding_name"
+            app:destination="@id/fragment_onboarding_name" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_onboarding_name"
+        android:name="com.gotz.presentation.view.onboarding.OnboardingNameFragment"
+        android:label="OnboardingNameFragment"
+        tools:layout="@layout/fragment_onboarding_name">
+        <action
+            android:id="@+id/action_fragment_onboarding_name_to_fragment_onboarding_hello"
+            app:destination="@id/fragment_onboarding_hello" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_onboarding_hello"
+        android:name="com.gotz.presentation.view.onboarding.OnboardingHelloFragment"
+        android:label="OnboardingHelloFragment"
+        tools:layout="@layout/fragment_onboarding_hello"/>
+
+</navigation>

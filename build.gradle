@@ -5,6 +5,7 @@ buildscript {
         dataStoreVersion = '1.0.0'
         koinVersion = '2.0.1'
         rxKotlinVersion = '2.4.0'
+        navigationVersion = '2.3.5'
     }
     repositories {
         google()

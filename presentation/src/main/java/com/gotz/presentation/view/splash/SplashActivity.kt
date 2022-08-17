@@ -1,11 +1,13 @@
 package com.gotz.presentation.view.splash
 
+import android.content.Intent
 import android.view.animation.AlphaAnimation
 import android.view.animation.AnimationSet
 import androidx.interpolator.view.animation.FastOutLinearInInterpolator
 import com.gotz.presentation.R
 import com.gotz.presentation.base.BaseActivity
 import com.gotz.presentation.databinding.ActivitySplashBinding
+import com.gotz.presentation.view.onboarding.OnboardingActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -35,6 +37,8 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(R.layout.activity_spla
         GlobalScope.launch{
             delay(3000)
 
+            val intent = Intent(applicationContext, OnboardingActivity::class.java)
+            startActivity(intent)
         }
     }
 

@@ -27,7 +27,7 @@ abstract class BaseActivity<T: ViewDataBinding>(@LayoutRes val layoutResID: Int)
          initIntent()
     }
 
-    open fun onCreate(){}
+    abstract fun onCreate()
 
     open fun initObserver(){}
 
