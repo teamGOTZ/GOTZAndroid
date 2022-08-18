@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="viewmodel"
+            type="com.gotz.presentation.view.onboarding.OnboardingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -60,6 +62,7 @@
                 android:id="@+id/et_onboarding_name"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                onTest="@null"
                 app:layout_constraintTop_toBottomOf="@id/tv_onboarding_name_2"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -68,8 +71,9 @@
             <Button
                 android:id="@+id/btn_main_onboarding_next"
                 android:text="다음"
+                android:onClick="@{() -> viewmodel.btnClick()}"
                 style="@style/BaseButtonStyle"
-                android:enabled="false"
+                android:enabled="@{viewmodel.btnVisibility}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"

@@ -10,7 +10,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 class CacheUserDataSourceImpl(
     private val userDataStore: RxDataStore<UserDataStore>
 ): CacheUserDataSource {
-    override fun createUserName(name: String): Single<Boolean> =
+    override fun insertUserName(name: String): Single<Boolean> =
         userDataStore.updateDataAsync{ dataStore ->
             Single.just(dataStore.toBuilder().setName(name).build())
         }.map{ dataStore ->

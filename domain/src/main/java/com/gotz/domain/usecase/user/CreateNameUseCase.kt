@@ -3,11 +3,11 @@ package com.gotz.domain.usecase.user
 import com.gotz.domain.repository.user.UserRepository
 import io.reactivex.Single
 
-internal typealias CreateNameBaseUseCase = (String) -> Single<Boolean>
+internal typealias InsertNameBaseUseCase = (String) -> Single<Boolean>
 
-class CreateNameUseCase(
+class InsertNameUseCase(
     private val userRepository: UserRepository
-):CreateNameBaseUseCase {
+):InsertNameBaseUseCase {
     override fun invoke(name: String): Single<Boolean> =
-        userRepository.createUserName(name)
+        userRepository.insertUserName(name)
 }

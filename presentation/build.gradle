@@ -37,6 +37,8 @@ android {
 
 dependencies {
 
+    implementation project(":domain")
+
     def roomVersion = "2.4.1"
     def lifecycle_version = "2.4.0"
     def nav_version = "2.3.5"

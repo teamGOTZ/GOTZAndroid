@@ -7,8 +7,8 @@ import io.reactivex.Single
 class UserRepositoryImpl(
     private val cacheUserDataSource: CacheUserDataSource
 ): UserRepository {
-    override fun createUserName(name: String): Single<Boolean> =
-        cacheUserDataSource.createUserName(name)
+    override fun insertUserName(name: String): Single<Boolean> =
+        cacheUserDataSource.insertUserName(name)
 
     override fun readUserName(): Single<String> =
         cacheUserDataSource.readUserName()

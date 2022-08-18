@@ -4,6 +4,6 @@ import io.reactivex.Single
 
 interface CacheUserDataSource {
 
-    fun createUserName(name: String): Single<Boolean>
+    fun insertUserName(name: String): Single<Boolean>
     fun readUserName(): Single<String>
 }
