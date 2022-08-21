@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -25,10 +25,10 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:background="@drawable/ic_arrow_left"
+                android:layout_marginStart="16dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginLeft="16dp" />
+                app:layout_constraintLeft_toLeftOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,6 +48,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="40dp"/>
+
             <TextView
                 android:id="@+id/tv_onboarding_name_2"
                 android:layout_width="wrap_content"
@@ -58,11 +59,11 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="12dp"/>
 
-            <com.gotz.presentation.custom.CustomEditTextBlack100
+            <EditText
                 android:id="@+id/et_onboarding_name"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                onTest="@null"
+                android:onTextChanged="@{viewmodel.onTextChanged}"
                 app:layout_constraintTop_toBottomOf="@id/tv_onboarding_name_2"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -72,8 +73,8 @@
                 android:id="@+id/btn_main_onboarding_next"
                 android:text="다음"
                 android:onClick="@{() -> viewmodel.btnClick()}"
-                style="@style/BaseButtonStyle"
                 android:enabled="@{viewmodel.btnVisibility}"
+                style="@style/BaseButtonStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
