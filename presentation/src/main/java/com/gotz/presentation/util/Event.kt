@@ -1,6 +1,5 @@
 package com.gotz.presentation.util
 
-import android.util.Log
 import androidx.lifecycle.Observer
 
 open class Event<out T>(private val content: T) {
@@ -29,7 +28,6 @@ open class Event<out T>(private val content: T) {
 
 class EventObserver(private val eventContent: () -> Unit) : Observer<Event<Boolean>> {
     override fun onChanged(event: Event<Boolean>?) {
-        Log.e("Event", "onChanged")
         event?.getContentIfNotHandled()?.let { isEvent ->
             if (isEvent) eventContent()
         }

@@ -18,5 +18,5 @@ val domainLayerModule = module {
      * ViewModel
      */
 
-    viewModel { OnboardingViewModel(get(), get()) }
+    viewModel { OnboardingViewModel(get()) }
 }

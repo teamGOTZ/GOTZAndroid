@@ -3,6 +3,7 @@
     package="com.gotz.presentation">
 
     <application>
+        <activity android:name=".view.main.MainActivity" android:exported="true"/>
         <activity android:name=".view.splash.SplashActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

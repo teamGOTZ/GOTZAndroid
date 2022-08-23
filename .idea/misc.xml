@@ -27,7 +27,7 @@
         <entry key="presentation/src/main/res/layout/activity_onboarding_name.xml" value="0.1" />
         <entry key="presentation/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="presentation/src/main/res/layout/custom_edittext_black100.xml" value="0.1" />
-        <entry key="presentation/src/main/res/layout/fragment_onboarding_hello.xml" value="0.19293478260869565" />
+        <entry key="presentation/src/main/res/layout/fragment_onboarding_hello.xml" value="0.1" />
         <entry key="presentation/src/main/res/layout/fragment_onboarding_intro.xml" value="0.19293478260869565" />
         <entry key="presentation/src/main/res/layout/fragment_onboarding_name.xml" value="0.2412261962890625" />
       </map>

@@ -1,45 +1,39 @@
 package com.gotz.presentation.base
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseActivity<T: ViewDataBinding>(@LayoutRes val layoutResID: Int) : AppCompatActivity() {
     lateinit var binding: T
 
-     final override fun onCreate(savedInstanceState: Bundle?) {
+    val compositeDisposable = CompositeDisposable()
+
+    final override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-         binding = DataBindingUtil.setContentView(this, layoutResID)
-         binding.lifecycleOwner = this
-         getSystemService(Context.INPUT_METHOD_SERVICE)
+        binding = DataBindingUtil.setContentView(this, layoutResID)
+        binding.lifecycleOwner = this
+        getSystemService(Context.INPUT_METHOD_SERVICE)
 
-         onCreate()
-         initObserver()
-         initView()
-         initIntent()
+        onCreate()
+        initNavigation()
+        initObserver()
     }
 
     abstract fun onCreate()
 
+    open fun initNavigation(){}
+
     open fun initObserver(){}
-
-    open fun initView(){}
-
-    open fun initIntent(){}
-
-    open fun btnClick(){}
-
-    protected fun makeToast(str:String) {
-        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
-    }
 
     final override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
         val focusView = currentFocus

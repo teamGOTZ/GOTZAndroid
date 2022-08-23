@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="{김위딛}님\n환영합니다!"
+            android:text="@{viewmodel.nameHello}"
             style="@style/Text24Bold"
             android:lineSpacingMultiplier="1.25"
             android:layout_marginBottom="20dp"

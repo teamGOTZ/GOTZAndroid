@@ -10,13 +10,15 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class OnboardingHelloFragment: BaseFragment<FragmentOnboardingHelloBinding>(R.layout.fragment_onboarding_hello) {
-    private val onboardingViewModel: OnboardingViewModel by sharedViewModel()
+
+    private val viewModel: OnboardingViewModel by sharedViewModel()
+
     override fun onCreateView() {
 
     }
 
     override fun onViewCreated() {
-        binding.viewmodel = onboardingViewModel
+        binding.viewmodel = viewModel
     }
 
 }

@@ -8,10 +8,13 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.databinding.ViewDataBinding
+import io.reactivex.disposables.CompositeDisposable
 
 
 abstract class BaseFragment<T: ViewDataBinding>(@LayoutRes val layoutResID: Int) :Fragment(){
     lateinit var binding: T
+
+    val compositeDisposable = CompositeDisposable()
 
     final override fun onCreateView(
         inflater: LayoutInflater,

@@ -1,30 +1,43 @@
 package com.gotz.presentation.view.onboarding
 
-import android.util.Log
+import android.content.Intent
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.gotz.presentation.R
 import com.gotz.presentation.base.BaseActivity
 import com.gotz.presentation.databinding.ActivityOnboardingBinding
+import com.gotz.presentation.util.Utils
 import com.gotz.presentation.util.EventObserver
+import com.gotz.presentation.util.GotzTest.logE
+import com.gotz.presentation.view.main.MainActivity
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.addTo
+import io.reactivex.rxkotlin.subscribeBy
+import io.reactivex.schedulers.Schedulers
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OnboardingActivity: BaseActivity<ActivityOnboardingBinding>(R.layout.activity_onboarding) {
-    private val onboardingViewModel: OnboardingViewModel by viewModel()
+
+    private val viewModel: OnboardingViewModel by viewModel()
+
+    private var host: Fragment? = null
+    private var navController: NavController? = null
+
     override fun onCreate() {
-        val host = supportFragmentManager.findFragmentById(R.id.fcv_onboarding)
-        val navController = host?.findNavController()
-        Log.e("OnboardingActivity", host.toString())
-        Log.e("OnboardingActivity", navController.toString())
-        navController?.let{
-            Log.e("OnboardingActivity", it.currentDestination?.label.toString())
-        }
+        binding.viewmodel = viewModel
+    }
 
-        binding.viewmodel = onboardingViewModel
+    override fun initNavigation() {
+        host = supportFragmentManager.findFragmentById(R.id.fcv_onboarding)
+        navController = host?.findNavController()
+    }
 
-        onboardingViewModel.btnClickEvent.observe(this, EventObserver{
+    override fun initObserver() {
+        viewModel.btnClickEvent.observe(this, EventObserver{
             navController?.currentDestination?.label.let{ charSequence ->
                 val fragment = charSequence.toString()
-                Log.e("OnboardingActivity", fragment)
+                logE(fragment)
                 when(fragment){
                     "OnboardingIntroFragment" -> {
                         navController?.navigate(R.id.action_fragment_onboarding_intro_to_fragment_onboarding_name)
@@ -33,10 +46,12 @@ class OnboardingActivity: BaseActivity<ActivityOnboardingBinding>(R.layout.activ
                         navController?.navigate(R.id.action_fragment_onboarding_name_to_fragment_onboarding_hello)
                     }
                     "OnboardingHelloFragment" -> {
-
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
                     }
                 }
             }
         })
     }
+
 }

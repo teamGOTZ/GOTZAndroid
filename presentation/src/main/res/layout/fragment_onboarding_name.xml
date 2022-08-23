@@ -72,7 +72,7 @@
             <Button
                 android:id="@+id/btn_main_onboarding_next"
                 android:text="다음"
-                android:onClick="@{() -> viewmodel.btnClick()}"
+                android:onClick="@{() -> viewmodel.btnClickAndInsertName()}"
                 android:enabled="@{viewmodel.btnVisibility}"
                 style="@style/BaseButtonStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
