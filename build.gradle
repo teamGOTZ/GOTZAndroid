@@ -6,6 +6,7 @@ buildscript {
         koinVersion = '2.0.1'
         rxKotlinVersion = '2.4.0'
         navigationVersion = '2.3.5'
+        roomVersion = '2.4.1'
     }
     repositories {
         google()

@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id "com.google.protobuf" version "0.8.17"
+    id 'kotlin-kapt'
 }
 
 android {
@@ -48,5 +49,12 @@ dependencies {
     implementation "androidx.datastore:datastore-core:$rootProject.dataStoreVersion"
     implementation "androidx.datastore:datastore-rxjava2:$rootProject.dataStoreVersion"
     implementation 'com.google.protobuf:protobuf-javalite:3.8.0'
+
+    // Room
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$rootProject.roomVersion"
+    testImplementation "androidx.room:room-testing:$rootProject.roomVersion"
 
 }

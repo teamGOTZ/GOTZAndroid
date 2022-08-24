@@ -4,6 +4,7 @@ import io.reactivex.Single
 
 interface UserRepository {
 
-    fun insertUserName(name: String): Single<Boolean>
+    fun createUserName(name: String): Single<Boolean>
+
     fun readUserName(): Single<String>
 }
