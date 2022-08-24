@@ -6,15 +6,15 @@ import kotlinx.coroutines.flow.Flow
 
 interface CalendarRepository {
     @WorkerThread
-    suspend fun create(entity: CalendarModel)
+    suspend fun createCalendar(entity: CalendarModel)
 
-    fun readAll(): Flow<List<CalendarModel>>
+    fun readAllCalendar(): Flow<List<CalendarModel>>
 
-    fun readByUid(uid: Int): Flow<CalendarModel>
-
-    @WorkerThread
-    suspend fun update(entity: CalendarModel)
+    fun readCalendarByUid(uid: Int): Flow<CalendarModel>
 
     @WorkerThread
-    suspend fun delete(uid: Int)
+    suspend fun updateCalendar(entity: CalendarModel)
+
+    @WorkerThread
+    suspend fun deleteCalendar(uid: Int)
 }

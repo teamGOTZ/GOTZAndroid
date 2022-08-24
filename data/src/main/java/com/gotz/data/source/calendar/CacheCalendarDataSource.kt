@@ -6,15 +6,15 @@ import kotlinx.coroutines.flow.Flow
 
 interface CacheCalendarDataSource{
     @WorkerThread
-    suspend fun create(entity: CalendarEntity)
+    suspend fun createCalendar(entity: CalendarEntity)
 
-    fun readAll(): Flow<List<CalendarEntity>>
+    fun readAllCalendar(): Flow<List<CalendarEntity>>
 
-    fun readByUid(uid: Int): Flow<CalendarEntity>
-
-    @WorkerThread
-    suspend fun update(entity: CalendarEntity)
+    fun readCalendarByUid(uid: Int): Flow<CalendarEntity>
 
     @WorkerThread
-    suspend fun delete(uid: Int)
+    suspend fun updateCalendar(entity: CalendarEntity)
+
+    @WorkerThread
+    suspend fun deleteCalendar(uid: Int)
 }

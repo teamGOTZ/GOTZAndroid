@@ -10,9 +10,12 @@ import kotlinx.coroutines.flow.map
 class CacheCalendarDataSourceImpl(
     private val calendarDao: CalendarDao
 ): CacheCalendarDataSource{
+    override suspend fun createCalendar(entity: CalendarEntity) {
+        calendarDao.createCalendar(entity.toMapper())
+    }
 
-    override fun readAll(): Flow<List<CalendarEntity>> =
-        calendarDao.readAll().map { list ->
+    override fun readAllCalendar(): Flow<List<CalendarEntity>> =
+        calendarDao.readAllCalendar().map { list ->
             val mutableList = mutableListOf<CalendarEntity>()
             list.map { cacheCalendarEntity ->
                 mutableList.add(cacheCalendarEntity.toMapper())
@@ -20,20 +23,16 @@ class CacheCalendarDataSourceImpl(
             mutableList
         }
 
-    override fun readByUid(uid: Int): Flow<CalendarEntity> =
-        calendarDao.readByUid(uid).map { cacheCalendarEntity ->
+    override fun readCalendarByUid(uid: Int): Flow<CalendarEntity> =
+        calendarDao.readCalendarByUid(uid).map { cacheCalendarEntity ->
             cacheCalendarEntity.toMapper()
         }
 
-    override suspend fun create(entity: CalendarEntity) {
-        calendarDao.create(entity.toMapper())
+    override suspend fun updateCalendar(entity: CalendarEntity) {
+        calendarDao.updateCalendarByUid(entity.title, entity.content, entity.isAllDay, entity.start, entity.end, entity.uid)
     }
 
-    override suspend fun delete(uid: Int) {
-        calendarDao.deleteByUid(uid)
-    }
-
-    override suspend fun update(entity: CalendarEntity) {
-        calendarDao.updateByUid(entity.title, entity.content, entity.isAllDay, entity.start, entity.end, entity.uid)
+    override suspend fun deleteCalendar(uid: Int) {
+        calendarDao.deleteCalendarByUid(uid)
     }
 }
