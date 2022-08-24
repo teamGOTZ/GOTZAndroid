@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -43,7 +42,7 @@
                 android:id="@+id/tv_onboarding_name_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="이름을 입력해주세요"
+                android:text="@string/string_onboarding_name_1"
                 style="@style/Text24Regular"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -53,7 +52,7 @@
                 android:id="@+id/tv_onboarding_name_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="위딛은 이름을 불러드리고 싶어요 :)"
+                android:text="@string/string_onboarding_name_2"
                 style="@style/Text16Regular"
                 app:layout_constraintTop_toBottomOf="@id/tv_onboarding_name_1"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -71,7 +70,7 @@
 
             <Button
                 android:id="@+id/btn_main_onboarding_next"
-                android:text="다음"
+                android:text="@string/string_next"
                 android:onClick="@{() -> viewmodel.btnClickAndInsertName()}"
                 android:enabled="@{viewmodel.btnVisibility}"
                 style="@style/BaseButtonStyle"

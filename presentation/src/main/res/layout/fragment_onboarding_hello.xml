@@ -30,7 +30,7 @@
 
         <Button
             android:id="@+id/btn_onboarding_hello_next"
-            android:text="위딛 시작하기"
+            android:text="@string/string_onboarding_hello_next"
             android:onClick="@{() -> viewmodel.btnClick()}"
             style="@style/BaseButtonStyle"
             app:layout_constraintBottom_toBottomOf="parent"

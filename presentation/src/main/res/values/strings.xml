@@ -1,8 +1,12 @@
 <resources>
 
-    <string name="str_id">ID</string>
-    <string name="str_pw">PW</string>
-    <string name="str_name">이름</string>
-    <string name="str_birth">생년월일</string>
-    <string name="str_phone">전화번호</string>
+    <string name="string_next">다음</string>
+<!--    Onboarding-->
+    <string name="string_onboarding_intro">WEDID과 함께\n당신의 다음을 기록하세요</string>
+
+    <string name="string_onboarding_name_1">이름을 입력해주세요</string>
+    <string name="string_onboarding_name_2">위딛은 이름을 불러드리고 싶어요 :)</string>
+
+    <string name="string_onboarding_hello_next">위딛 시작하기</string>
+
 </resources>
