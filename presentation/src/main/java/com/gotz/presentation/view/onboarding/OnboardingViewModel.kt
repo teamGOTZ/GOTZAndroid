@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.gotz.domain.usecase.user.InsertNameUseCase
+import com.gotz.domain.usecase.user.CreateNameUseCase
 import com.gotz.domain.usecase.user.ReadSingleNameUseCase
 import com.gotz.presentation.base.BaseViewModel
 import com.gotz.presentation.util.Event
@@ -17,7 +17,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 
 class OnboardingViewModel(
-    private val insertNameUseCase: InsertNameUseCase
+    private val insertNameUseCase: CreateNameUseCase
 ): BaseViewModel() {
 
     private var _btnClickEvent = MutableLiveData<Event<Boolean>>()

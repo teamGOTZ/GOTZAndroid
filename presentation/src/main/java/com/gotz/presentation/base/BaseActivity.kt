@@ -25,11 +25,14 @@ abstract class BaseActivity<T: ViewDataBinding>(@LayoutRes val layoutResID: Int)
         getSystemService(Context.INPUT_METHOD_SERVICE)
 
         onCreate()
+        initView()
         initNavigation()
         initObserver()
     }
 
     abstract fun onCreate()
+
+    open fun initView(){}
 
     open fun initNavigation(){}
 
