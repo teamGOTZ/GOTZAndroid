@@ -7,14 +7,9 @@ import androidx.navigation.fragment.findNavController
 import com.gotz.presentation.R
 import com.gotz.presentation.base.BaseActivity
 import com.gotz.presentation.databinding.ActivityOnboardingBinding
-import com.gotz.presentation.util.Utils
 import com.gotz.presentation.util.EventObserver
 import com.gotz.presentation.util.GotzTest.logE
 import com.gotz.presentation.view.main.MainActivity
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.addTo
-import io.reactivex.rxkotlin.subscribeBy
-import io.reactivex.schedulers.Schedulers
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OnboardingActivity: BaseActivity<ActivityOnboardingBinding>(R.layout.activity_onboarding) {

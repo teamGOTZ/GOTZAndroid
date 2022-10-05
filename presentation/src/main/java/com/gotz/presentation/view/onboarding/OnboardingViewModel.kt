@@ -1,20 +1,10 @@
 package com.gotz.presentation.view.onboarding
 
-import android.annotation.SuppressLint
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.gotz.domain.usecase.user.CreateNameUseCase
-import com.gotz.domain.usecase.user.ReadSingleNameUseCase
 import com.gotz.presentation.base.BaseViewModel
 import com.gotz.presentation.util.Event
-import com.gotz.presentation.util.GotzTest
-import com.gotz.presentation.util.GotzTest.logE
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.addTo
-import io.reactivex.rxkotlin.subscribeBy
-import io.reactivex.schedulers.Schedulers
 
 class OnboardingViewModel(
     private val insertNameUseCase: CreateNameUseCase
@@ -48,7 +38,6 @@ class OnboardingViewModel(
     }
 
     private fun insertName(name: String){
-        Log.e("OnboardingViewModel", name)
         insertNameUseCase(name)
     }
 

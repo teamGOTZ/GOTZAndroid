@@ -1,13 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-
+<!--        <variable-->
+<!--            name="viewmodel"-->
+<!--            type="com.gotz.presentation.view.calendar.base.CalendarViewModel" />-->
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/black_100"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_picker"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btn_fragment_calendar_before"
+                android:layout_width="40dp"
+                android:layout_height="40dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_arrow_left"
+                    android:backgroundTint="@color/black_400"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_fragment_calendar_date"
+                android:layout_width="86dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="2022년 12월"
+                style="@style/Text14Regular"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btn_fragment_calendar_after"
+                android:layout_width="40dp"
+                android:layout_height="40dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_arrow_right"
+                    android:backgroundTint="@color/black_400"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/ml_calendar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/ll_picker"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layoutDescription="@xml/fragment_calendar_long_scene"
+            app:showPaths="false">
+            <View
+                android:id="@+id/off_screen_top"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <View
+                android:id="@+id/off_screen_top_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
+
+            <FrameLayout
+                android:id="@+id/off_screen_top_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+            </FrameLayout>
+
+            <View
+                android:id="@+id/off_screen_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <FrameLayout
+                android:id="@+id/off_screen_bottom_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <View android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+            </FrameLayout>
+
+            <View android:id="@+id/off_screen_bottom_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
+
+            <FrameLayout
+                android:id="@+id/bottom_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/vp_calendar_short"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:background="@color/white"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <Button
+                        android:id="@+id/btn_open"
+                        android:layout_width="match_parent"
+                        android:text="+ 펼쳐보기"
+                        style="@style/CalendarButtonStyle"
+                        app:backgroundTint="@null"
+                        app:layout_constraintTop_toBottomOf="@id/vp_calendar_short"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginBottom="24dp"
+                        android:nestedScrollingEnabled="false"
+                        android:background="@color/gray_050"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintVertical_weight="1"
+                        app:layout_constraintTop_toBottomOf="@id/vp_calendar_short"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/top_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/vp_calendar_long"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="@color/white"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:layout_weight="1"/>
+
+                    <Button
+                        android:id="@+id/btn_close"
+                        android:layout_width="match_parent"
+                        style="@style/CalendarButtonStyle"
+                        android:text="+ 접어보기"
+                        app:backgroundTint="@null"
+                        app:layout_constraintTop_toBottomOf="@id/vp_calendar_long" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"/>
+            </FrameLayout>
+
+
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_fragment_calendar"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_margin="24dp"
+            android:backgroundTint="@color/black"
+            android:src="@drawable/ic_plus_floating"
+            app:elevation="0dp"
+            app:borderWidth="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:rippleColor="@color/white"
+            app:tint="@color/white"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
+
