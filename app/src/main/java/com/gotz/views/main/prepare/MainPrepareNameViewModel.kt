@@ -1,8 +1,8 @@
 package com.gotz.views.main.prepare
 
 import androidx.lifecycle.MutableLiveData
-import com.gotz.base.BaseViewModel
+import com.gotz.base_legacy.BaseViewModelLegacy
 
-class MainPrepareNameViewModel: BaseViewModel() {
+class MainPrepareNameViewModel: BaseViewModelLegacy() {
     val name = MutableLiveData<String>()
 }

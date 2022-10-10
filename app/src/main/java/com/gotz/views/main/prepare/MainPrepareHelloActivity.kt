@@ -8,7 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.interpolator.view.animation.FastOutLinearInInterpolator
 import androidx.lifecycle.Observer
-import com.gotz.base.BaseApplication
+import com.gotz.base_legacy.BaseApplication
 import com.gotz.databinding.ActivityMainPrepareHelloBinding
 import com.gotz.views.frame.FrameActivity
 

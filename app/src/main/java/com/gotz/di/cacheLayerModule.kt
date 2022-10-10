@@ -1,7 +1,7 @@
 package com.gotz.di
 
 import android.content.Context
-import androidx.datastore.rxjava2.rxDataStore
+import androidx.datastore.dataStore
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
@@ -16,7 +16,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 private const val DATABASE_NAME: String = "gotz.db"
-val Context.rxUserDataStore by rxDataStore(fileName = "user.proto", serializer = UserDataStoreSerializer)
+val Context.userDataStore by dataStore(fileName = "user.proto", serializer = UserDataStoreSerializer)
 
 @ExperimentalCoroutinesApi
 val cacheLayerModule = module{
@@ -33,6 +33,6 @@ val cacheLayerModule = module{
 
     single{ get<GotzDataBase>().calendarDao() }
 
-    factory<CacheUserDataSource> { CacheUserDataSourceImpl(androidContext().rxUserDataStore) }
+    factory<CacheUserDataSource> { CacheUserDataSourceImpl(androidContext().userDataStore) }
     factory<CacheCalendarDataSource> { get() }
 }

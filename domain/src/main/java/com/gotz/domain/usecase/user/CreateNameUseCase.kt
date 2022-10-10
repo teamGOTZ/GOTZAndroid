@@ -1,13 +1,13 @@
 package com.gotz.domain.usecase.user
 
 import com.gotz.domain.repository.user.UserRepository
-import io.reactivex.Single
+import kotlinx.coroutines.flow.Flow
 
-internal typealias CreateNameBaseUseCase = (String) -> Single<Boolean>
+internal typealias CreateNameBaseUseCase = suspend (String) -> Flow<Boolean>
 
 class CreateNameUseCase(
     private val userRepository: UserRepository
 ):CreateNameBaseUseCase {
-    override fun invoke(name: String): Single<Boolean> =
+    override suspend fun invoke(name: String): Flow<Boolean> =
         userRepository.createUserName(name)
 }

@@ -1,22 +1,11 @@
 package com.gotz.presentation.view.calendar.base
 
-import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import com.gotz.presentation.R
-import com.gotz.presentation.base.BaseFragment
+import com.gotz.base.BaseFragment
 import com.gotz.presentation.databinding.FragmentCalendarBinding
-import org.joda.time.DateTime
 
 class CalendarFragment: BaseFragment<FragmentCalendarBinding>(R.layout.fragment_calendar) {
-    override fun onCreateView() {
-
-    }
-
-    override fun onViewCreated() {
+    override fun initFragment() {
 
     }
 

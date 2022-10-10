@@ -13,15 +13,15 @@ import androidx.activity.viewModels
 import androidx.annotation.MenuRes
 import androidx.lifecycle.Observer
 import com.gotz.R
-import com.gotz.base.BaseActivity
-import com.gotz.base.BaseApplication
+import com.gotz.base_legacy.BaseActivityLegacy
+import com.gotz.base_legacy.BaseApplication
 import com.gotz.databinding.ActivityCalendarMemoDetailBinding
 import com.gotz.util.CalendarUtil.Companion.getStrDate
 import com.gotz.util.CalendarUtil.Companion.getStrTime
 import org.joda.time.DateTime
 import java.lang.Exception
 
-class CalendarMemoDetailActivity: BaseActivity<ActivityCalendarMemoDetailBinding>() {
+class CalendarMemoDetailActivity: BaseActivityLegacy<ActivityCalendarMemoDetailBinding>() {
     override val layoutResID: Int get() = R.layout.activity_calendar_memo_detail
 
     // uid 통한 데이터로 변경 intent 값 제거해주고 -> intent로는 uid 값만 넘김

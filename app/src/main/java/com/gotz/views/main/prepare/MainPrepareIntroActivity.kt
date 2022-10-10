@@ -8,10 +8,10 @@ import android.view.animation.AnimationSet
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.interpolator.view.animation.FastOutLinearInInterpolator
 import com.gotz.R
-import com.gotz.base.BaseActivity
+import com.gotz.base_legacy.BaseActivityLegacy
 import com.gotz.databinding.ActivityMainPrepareIntroBinding
 
-class MainPrepareIntroActivity : BaseActivity<ActivityMainPrepareIntroBinding>() {
+class MainPrepareIntroActivity : BaseActivityLegacy<ActivityMainPrepareIntroBinding>() {
 
     override val layoutResID: Int = R.layout.activity_main_prepare_intro
 

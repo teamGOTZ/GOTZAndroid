@@ -1,4 +1,4 @@
-package com.gotz.base
+package com.gotz.base_legacy
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.databinding.ViewDataBinding
 
 
-abstract class BaseFragment<T: ViewDataBinding> :Fragment(){
+abstract class BaseFragmentLegacy<T: ViewDataBinding> :Fragment(){
     lateinit var binding: T
 
     abstract val layoutResID: Int

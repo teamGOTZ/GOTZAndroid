@@ -1,13 +1,13 @@
 package com.gotz.domain.usecase.user
 
 import com.gotz.domain.repository.user.UserRepository
-import io.reactivex.Single
+import kotlinx.coroutines.flow.Flow
 
-internal typealias ReadSingleNameBaseUseCase = () -> Single<String>
+internal typealias ReadSingleNameBaseUseCase = suspend () -> Flow<String>
 
 class ReadSingleNameUseCase(
     private val userRepository: UserRepository
 ) : ReadSingleNameBaseUseCase{
-    override fun invoke(): Single<String> =
+    override suspend fun invoke(): Flow<String> =
         userRepository.readUserName()
 }

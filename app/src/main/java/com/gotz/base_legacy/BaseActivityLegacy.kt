@@ -1,4 +1,4 @@
-package com.gotz.base
+package com.gotz.base_legacy
 
 import android.content.Context
 import android.os.Bundle
@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
-abstract class BaseActivity<T: ViewDataBinding> : AppCompatActivity() {
+abstract class BaseActivityLegacy<T: ViewDataBinding> : AppCompatActivity() {
     lateinit var binding: T
 
     abstract val layoutResID: Int

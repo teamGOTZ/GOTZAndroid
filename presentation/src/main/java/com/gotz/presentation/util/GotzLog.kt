@@ -2,7 +2,7 @@ package com.gotz.presentation.util
 
 import android.util.Log
 
-object GotzTest {
+object GotzLog {
     private val TAG = "GOTZ"
 
     fun logE(message: String){

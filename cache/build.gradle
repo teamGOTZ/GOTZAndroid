@@ -47,7 +47,6 @@ dependencies {
     // dataStore
     implementation "androidx.datastore:datastore:$rootProject.dataStoreVersion"
     implementation "androidx.datastore:datastore-core:$rootProject.dataStoreVersion"
-    implementation "androidx.datastore:datastore-rxjava2:$rootProject.dataStoreVersion"
     implementation 'com.google.protobuf:protobuf-javalite:3.8.0'
 
     // Room

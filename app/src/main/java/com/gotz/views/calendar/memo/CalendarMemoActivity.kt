@@ -8,13 +8,13 @@ import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.gotz.R
-import com.gotz.base.BaseActivity
-import com.gotz.base.BaseApplication
+import com.gotz.base_legacy.BaseActivityLegacy
+import com.gotz.base_legacy.BaseApplication
 import com.gotz.databinding.ActivityCalendarMemoBinding
 import com.gotz.util.CalendarUtil.Companion.charDayOfWeek
 import org.joda.time.DateTime
 
-class CalendarMemoActivity: BaseActivity<ActivityCalendarMemoBinding>() {
+class CalendarMemoActivity: BaseActivityLegacy<ActivityCalendarMemoBinding>() {
     override val layoutResID: Int get() = R.layout.activity_calendar_memo
 
     val uid: Int get() = intent.getIntExtra("UID", -1)

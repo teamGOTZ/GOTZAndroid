@@ -1,4 +1,4 @@
-package com.gotz.base
+package com.gotz.base_legacy
 
 import android.app.Application
 import com.gotz.database.calendarmemo.CalendarMemoDatabase

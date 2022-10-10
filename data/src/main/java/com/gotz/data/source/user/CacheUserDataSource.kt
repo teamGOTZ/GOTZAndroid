@@ -1,10 +1,10 @@
 package com.gotz.data.source.user
 
-import io.reactivex.Single
+import kotlinx.coroutines.flow.Flow
 
 interface CacheUserDataSource {
 
-    fun createUserName(name: String): Single<Boolean>
+    suspend fun createUserName(name: String): Flow<Boolean>
 
-    fun readUserName(): Single<String>
+    fun readUserName(): Flow<String>
 }

@@ -5,11 +5,13 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.gotz.presentation.view.calendar.base.CalendarFragment
 import com.gotz.presentation.view.home.HomeFragment
+import com.gotz.presentation.view.my.MyFragment
 
 class MainViewPagerAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
     companion object{
-        const val INDEX_CALENDAR = 0
-        const val INDEX_HOME = 1
+        const val INDEX_HOME = 0
+        const val INDEX_CALENDAR = 1
+        const val INDEX_MY = 2
         const val TAB_COUNT = 4
 
     }
@@ -17,11 +19,14 @@ class MainViewPagerAdapter(fragmentActivity: FragmentActivity): FragmentStateAda
 
     override fun createFragment(position: Int): Fragment {
         return when(position){
-            0 -> {
+            INDEX_HOME -> {
+                HomeFragment.newInstance()
+            }
+            INDEX_CALENDAR -> {
                 CalendarFragment.newInstance()
             }
             else -> {
-                HomeFragment.newInstance()
+                MyFragment.newInstance()
             }
         }
     }

@@ -4,25 +4,24 @@ import android.content.Intent
 import android.view.animation.AlphaAnimation
 import android.view.animation.AnimationSet
 import androidx.interpolator.view.animation.FastOutLinearInInterpolator
+import androidx.lifecycle.lifecycleScope
 import com.gotz.domain.usecase.user.ReadSingleNameUseCase
 import com.gotz.presentation.R
-import com.gotz.presentation.base.BaseActivity
+import com.gotz.base.BaseActivity
 import com.gotz.presentation.databinding.ActivitySplashBinding
 import com.gotz.presentation.view.main.MainActivity
 import com.gotz.presentation.view.onboarding.OnboardingActivity
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.addTo
-import io.reactivex.rxkotlin.subscribeBy
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class SplashActivity: BaseActivity<ActivitySplashBinding>(R.layout.activity_splash){
     val readSingleNameUseCase: ReadSingleNameUseCase by inject()
 
-    override fun onCreate(){
+    override fun initActivity(){
 
         setAnimation()
         startActivityOnDelay()
@@ -54,25 +53,18 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(R.layout.activity_spla
         finish()
     }
 
-    fun readName(){
-        readSingleNameUseCase()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy(
-                onSuccess = { name ->
-                    if(name.isNullOrEmpty()){
-                        val intent = Intent(this@SplashActivity, OnboardingActivity::class.java)
-                        startActivity(intent)
-                    }
-                    else{
-                        val intent = Intent(this@SplashActivity, MainActivity::class.java)
-                        startActivity(intent)
-                    }
-                },
-                onError = {
-
+    private fun readName(){
+        lifecycleScope.launch(Dispatchers.IO) {
+            readSingleNameUseCase().collect { name ->
+                if(name.isNullOrEmpty()){
+                    val intent = Intent(this@SplashActivity, OnboardingActivity::class.java)
+                    startActivity(intent)
                 }
-            )
-            .addTo(compositeDisposable)
+                else{
+                    val intent = Intent(this@SplashActivity, MainActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+        }
     }
 }

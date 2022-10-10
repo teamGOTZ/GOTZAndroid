@@ -1,4 +1,4 @@
-package com.gotz.presentation.base
+package com.gotz.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,19 +22,16 @@ abstract class BaseFragment<T: ViewDataBinding>(@LayoutRes val layoutResID: Int)
         savedInstanceState: Bundle?,
     ): View? {
         binding = DataBindingUtil.inflate(inflater, layoutResID, container, false)
-        onCreateView()
         return binding.root
     }
 
     final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = this
-        onViewCreated()
+        initFragment()
     }
 
-    abstract fun onCreateView()
-
-    abstract fun onViewCreated()
+    abstract fun initFragment()
 
     open fun btnClick(){ }
 

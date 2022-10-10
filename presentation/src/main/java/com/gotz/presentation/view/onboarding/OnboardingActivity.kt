@@ -5,10 +5,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.gotz.presentation.R
-import com.gotz.presentation.base.BaseActivity
+import com.gotz.base.BaseActivity
 import com.gotz.presentation.databinding.ActivityOnboardingBinding
 import com.gotz.presentation.util.EventObserver
-import com.gotz.presentation.util.GotzTest.logE
 import com.gotz.presentation.view.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -19,7 +18,7 @@ class OnboardingActivity: BaseActivity<ActivityOnboardingBinding>(R.layout.activ
     private var host: Fragment? = null
     private var navController: NavController? = null
 
-    override fun onCreate() {
+    override fun initActivity() {
         binding.viewmodel = viewModel
     }
 
@@ -31,9 +30,7 @@ class OnboardingActivity: BaseActivity<ActivityOnboardingBinding>(R.layout.activ
     override fun initObserver() {
         viewModel.btnClickEvent.observe(this, EventObserver{
             navController?.currentDestination?.label.let{ charSequence ->
-                val fragment = charSequence.toString()
-                logE(fragment)
-                when(fragment){
+                when(charSequence.toString()){
                     "OnboardingIntroFragment" -> {
                         navController?.navigate(R.id.action_fragment_onboarding_intro_to_fragment_onboarding_name)
                     }

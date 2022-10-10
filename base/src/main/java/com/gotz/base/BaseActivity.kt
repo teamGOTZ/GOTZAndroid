@@ -1,6 +1,5 @@
-package com.gotz.presentation.base
+package com.gotz.base
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.Rect
 import android.os.Bundle
@@ -24,13 +23,13 @@ abstract class BaseActivity<T: ViewDataBinding>(@LayoutRes val layoutResID: Int)
         binding.lifecycleOwner = this
         getSystemService(Context.INPUT_METHOD_SERVICE)
 
-        onCreate()
+        initActivity()
         initView()
         initNavigation()
         initObserver()
     }
 
-    abstract fun onCreate()
+    abstract fun initActivity()
 
     open fun initView(){}
 

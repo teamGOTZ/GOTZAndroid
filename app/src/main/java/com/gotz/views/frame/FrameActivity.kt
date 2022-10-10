@@ -6,12 +6,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import com.gotz.R
-import com.gotz.base.BaseActivity
+import com.gotz.base_legacy.BaseActivityLegacy
 import com.gotz.databinding.ActivityFrameBinding
 import com.gotz.views.calendar.CalendarFragment
 import com.google.android.material.snackbar.Snackbar
 
-class FrameActivity: BaseActivity<ActivityFrameBinding>() {
+class FrameActivity: BaseActivityLegacy<ActivityFrameBinding>() {
     override val layoutResID: Int = R.layout.activity_frame
 
     private val RESULT_SAVE = 1

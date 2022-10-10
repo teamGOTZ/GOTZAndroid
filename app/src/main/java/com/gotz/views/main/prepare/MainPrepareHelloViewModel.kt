@@ -3,14 +3,14 @@ package com.gotz.views.main.prepare
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.gotz.base.BaseViewModel
+import com.gotz.base_legacy.BaseViewModelLegacy
 import com.gotz.database.calendarmemo.CalendarMemo
 import com.gotz.repoository.RoomCalendarMemoRepositoryImpl
 import com.gotz.util.EventUtil
 import kotlinx.coroutines.launch
 import org.joda.time.DateTime
 
-class MainPrepareHelloViewModel(private val repository: RoomCalendarMemoRepositoryImpl): BaseViewModel()  {
+class MainPrepareHelloViewModel(private val repository: RoomCalendarMemoRepositoryImpl): BaseViewModelLegacy()  {
 
     private val _saveButtonEvent = MutableLiveData<EventUtil<Boolean>>()
     val saveButtonEvent : LiveData<EventUtil<Boolean>> get() = _saveButtonEvent

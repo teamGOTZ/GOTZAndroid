@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import com.gotz.base.BaseApplication
+import com.gotz.base_legacy.BaseApplication
 import com.gotz.databinding.FragmentCalendarBinding
 import com.gotz.util.CalendarUtil.Companion.startDayOfWeek
 import com.gotz.views.calendar.memo.CalendarMemoActivity

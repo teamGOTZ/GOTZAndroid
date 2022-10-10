@@ -2,12 +2,15 @@ package com.gotz.presentation.view.onboarding
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.gotz.base.BaseViewModel
 import com.gotz.domain.usecase.user.CreateNameUseCase
-import com.gotz.presentation.base.BaseViewModel
 import com.gotz.presentation.util.Event
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class OnboardingViewModel(
-    private val insertNameUseCase: CreateNameUseCase
+    private val createNameUseCase: CreateNameUseCase
 ): BaseViewModel() {
 
     private var _btnClickEvent = MutableLiveData<Event<Boolean>>()
@@ -38,7 +41,9 @@ class OnboardingViewModel(
     }
 
     private fun insertName(name: String){
-        insertNameUseCase(name)
+        viewModelScope.launch(Dispatchers.IO) {
+            createNameUseCase(name)
+        }
     }
 
     fun getNameHello(): String = "${nameText.value}님\n환영합니다!"

@@ -9,7 +9,7 @@ import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import com.gotz.base.BaseApplication
+import com.gotz.base_legacy.BaseApplication
 import com.gotz.custom.calendar.DayItemShortView
 import com.gotz.database.calendarmemo.CalendarMemo
 import com.gotz.databinding.FragmentCalendarShortBinding

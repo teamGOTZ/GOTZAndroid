@@ -1,10 +1,10 @@
 package com.gotz.domain.repository.user
 
-import io.reactivex.Single
+import kotlinx.coroutines.flow.Flow
 
 interface UserRepository {
 
-    fun createUserName(name: String): Single<Boolean>
+    suspend fun createUserName(name: String): Flow<Boolean>
 
-    fun readUserName(): Single<String>
+    fun readUserName(): Flow<String>
 }

@@ -1,15 +1,12 @@
 package com.gotz.views.calendar.memo
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
-import com.gotz.base.BaseViewModel
+import androidx.lifecycle.*
+import com.gotz.base_legacy.BaseViewModelLegacy
 import com.gotz.database.calendarmemo.CalendarMemo
 import com.gotz.repoository.RoomCalendarMemoRepositoryImpl
 import kotlinx.coroutines.launch
 
-class CalendarMemoDetailViewModel(private val repository: RoomCalendarMemoRepositoryImpl):BaseViewModel() {
+class CalendarMemoDetailViewModel(private val repository: RoomCalendarMemoRepositoryImpl):BaseViewModelLegacy() {
     lateinit var uidRoomCalendarMemo: LiveData<CalendarMemo>
 
     val title = MutableLiveData<String>()
