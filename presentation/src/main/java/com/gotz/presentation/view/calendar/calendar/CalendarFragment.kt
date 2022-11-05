@@ -1,18 +1,63 @@
-package com.gotz.presentation.view.calendar.base
+package com.gotz.presentation.view.calendar.calendar
 
+import android.util.Log
+import androidx.constraintlayout.motion.widget.MotionLayout
 import com.gotz.presentation.R
 import com.gotz.base.BaseFragment
 import com.gotz.presentation.databinding.FragmentCalendarBinding
+import com.gotz.presentation.view.calendar.calendar.adapter.CalendarLongAdapter
+import com.gotz.presentation.view.calendar.calendar.adapter.CalendarShortAdapter
 
 class CalendarFragment: BaseFragment<FragmentCalendarBinding>(R.layout.fragment_calendar) {
-    override fun initFragment() {
 
-    }
+    private lateinit var calendarShortAdapter: CalendarShortAdapter
+    private lateinit var calendarLongAdapter: CalendarLongAdapter
 
     companion object{
+        const val START_POSITION = Int.MAX_VALUE / 2
+
         fun newInstance() = CalendarFragment()
     }
-//
+
+    override fun initFragment() {
+        calendarShortAdapter = CalendarShortAdapter(requireActivity())
+        calendarLongAdapter = CalendarLongAdapter(requireActivity())
+    }
+
+    override fun initView() {
+        binding.run{
+            btnMotion.setOnClickListener{
+                if(mlCalendar.currentState == mlCalendar.startState){
+                    mlCalendar.transitionToEnd()
+                    Log.e("SEMIN", "START")
+                    Log.e("SEMIN", getStatus(mlCalendar))
+                }
+                else{
+                    mlCalendar.transitionToStart()
+                    Log.e("SEMIN", "END")
+                    Log.e("SEMIN", getStatus(mlCalendar))
+                }
+            }
+
+            vpCalendarShort.run{
+                adapter = calendarShortAdapter
+                currentItem = START_POSITION
+            }
+
+            vpCalendarLong.run{
+                adapter = calendarLongAdapter
+                currentItem = START_POSITION
+            }
+
+        }
+    }
+
+    private fun getStatus(ml: MotionLayout): String{
+        if(ml.currentState == ml.startState) return "START_STATE"
+        else return "END_STATE"
+    }
+
+    //
 //    private val viewModel: CalendarViewModel by activityViewModels{
 //        CalendarViewModelFactory((requireActivity().application as BaseApplication).roomCalendarMemoRepositoryImpl)
 //    }

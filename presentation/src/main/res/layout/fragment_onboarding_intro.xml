@@ -13,39 +13,48 @@
         android:layout_height="match_parent"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
-
-        <ImageView
-            android:id="@+id/iv_onboarding_intro"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/logo_black_100"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="143dp"/>
-
-        <TextView
-            android:id="@+id/tv_onboarding_intro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/string_onboarding_intro"
-            android:lineSpacingMultiplier="1.25"
-            android:layout_marginTop="42dp"
-            style="@style/Text20Bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_onboarding_intro"/>
-
-        <Button
-            android:id="@+id/btn_onboarding_intro_next"
-            android:text="@string/string_next"
-            android:onClick="@{() -> viewmodel.btnClick()}"
-            style="@style/BaseButtonStyle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:backgroundTint="@null"/>
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_onboarding_intro"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/logo_black_100"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="143dp"/>
+
+            <TextView
+                android:id="@+id/tv_onboarding_intro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/string_onboarding_intro"
+                android:lineSpacingMultiplier="1.25"
+                android:layout_marginTop="42dp"
+                style="@style/Text20Bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_onboarding_intro"/>
+
+            <Button
+                android:id="@+id/btn_onboarding_intro_next"
+                android:text="@string/string_next"
+                android:onClick="@{() -> viewmodel.btnClick()}"
+                style="@style/OutlinedButtonStyle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:backgroundTint="@null"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

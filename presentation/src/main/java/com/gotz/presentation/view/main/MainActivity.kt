@@ -14,21 +14,27 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
 
     override fun initView() {
-        binding.vpMain.adapter = mainViewPagerAdapter
-
-        binding.bnvMain.setOnItemSelectedListener { item ->
-            when(item.itemId){
-                R.id.btn_home ->{
-                    binding.vpMain.currentItem = INDEX_HOME
-                }
-                R.id.btn_calendar ->{
-                    binding.vpMain.currentItem = INDEX_CALENDAR
-                }
-                R.id.btn_my ->{
-                    binding.vpMain.currentItem = INDEX_MY
-                }
+        binding.run{
+            vpMain.run {
+                adapter = mainViewPagerAdapter
+                isUserInputEnabled = false
             }
-            true
+
+            bnvMain.setOnItemSelectedListener { item ->
+                when(item.itemId){
+                    R.id.btn_home ->{
+                        binding.vpMain.currentItem = INDEX_HOME
+                    }
+                    R.id.btn_calendar ->{
+                        binding.vpMain.currentItem = INDEX_CALENDAR
+                    }
+                    R.id.btn_my ->{
+                        binding.vpMain.currentItem = INDEX_MY
+                    }
+                }
+                true
+            }
+
         }
     }
 }

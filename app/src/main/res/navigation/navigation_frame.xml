@@ -10,7 +10,7 @@
         android:id="@+id/fragment_calendar"
         android:name="com.gotz.views.calendar.CalendarFragment"
         android:label="CalendarFragment"
-        tools:layout="@layout/fragment_calendar">
+        tools:layout="@layout/fragment_calendar_legacy">
 
     </fragment>
 

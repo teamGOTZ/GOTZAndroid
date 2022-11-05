@@ -9,12 +9,12 @@ import com.gotz.domain.usecase.user.ReadSingleNameUseCase
 import com.gotz.presentation.R
 import com.gotz.base.BaseActivity
 import com.gotz.presentation.databinding.ActivitySplashBinding
+import com.gotz.presentation.util.GotzLog.logE
 import com.gotz.presentation.view.main.MainActivity
-import com.gotz.presentation.view.onboarding.OnboardingActivity
+import com.gotz.presentation.view.tutorial.TutorialActivity
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
@@ -24,7 +24,7 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(R.layout.activity_spla
     override fun initActivity(){
 
         setAnimation()
-        startActivityOnDelay()
+        startActivityWithDelay(3000L)
     }
 
     private fun setAnimation(){
@@ -37,14 +37,13 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(R.layout.activity_spla
         }
 
         animation.addAnimation(fadeIn)
-        binding.ivSplash.animation = animation
+        binding.ivGotzLogo.animation = animation
     }
 
-    private fun startActivityOnDelay(){
-        GlobalScope.launch{
-            delay(3000)
-
-            readName()
+    private fun startActivityWithDelay(millis: Long){
+        lifecycleScope.launch(Dispatchers.Main){
+            delay(millis)
+            startActivityWithReadName()
         }
     }
 
@@ -53,11 +52,13 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(R.layout.activity_spla
         finish()
     }
 
-    private fun readName(){
+    private fun startActivityWithReadName(){
         lifecycleScope.launch(Dispatchers.IO) {
-            readSingleNameUseCase().collect { name ->
+            readSingleNameUseCase().catch { flowCollector ->
+                logE(flowCollector.message.toString())
+            }.collect{ name ->
                 if(name.isNullOrEmpty()){
-                    val intent = Intent(this@SplashActivity, OnboardingActivity::class.java)
+                    val intent = Intent(this@SplashActivity, TutorialActivity::class.java)
                     startActivity(intent)
                 }
                 else{

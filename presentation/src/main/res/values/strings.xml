@@ -3,6 +3,9 @@
     <string name="string_today">TODAY</string>
     <string name="string_next">다음</string>
     <string name="string_btn_text_calendar">캘린더</string>
+
+    <string name="string_calendar">Calendar</string>
+
 <!--    Onboarding-->
     <string name="string_onboarding_intro">WEDID과 함께\n당신의 다음을 기록하세요</string>
 

@@ -6,7 +6,9 @@ import androidx.lifecycle.viewModelScope
 import com.gotz.base.BaseViewModel
 import com.gotz.domain.usecase.user.CreateNameUseCase
 import com.gotz.presentation.util.Event
+import com.gotz.presentation.util.GotzLog.logE
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
 class OnboardingViewModel(
@@ -42,7 +44,11 @@ class OnboardingViewModel(
 
     private fun insertName(name: String){
         viewModelScope.launch(Dispatchers.IO) {
-            createNameUseCase(name)
+            createNameUseCase(name).catch { flowCollector ->
+                logE(flowCollector.message.toString())
+            }.collect{ isSuccess ->
+                logE(isSuccess.toString())
+            }
         }
     }
 

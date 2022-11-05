@@ -32,7 +32,7 @@
             android:id="@+id/btn_onboarding_hello_next"
             android:text="@string/string_onboarding_hello_next"
             android:onClick="@{() -> viewmodel.btnClick()}"
-            style="@style/BaseButtonStyle"
+            style="@style/OutlinedButtonStyle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -3,7 +3,7 @@ package com.gotz.presentation.view.main
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.gotz.presentation.view.calendar.base.CalendarFragment
+import com.gotz.presentation.view.calendar.calendar.CalendarFragment
 import com.gotz.presentation.view.home.HomeFragment
 import com.gotz.presentation.view.my.MyFragment
 

@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
+        android:background="@drawable/style_button_calendar_today"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -18,13 +19,8 @@
             android:id="@+id/tv_custom_today_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/Text12Regular"
+            style="@style/Text12Bold"
             android:text="@string/string_today"/>
-        <View
-            android:layout_width="54dp"
-            android:layout_height="1dp"
-            android:background="@color/black_900"
-            android:layout_marginTop="3dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

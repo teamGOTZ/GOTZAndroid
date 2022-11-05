@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_tutorial"
+    app:startDestination="@id/fragment_tutorial_1">
+
+    <fragment
+        android:id="@+id/fragment_tutorial_1"
+        android:name="com.gotz.presentation.view.tutorial.Tutorial1Fragment"
+        android:label="Tutorial1Fragment"
+        tools:layout="@layout/fragment_tutorial_1">
+        <action
+            android:id="@+id/action_fragment_tutorial_1_to_fragment_tutorial_2"
+            app:destination="@id/fragment_tutorial_2"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popExitAnim="@anim/slide_to_right"
+            app:popEnterAnim="@anim/slide_from_left"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_tutorial_2"
+        android:name="com.gotz.presentation.view.tutorial.Tutorial2Fragment"
+        android:label="Tutorial2Fragment"
+        tools:layout="@layout/fragment_tutorial_2">
+        <action
+            android:id="@+id/action_fragment_tutorial_2_to_fragment_tutorial_3"
+            app:destination="@id/fragment_tutorial_3"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popExitAnim="@anim/slide_to_right"
+            app:popEnterAnim="@anim/slide_from_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_tutorial_3"
+        android:name="com.gotz.presentation.view.tutorial.Tutorial3Fragment"
+        android:label="Tutorial3Fragment"
+        tools:layout="@layout/fragment_tutorial_3"/>
+
+</navigation>

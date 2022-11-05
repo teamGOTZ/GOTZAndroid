@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.gotz.presentation.view.tutorial.TutorialViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fcv_tutorial"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/navigation_tutorial"/>
+
+        <Button
+            android:id="@+id/btn_tutorial_next"
+            android:text="@string/string_next"
+            android:onClick="@{() -> viewmodel.btnClick()}"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            style="@style/OutlinedButtonStyle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:backgroundTint="@null"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

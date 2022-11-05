@@ -73,7 +73,7 @@
                 android:text="@string/string_next"
                 android:onClick="@{() -> viewmodel.btnClickAndInsertName()}"
                 android:enabled="@{viewmodel.btnVisibility}"
-                style="@style/BaseButtonStyle"
+                style="@style/OutlinedButtonStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"

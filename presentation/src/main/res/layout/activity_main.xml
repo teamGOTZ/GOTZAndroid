@@ -12,28 +12,6 @@
         android:orientation="vertical"
         android:gravity="center">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="56dp">
-            <ImageView
-                android:id="@+id/btn_main_calendar_logo"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@drawable/logo_black_36"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginStart="19dp" />
-            <com.gotz.presentation.custom.CustomTodayButton
-                android:id="@+id/btn_frame_calendar_today"
-                android:layout_width="58dp"
-                android:layout_height="40dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginEnd="10dp"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_main"
             android:layout_width="match_parent"

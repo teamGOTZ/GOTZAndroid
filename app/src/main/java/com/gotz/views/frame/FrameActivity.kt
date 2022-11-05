@@ -22,12 +22,12 @@ class FrameActivity: BaseActivityLegacy<ActivityFrameBinding>() {
 
         binding.btnFrameCalendarToday.setOnClickListener {
             val fragment = supportFragmentManager.fragments.get(0).childFragmentManager.fragments.get(0) as CalendarFragment
-            fragment.refreshFragment()
+//            fragment.refreshFragment()
         }
 
         binding.btnFrameCalendarLogo.setOnClickListener {
             val fragment = supportFragmentManager.fragments.get(0).childFragmentManager.fragments.get(0) as CalendarFragment
-            fragment.closeCalendar()
+//            fragment.closeCalendar()
         }
     }
 

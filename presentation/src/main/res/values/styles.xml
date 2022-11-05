@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--    텍스트 속성 정의-->
-    <style name="BaseButtonStyle" parent="Widget.AppCompat.Button.Borderless">
+    <style name="ContainedButtonStyle" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/style_button_base</item>
+        <item name="android:background">@drawable/style_btn_contained</item>
         <item name="android:layout_marginBottom">20dp</item>
         <item name="android:textSize">18dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/selector_button_base</item>
+        <item name="android:textColor">@color/selector_btn_contained</item>
         <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="OutlinedButtonStyle" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/style_btn_outlined</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/selector_btn_outlined</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="CalendarTodayButtonStyle" parent="Widget.AppCompat.Button">
+        <item name ="android:layout_width">60dp</item>
+        <item name ="android:layout_height">28dp</item>
+        <item name ="android:background">@drawable/style_button_calendar_today</item>
+        <item name ="android:textSize">12dp</item>
+        <item name ="android:textColor">@color/gray_600</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="CalendarButtonStyle" parent="Widget.AppCompat.Button">
@@ -27,6 +47,11 @@
         <item name="android:textStyle">normal</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/black_900</item>
+    </style>
+
+    <style name="Text12Bold">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="Text12Regular">

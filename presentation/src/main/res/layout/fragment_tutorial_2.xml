@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.gotz.presentation.view.tutorial.TutorialViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <TextView
+                android:id="@+id/tv_tutorial_2_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Keyword"
+                android:textSize="32dp"
+                android:gravity="top"
+                android:lineSpacingExtra="-10dp"
+                android:layout_marginTop="140dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_tutorial_2_contents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="책 속 문장으로 쉬운 독서를\n시작합니다. 마음에 드는 문장은\n스크랩의로 기록합니다."
+                android:layout_marginTop="24dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_tutorial_2_title"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/iv_tutorial_2_character_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_character_tutorial_1"
+            android:layout_marginBottom="100dp"
+            android:translationX="65dp"
+            app:layout_constraintEnd_toStartOf="@id/guideline_start"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:id="@+id/iv_tutorial_2_character_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_character_tutorial_2"
+            android:translationX="65dp"
+            android:layout_marginBottom="112dp"
+            android:layout_marginStart="29dp"
+            app:layout_constraintStart_toEndOf="@id/iv_tutorial_2_character_1"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:id="@+id/iv_tutorial_2_character_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_character_tutorial_3"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="112dp"
+            android:translationX="69dp"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

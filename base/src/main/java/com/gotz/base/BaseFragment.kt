@@ -29,9 +29,12 @@ abstract class BaseFragment<T: ViewDataBinding>(@LayoutRes val layoutResID: Int)
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = this
         initFragment()
+        initView()
     }
 
     abstract fun initFragment()
+
+    open fun initView(){}
 
     open fun btnClick(){ }
 
