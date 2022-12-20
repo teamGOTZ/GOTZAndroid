@@ -12,8 +12,8 @@ android {
         applicationId "com.gotz"
         minSdkVersion 23
         targetSdkVersion 32
-        versionCode 3
-        versionName "1.0.2"
+        versionCode 1
+        versionName "beta 0.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,12 +36,14 @@ android {
         dataBinding = true
         viewBinding = true
     }
+    lintOptions {
+        checkReleaseBuilds false
+    }
 }
 
 dependencies {
 
     implementation project(":base")
-    implementation project(":cache")
     implementation project(":data")
     implementation project(":domain")
     implementation project(":presentation")

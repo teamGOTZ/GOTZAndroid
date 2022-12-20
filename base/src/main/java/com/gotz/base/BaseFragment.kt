@@ -30,6 +30,7 @@ abstract class BaseFragment<T: ViewDataBinding>(@LayoutRes val layoutResID: Int)
         binding.lifecycleOwner = this
         initFragment()
         initView()
+        initViewModel()
     }
 
     abstract fun initFragment()
@@ -38,5 +39,5 @@ abstract class BaseFragment<T: ViewDataBinding>(@LayoutRes val layoutResID: Int)
 
     open fun btnClick(){ }
 
-    open fun initObserver(){ }
+    open fun initViewModel(){ }
 }

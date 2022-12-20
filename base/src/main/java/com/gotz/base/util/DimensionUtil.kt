@@ -12,4 +12,12 @@ object DimensionUtil {
     fun dpToPx(context: Context, dp:Int): Float{
         return dp * (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
     }
+
+    fun pxToDp(context: Context, px:Float): Float{
+        return px / (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
+    }
+
+    fun pxToDp(context: Context, px:Int): Float{
+        return px / (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
+    }
 }

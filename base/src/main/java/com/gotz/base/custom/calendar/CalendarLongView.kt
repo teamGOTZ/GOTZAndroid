@@ -6,6 +6,7 @@ import android.graphics.Paint
 import android.text.TextPaint
 import android.util.AttributeSet
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.ContextThemeWrapper
 import android.view.ViewGroup
 import androidx.annotation.AttrRes
@@ -13,8 +14,9 @@ import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.children
 import com.gotz.base.R
-import com.gotz.base.util.CalendarUtil
 import com.gotz.base.util.CalendarUtil.WEEKS_PER_MONTH
+import com.gotz.base.util.DimensionUtil.dpToPx
+import com.gotz.base.util.StringUtil
 import org.joda.time.DateTime
 import org.joda.time.DateTimeConstants
 
@@ -41,31 +43,20 @@ class CalendarLongView @JvmOverloads constructor(
     }
 
     override fun onLayout(p0: Boolean, p1: Int, p2: Int, p3: Int, p4: Int) {
-        val iWidth = (width/ DateTimeConstants.DAYS_PER_WEEK).toFloat()
-        val iHeight = ((height - dp2px(36F))/ WEEKS_PER_MONTH).toFloat()
+        val iWidth = (width/ DateTimeConstants.DAYS_PER_WEEK)
+        val iHeight = ((height - dpToPx(context,54F))/ WEEKS_PER_MONTH)
 
         var index = 0
         children.forEach {
             val left = (index % DateTimeConstants.DAYS_PER_WEEK) * iWidth
-            val top = dp2px(36F) + ((index-7) / DateTimeConstants.DAYS_PER_WEEK) * iHeight
+            val top = dpToPx(context,54F) + ((index-7) / DateTimeConstants.DAYS_PER_WEEK) * iHeight
             if(index < 7){
-                it.layout(left.toInt(), 0, (left+iWidth).toInt(), dp2px(36F).toInt())
+                it.layout(left, 0, (left+iWidth), dpToPx(context,54F).toInt())
             }
             else{
                 it.layout(left.toInt(), top.toInt(), (left+iWidth).toInt(), (top+iHeight).toInt())
             }
             index++
-        }
-    }
-
-    override fun onDraw(canvas: Canvas?) {
-        super.onDraw(canvas)
-        if(canvas == null) return
-
-        var x = width/DateTimeConstants.DAYS_PER_WEEK.toFloat()
-        var y = dp2px(36F)
-        for( idx in 0 until 7){
-            canvas.drawText(CalendarUtil.charDayOfWeek(idx).toString(), x*idx, 20F, paint )
         }
     }
 
@@ -76,19 +67,23 @@ class CalendarLongView @JvmOverloads constructor(
                 dayText = idx
             ))
         }
-        list.forEach{
-            val start = it.millis
-            val end = it.plusDays(1).millis
+        list.forEachIndexed { index, dateTime ->
+            val start = dateTime.millis
+            val end = dateTime.plusDays(1).millis
 
             addView(DayItemLongView(
                 context = context,
-                date = it,
+                date = dateTime,
                 firstDayOfMonth = firstDayOfMonth
             ))
         }
     }
 
-    fun dp2px(dp:Float): Float{
-        return dp * (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
+    fun updateCalendar(scheduleCountList: List<Int>) {
+        children.forEachIndexed { index, childView -> childView as DayItemLongView
+            if(index < 7) return@forEachIndexed
+            childView.setScheduleCount(scheduleCountList[index-7])
+        }
     }
+
 }

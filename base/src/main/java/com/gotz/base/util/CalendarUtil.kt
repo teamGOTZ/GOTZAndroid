@@ -5,71 +5,55 @@ import androidx.annotation.ColorInt
 import androidx.annotation.IntRange
 import org.joda.time.DateTime
 import org.joda.time.DateTimeConstants
+import org.joda.time.DateTimeConstants.SUNDAY
 
 object CalendarUtil {
 
     const val WEEKS_PER_MONTH = 6
     const val DAY_OF_START = 1
 
-    fun getStrDate(dateTime: DateTime): String{
-        var str: String = ""
-        val year = dateTime.year
-        val month = dateTime.monthOfYear
-        val day = dateTime.dayOfMonth
-        str += year.toString() + "년 " + month.toString() + "월 " + day.toString() + "일 (" + charDayOfWeek(dateTime.dayOfWeek) + ")"
-
-        return str
+    fun getDateTimeForMonthlyCalendar(now: DateTime, position: Int): DateTime {
+        return DateTime(now.year, now.monthOfYear, 1, 0, 0, 0).plusMonths(position)
     }
 
-    fun getStrTime(dateTime: DateTime): String{
-        var str: String = ""
-        val hour = dateTime.hourOfDay
-        val minute = dateTime.minuteOfHour
-
-        if(hour > 11){
-            str += "오후 "
-            if(hour == 12) str += hour.toString() + ":"
-            else str += (hour%12).toString() + ":"
-
-            if(minute < 10) str += "0" + minute.toString()
-            else str += minute.toString()
+    fun getDateTimeForWeeklyCalendar(now: DateTime, position: Int): DateTime {
+        return if(now.dayOfWeek == SUNDAY){
+            DateTime(now.year, now.monthOfYear, now.dayOfMonth, 0, 0,0).plusWeeks(position)
+        } else {
+            DateTime(now.year, now.monthOfYear, now.dayOfMonth, 0, 0,0).plusWeeks(position).minusDays(now.dayOfWeek)
         }
-        else{
-            str += "오전 "
-            if(hour == 0) str += "12:"
-            else str += hour.toString() + ":"
-
-            if(minute < 10) str += "0" + minute.toString()
-            else str += minute.toString()
-        }
-
-        return str
     }
 
-    fun charDayOfWeek(day: Int): String{
-        val list = listOf<String>("", "월", "화", "수", "목", "금", "토", "일")
-        return list.get(day)
+    fun getDateStartOfWeek(dateTime: DateTime): DateTime {
+        return dateTime.withDayOfWeek(dateTime.dayOfWeek().minimumValue)
     }
 
-    fun startDayOfWeek(dateTime: DateTime): DateTime{
-        var date = dateTime
-        if(dateTime.dayOfWeek != 7) return date.minusDays(date.dayOfWeek)
-        return date
+    fun getDateEndOfWeek(dateTime: DateTime): DateTime {
+        return dateTime.withDayOfWeek(dateTime.dayOfWeek().maximumValue)
+    }
+
+    fun getDateStartOfMonth(dateTime: DateTime): DateTime {
+        return dateTime.withDayOfMonth(dateTime.dayOfMonth().minimumValue)
+    }
+
+    fun getDateEndOfMonth(dateTime: DateTime): DateTime {
+        return dateTime.withDayOfMonth(dateTime.dayOfMonth().maximumValue)
+    }
+
+    fun startDayOfWeek(dateTime: DateTime): DateTime {
+        if (dateTime.dayOfWeek != 7) return dateTime.minusDays(dateTime.dayOfWeek)
+        return dateTime
     }
     /**
      * 선택된 날짜에 해당하는 주간 달력을 반환한다.
      */
     fun getWeekList(dateTime:DateTime): List<DateTime>{
         val list = mutableListOf<DateTime>()
-
-        var date = startDayOfWeek(dateTime)
-
-        val startValue = date
-
+        val date = startDayOfWeek(dateTime)
         val totalDay = DateTimeConstants.DAYS_PER_WEEK
 
         for(i in 0 until totalDay){
-            list.add(DateTime(startValue.plusDays(i)))
+            list.add(DateTime(date.plusDays(i)))
         }
 
         return list
@@ -80,19 +64,11 @@ object CalendarUtil {
      */
     fun getMonthList(dateTime: DateTime): List<DateTime> {
         val list = mutableListOf<DateTime>()
-
         val date = dateTime.withDayOfMonth(1)
         val prev = getPrevOffSet(date)
-
         val startValue = date.minusDays(prev)
-
         val totalDay = DateTimeConstants.DAYS_PER_WEEK * WEEKS_PER_MONTH
-        /*
-        Log.e("Utils::date", date.toString())
-        Log.e("Utils::prev", prev.toString())
-        Log.e("Utils::startValue", startValue.toString())
-        Log.e("Utils::totlaDay", totalDay.toString())
-        */
+
         for (i in 0 until totalDay) {
             list.add(DateTime(startValue.plusDays(i)))
         }
@@ -103,13 +79,16 @@ object CalendarUtil {
     /**
      * 해당 calendar 의 이전 달의 일 갯수를 반환한다.
      */
-    private fun getPrevOffSet(dateTime: DateTime): Int {
+    fun getPrevOffSet(dateTime: DateTime): Int {
         var prevMonthTailOffset = dateTime.dayOfWeek
 
         if (prevMonthTailOffset >= 7) prevMonthTailOffset %= 7
 
         return prevMonthTailOffset
     }
+
+    fun isSameDay(first: DateTime, second: DateTime): Boolean =
+        isSameMonth(first, second) && first.dayOfMonth == second.dayOfMonth
 
     /**
      * 같은 달인지 체크

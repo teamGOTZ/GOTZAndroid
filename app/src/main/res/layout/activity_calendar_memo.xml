@@ -245,12 +245,12 @@
                         android:id="@+id/et_calendar_memo_content"
                         android:layout_width="match_parent"
                         android:layout_height="500dp"
-                        android:background="@drawable/style_edittext_base"
+                        android:background="@drawable/style_custom_edit_text"
                         android:hint="입력하세요"
                         android:text="@={viewmodel.content}"
                         android:padding="12dp"
                         android:gravity="left|top"
-                        android:textCursorDrawable="@drawable/style_cursor_black"
+                        android:textCursorDrawable="@drawable/style_custom_edit_text_cursor_black"
                         style="@style/Text16Regular"/>
                 </LinearLayout>
 

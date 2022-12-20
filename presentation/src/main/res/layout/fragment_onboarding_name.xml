@@ -20,7 +20,7 @@
             app:layout_constraintLeft_toLeftOf="parent">
 
             <ImageView
-                android:id="@+id/btn_onboarding_name_back"
+                android:id="@+id/btn_back"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:background="@drawable/ic_arrow_left"
@@ -33,37 +33,48 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_onboarding_name"
             app:layout_constraintBottom_toBottomOf="parent">
-            <TextView
-                android:id="@+id/tv_onboarding_name_1"
-                android:layout_width="wrap_content"
+
+            <ImageView
+                android:id="@+id/iv_contents"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/string_onboarding_name_1"
-                style="@style/Text24Regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="40dp"/>
+                android:layout_marginTop="68dp"/>
 
-            <TextView
-                android:id="@+id/tv_onboarding_name_2"
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_62_5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string_onboarding_name_2"
-                style="@style/Text16Regular"
-                app:layout_constraintTop_toBottomOf="@id/tv_onboarding_name_1"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="12dp"/>
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.625"/>
 
-            <EditText
+            <TextView
+                android:id="@+id/tv_contents"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/shape_rect_onboarding"
+                android:gravity="center_vertical"
+                android:padding="24dp"
+                android:layout_marginStart="20dp"
+                style="@style/Text16Regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guideline_62_5"
+                app:layout_constraintTop_toTopOf="@id/iv_contents"
+                app:layout_constraintBottom_toTopOf="@id/iv_contents"
+                app:layout_constraintDimensionRatio="h, 1:0.44"/>
+
+            <com.gotz.base.custom.CustomEditText
                 android:id="@+id/et_onboarding_name"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:onTextChanged="@{viewmodel.onTextChanged}"
-                app:layout_constraintTop_toBottomOf="@id/tv_onboarding_name_2"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toBottomOf="@id/iv_contents"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:layout_marginTop="40dp" />
@@ -73,6 +84,8 @@
                 android:text="@string/string_next"
                 android:onClick="@{() -> viewmodel.btnClickAndInsertName()}"
                 android:enabled="@{viewmodel.btnVisibility}"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 style="@style/OutlinedButtonStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

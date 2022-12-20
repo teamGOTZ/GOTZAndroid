@@ -9,24 +9,27 @@ import com.gotz.presentation.view.my.MyFragment
 
 class MainViewPagerAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
     companion object{
-        const val INDEX_HOME = 0
-        const val INDEX_CALENDAR = 1
-        const val INDEX_MY = 2
-        const val TAB_COUNT = 4
+//        const val INDEX_HOME = 0
+        const val INDEX_CALENDAR = 0
+        const val INDEX_MY = 1
+        const val TAB_COUNT = 3
 
     }
     override fun getItemCount(): Int = TAB_COUNT
 
     override fun createFragment(position: Int): Fragment {
         return when(position){
-            INDEX_HOME -> {
-                HomeFragment.newInstance()
-            }
+//            INDEX_HOME -> {
+//                HomeFragment.newInstance()
+//            }
             INDEX_CALENDAR -> {
                 CalendarFragment.newInstance()
             }
-            else -> {
+            INDEX_MY -> {
                 MyFragment.newInstance()
+            }
+            else -> {
+                Fragment()
             }
         }
     }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.MotionEvent
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +28,9 @@ abstract class BaseActivity<T: ViewDataBinding>(@LayoutRes val layoutResID: Int)
         initView()
         initNavigation()
         initObserver()
+        initData()
+
+        hideNavigationBar()
     }
 
     abstract fun initActivity()
@@ -36,6 +40,8 @@ abstract class BaseActivity<T: ViewDataBinding>(@LayoutRes val layoutResID: Int)
     open fun initNavigation(){}
 
     open fun initObserver(){}
+
+    open fun initData(){}
 
     final override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
         val focusView = currentFocus
@@ -52,5 +58,11 @@ abstract class BaseActivity<T: ViewDataBinding>(@LayoutRes val layoutResID: Int)
             }
         }
         return super.dispatchTouchEvent(ev)
+    }
+
+    private fun hideNavigationBar(){
+        window?.apply {
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+        }
     }
 }

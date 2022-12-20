@@ -12,10 +12,11 @@ import androidx.annotation.StyleRes
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.content.withStyledAttributes
 import com.gotz.base.R
-import com.gotz.base.util.CalendarUtil
 import com.gotz.base.util.CalendarUtil.getDateColor
 import com.gotz.base.util.CalendarUtil.getDateNotColor
 import com.gotz.base.util.CalendarUtil.isSameMonth
+import com.gotz.base.util.DimensionUtil.dpToPx
+import com.gotz.base.util.StringUtil
 import org.joda.time.DateTime
 
 class DayItemLongView@JvmOverloads constructor(
@@ -25,10 +26,11 @@ class DayItemLongView@JvmOverloads constructor(
     @StyleRes private val defStyleRes: Int = R.style.Calendar_ItemViewStyle,
     private val date: DateTime = DateTime(),
     private val firstDayOfMonth: DateTime = DateTime(),
-    private val dayText:Int = -1
+    private val dayText: Int = -1,
+    private var scheduleCount: Int = 0
 ) : View(ContextThemeWrapper(context, defStyleRes), attrs, defStyleAttr) {
 
-    val str:String = date.monthOfYear.toString() + '/' + date.dayOfMonth
+    val str:String = "${date.monthOfYear}/${date.dayOfMonth}"
 
     private val bounds = Rect()
 
@@ -38,11 +40,13 @@ class DayItemLongView@JvmOverloads constructor(
     private var paintWhite: Paint = Paint()
     private var paintToday: Paint = Paint()
     private var paintFill: Paint = Paint()
+    private var paintCircle: Paint = Paint()
+    private var paintPlus: Paint = Paint()
 
-    private val strokeW = dp2px(1F)
+    private val strokeW = dpToPx(context,1F)
     private val offset = strokeW/2F
 
-    private var mDateForSelect:Boolean = false
+    private var dateForSelect:Boolean = false
 
     init{
         context.withStyledAttributes(attrs, R.styleable.CalendarView, defStyleAttr, defStyleRes){
@@ -58,31 +62,50 @@ class DayItemLongView@JvmOverloads constructor(
                     color = getDateNotColor(date.dayOfWeek)
                 }
             }
+
             paintRect = Paint().apply {
                 textSize = getDimensionPixelSize(R.styleable.CalendarView_scheduleTextSize,0).toFloat()
                 color = Color.parseColor("#EEEEEE")
                 //alpha = 50
             }
+
             paintText = Paint().apply {
                 isAntiAlias = true
-                textSize = dp2px(11F)
+                textSize = dpToPx(context,11F)
                 color = Color.parseColor("#424242")
                 typeface = Typeface.SANS_SERIF
             }
+
             paintWhite = Paint().apply {
                 color = Color.WHITE
             }
+
             paintToday = Paint().apply {
                 isAntiAlias = true
                 color = Color.BLACK
                 strokeWidth = strokeW
                 style = Paint.Style.STROKE
             }
+
             paintFill = Paint().apply {
                 isAntiAlias = true
                 color = Color.parseColor("#EEEEEE")
                 strokeWidth = strokeW
                 style = Paint.Style.FILL
+            }
+
+            paintCircle = Paint().apply {
+                isAntiAlias = true
+                color = Color.parseColor("#424242")
+                style = Paint.Style.FILL
+            }
+
+            paintPlus = Paint().apply {
+                isAntiAlias = true
+                color = Color.parseColor("#757575")
+                strokeCap = Paint.Cap.ROUND
+                strokeWidth = strokeW
+                style = Paint.Style.FILL_AND_STROKE
             }
         }
     }
@@ -101,46 +124,90 @@ class DayItemLongView@JvmOverloads constructor(
         }
     }
 
-    fun drawTitle(canvas: Canvas){
+    private fun drawTitle(canvas: Canvas){
         paint.typeface = Typeface.SANS_SERIF
         paint.getTextBounds("일", 0, 1, bounds)
-        paint.textSize = dp2px(12F)
+        paint.textSize = dpToPx(context,12F)
         if(dayText == 0){
             paint.color = Color.parseColor("#F44336")
-            canvas.drawText(CalendarUtil.charDayOfWeek(7), width/2F, height.toFloat() - dp2px(4F), paint)
+            canvas.drawText(StringUtil.getCharDayOfWeek(7), width/2F, height.toFloat() - dpToPx(context,2F), paint)
         }
         else{
             paint.color = Color.parseColor("#757575")
-            canvas.drawText(CalendarUtil.charDayOfWeek(dayText), width/2F, height.toFloat() - dp2px(4F), paint)
+            canvas.drawText(StringUtil.getCharDayOfWeek(dayText), width/2F, height.toFloat() - dpToPx(context,2F), paint)
         }
     }
 
-    fun drawToday(canvas: Canvas){
+    private fun drawToday(canvas: Canvas){
         if(date.year == DateTime.now().year && date.monthOfYear == DateTime.now().monthOfYear && date.dayOfMonth == DateTime.now().dayOfMonth){
-            canvas.drawRoundRect(0F + offset,0F + offset, width.toFloat() - offset, height.toFloat() - offset, dp2px(2F), dp2px(2F), paintToday)
+            canvas.drawRoundRect(0F + offset,0F + offset, width.toFloat() - offset, height.toFloat() - offset, dpToPx(context,50F), dpToPx(context,50F), paintToday)
         }
     }
 
-    fun drawPosition(canvas: Canvas){
-        if(mDateForSelect){
-            canvas.drawRoundRect(0F + (offset * 2),0F + (offset * 2), width.toFloat() - (offset * 2), height.toFloat() - (offset * 2), dp2px(2F), dp2px(2F), paintFill)
+    private fun drawPosition(canvas: Canvas){
+        if(dateForSelect){
+            canvas.drawRoundRect(0F + (offset * 2),0F + (offset * 2), width.toFloat() - (offset * 2), height.toFloat() - (offset * 2), dpToPx(context,50F), dpToPx(context,50F), paintFill)
         }
     }
 
-    fun drawCalendar(canvas: Canvas){
+    private fun drawCalendar(canvas: Canvas){
         val date = date.dayOfMonth.toString()
-        val textTop = paint.fontMetrics.leading - paint.fontMetrics.top
+        val textTop = paint.fontMetrics.leading - paint.fontMetrics.top + dpToPx(context,8F)
+        val scheduleTop = textTop + dpToPx(context, 11F)
+
         paint.typeface = ResourcesCompat.getFont(context, R.font.montserratmedium)
         paint.getTextBounds(date, 0, date.length, bounds)
         canvas.drawText(
             date,
             width / 2F,
-            textTop + dp2px(4F),
+            textTop,
             paint
         )
+
+        drawSchedule(canvas, scheduleTop)
     }
 
-    fun dp2px(dp:Float): Float{
-        return dp * (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
+    private fun drawSchedule(canvas: Canvas, y: Float){
+        val x = width/2F
+        val r = 7F
+        val d = 20F
+        if(scheduleCount != 0) {
+            when(scheduleCount){
+                1 -> {
+                    canvas.drawCircle(x, y, r, paintCircle)
+                }
+                2 -> {
+                    canvas.drawCircle(x- d/2, y, r, paintCircle)
+                    canvas.drawCircle(x+ d/2, y, r, paintCircle)
+                }
+                3 -> {
+                    canvas.drawCircle(x, y, r, paintCircle)
+                    canvas.drawCircle(x-d, y, r, paintCircle)
+                    canvas.drawCircle(x+d, y, r, paintCircle)
+                }
+                else -> {
+                    canvas.drawCircle(x- d - (d/2), y, r, paintCircle)
+                    canvas.drawCircle(x- (d/2), y, r, paintCircle)
+                    canvas.drawCircle(x+ (d/2), y, r, paintCircle)
+
+                    //paintCircle.color = Color.parseColor("#757575")
+
+                    canvas.drawLine(x+ d + (d/2) - r, y, x+ d + (d/2) + r, y, paintPlus)
+                    canvas.drawLine(x+d+(d/2), y-r, x+d+(d/2), y+r, paintPlus)
+                }
+
+            }
+        }
+    }
+
+    fun getDateTime() = date
+
+    fun setDateForSelect(flag: Boolean){
+        dateForSelect = flag
+    }
+
+    fun setScheduleCount(count: Int) {
+        scheduleCount = count
+        invalidate()
     }
 }

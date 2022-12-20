@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-option java_package = "com.gotz.cache";
-
-message UserDataStore{
-    string name = 1;
-}

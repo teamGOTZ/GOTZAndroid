@@ -2,9 +2,9 @@ package com.gotz.base.custom
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import com.gotz.base.R
@@ -20,6 +20,11 @@ class TagLayout @JvmOverloads constructor(
     private var constraintLayoutWidth: Int = 0
     private var constraintLayoutHeight: Int = 0
     private var constraintNowWidth: Int = 0
+    private var constraintNowHeight: Int = 0
+
+    private var textViewList = arrayListOf<TextView>()
+
+    private var setOneTimeFlag: Boolean = true
 
     private val constraintSet: ConstraintSet = ConstraintSet()
 
@@ -27,69 +32,86 @@ class TagLayout @JvmOverloads constructor(
         constraintSet.clone(this)
     }
 
-    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
-        super.onLayout(changed, left, top, right, bottom)
-        constraintLayoutWidth = right - left
-        constraintLayoutHeight = bottom - top
-        Log.e("onLayout", constraintLayoutWidth.toString())
-        Log.e("onLayout", constraintLayoutHeight.toString())
+    companion object{
+        private const val STATUS_ERROR = -1
+        private const val STATUS_ATTACH_FIRST = 0
+        private const val STATUS_ATTACH_SIDE = 1
+        private const val STATUS_ATTACH_BOTTOM = 2
     }
 
-    fun initLayout(lists: List<String>){
+    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
+        super.onLayout(changed, left, top, right, bottom)
+        constraintLayoutWidth = right - left - 10
+        constraintLayoutHeight = bottom - top - 10
 
-//        measure(0,0)
-//        constraintLayoutWidth = measuredWidth
-//        constraintLayoutHeight = measuredHeight
+        if(setOneTimeFlag){
+            setOneTimeFlag = false
+            setTextViewOnLayout()
+        }
+    }
 
+    fun setData(lists: List<String>){
         lists.map{ data ->
             val textView = TextView(context).apply{
                 id = View.generateViewId()
                 text = data
-                background = resources.getDrawable(R.drawable.style_tag)
+                background = AppCompatResources.getDrawable(context, R.drawable.style_tag)
+
                 setPadding(dpToPx(context, 6).toInt(),
                     dpToPx(context, 4).toInt(),
                     dpToPx(context, 6).toInt(),
                     dpToPx(context, 4).toInt())
             }
 
+            textViewList.add(textView)
+        }
+    }
+
+    private fun setTextViewOnLayout(){
+        textViewList.map { textView ->
             addView(textView)
             setConstraint(textView)
         }
     }
 
     private fun setConstraint(textView: TextView){
-        if(constraintTextView == null){
-            constraintSet.constrainDefaultWidth(textView.id, ConstraintSet.MATCH_CONSTRAINT_WRAP)
-            constraintSet.constrainDefaultHeight(textView.id, ConstraintSet.MATCH_CONSTRAINT_WRAP)
-            constraintSet.connect(textView.id, ConstraintSet.START, this.id, ConstraintSet.START, 0)
-            constraintSet.connect(textView.id, ConstraintSet.TOP, this.id, ConstraintSet.TOP, 0)
-            constraintSet.applyTo(this)
-        }
-        else{
-            constraintTextView?.let{ view ->
-                constraintSet.constrainDefaultWidth(textView.id, ConstraintSet.MATCH_CONSTRAINT_WRAP)
-                constraintSet.constrainDefaultHeight(textView.id, ConstraintSet.MATCH_CONSTRAINT_WRAP)
-                constraintSet.connect(textView.id, ConstraintSet.START, view.id, ConstraintSet.END, dpToPx(context, 4).toInt())
-                constraintSet.connect(textView.id, ConstraintSet.TOP, view.id, ConstraintSet.TOP, 0)
+        constraintSet.constrainDefaultWidth(textView.id, ConstraintSet.MATCH_CONSTRAINT_WRAP)
+        constraintSet.constrainDefaultHeight(textView.id, ConstraintSet.MATCH_CONSTRAINT_WRAP)
+
+        when(getWidthStatus(textView)){
+            STATUS_ATTACH_FIRST -> {
+                constraintSet.connect(textView.id, ConstraintSet.START, this.id, ConstraintSet.START, 0)
+                constraintSet.connect(textView.id, ConstraintSet.TOP, this.id, ConstraintSet.TOP, 0)
                 constraintSet.applyTo(this)
+            }
+            STATUS_ATTACH_SIDE -> {
+                constraintTextView?.let{ view ->
+                    constraintSet.connect(textView.id, ConstraintSet.START, view.id, ConstraintSet.END, dpToPx(context, 4).toInt())
+                    constraintSet.connect(textView.id, ConstraintSet.TOP, view.id, ConstraintSet.TOP, 0)
+                    constraintSet.applyTo(this)
+                }
+            }
+            STATUS_ATTACH_BOTTOM -> {
+                constraintNowWidth = 0
+                constraintTextView?.let{ view ->
+                    constraintSet.connect(textView.id, ConstraintSet.START, this.id, ConstraintSet.START, 0)
+                    constraintSet.connect(textView.id, ConstraintSet.TOP, view.id, ConstraintSet.BOTTOM, dpToPx(context, 4).toInt())
+                    constraintSet.applyTo(this)
+                }
+            }
+            else -> {
+
             }
         }
 
         constraintNowWidth += getTextViewWidth(textView) + dpToPx(context, 4).toInt()
-        constraintLayoutWidth = getLayoutWidth()
-
-        Log.e("TagLayout", "layoutWidth : $constraintLayoutWidth")
-        Log.e("TagLayout", "nowWidth : $constraintNowWidth")
         constraintTextView = textView
-
     }
 
-    override fun addView(child: View?) {
-        super.addView(child)
-    }
-
-    private fun getWidthStatus(): Int{
-        return 0
+    private fun getWidthStatus(textView: TextView): Int {
+        return if (constraintTextView == null) STATUS_ATTACH_FIRST
+        else if (constraintLayoutWidth > constraintNowWidth + getTextViewWidth(textView)) STATUS_ATTACH_SIDE
+        else STATUS_ATTACH_BOTTOM
     }
 
     private fun getTextViewWidth(textView: TextView): Int{
@@ -97,8 +119,8 @@ class TagLayout @JvmOverloads constructor(
         return textView.measuredWidth
     }
 
-    private fun getLayoutWidth(): Int{
-        measure(0,0)
-        return measuredWidth
+    private fun getTextViewHeight(textView: TextView): Int{
+        textView.measure(0,0)
+        return textView.measuredWidth
     }
 }

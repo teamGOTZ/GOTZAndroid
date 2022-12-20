@@ -22,11 +22,11 @@
                 android:id="@+id/tv_tutorial_2_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Keyword"
-                android:textSize="32dp"
+                android:text="매일 달라지는 오늘의 추천"
                 android:gravity="top"
                 android:lineSpacingExtra="-10dp"
-                android:layout_marginTop="140dp"
+                android:layout_marginTop="100dp"
+                style="@style/Text24Bold"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -34,43 +34,23 @@
                 android:id="@+id/tv_tutorial_2_contents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="책 속 문장으로 쉬운 독서를\n시작합니다. 마음에 드는 문장은\n스크랩의로 기록합니다."
+                android:text="당신의 일상에 따라\n매일 달라지는 GOT’Z 제안!\n첫 화면에서 확인해보세요"
+                android:textColor="@color/Gray_700"
                 android:layout_marginTop="24dp"
+                style="@style/Text16Regular"
                 app:layout_constraintTop_toBottomOf="@id/tv_tutorial_2_title"
                 app:layout_constraintStart_toStartOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
-            android:id="@+id/iv_tutorial_2_character_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_character_tutorial_1"
+            android:id="@+id/iv_tutorial_2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_on_boarding_2"
             android:layout_marginBottom="100dp"
-            android:translationX="65dp"
-            app:layout_constraintEnd_toStartOf="@id/guideline_start"
+            app:layout_constraintDimensionRatio="h, 1:1"
             app:layout_constraintBottom_toBottomOf="parent"/>
-
-        <ImageView
-            android:id="@+id/iv_tutorial_2_character_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_character_tutorial_2"
-            android:translationX="65dp"
-            android:layout_marginBottom="112dp"
-            android:layout_marginStart="29dp"
-            app:layout_constraintStart_toEndOf="@id/iv_tutorial_2_character_1"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-        <ImageView
-            android:id="@+id/iv_tutorial_2_character_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_character_tutorial_3"
-            app:layout_constraintEnd_toEndOf="@id/guideline_end"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="112dp"
-            android:translationX="69dp"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_start"

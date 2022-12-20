@@ -1,10 +1,21 @@
 <resources>
 
-    <string name="string_today">TODAY</string>
+    <string name="string_today_upper">TODAY</string>
+    <string name="string_today_lower">today</string>
+    <string name="string_weather">weather</string>
     <string name="string_next">다음</string>
+    <string name="string_save">저장</string>
     <string name="string_btn_text_calendar">캘린더</string>
+    <string name="string_all_day">하루종일</string>
 
     <string name="string_calendar">Calendar</string>
+    <string name="string_schedule_content">일정 내용</string>
+    <string name="string_schedule_add">일정 추가</string>
+    <string name="string_schedule_describe">일정 설명</string>
+
+    <string name="string_edit_text_hint">입력하세요</string>
+
+    <string name="string_star_1">*</string>
 
 <!--    Onboarding-->
     <string name="string_onboarding_intro">WEDID과 함께\n당신의 다음을 기록하세요</string>
@@ -13,5 +24,8 @@
     <string name="string_onboarding_name_2">위딛은 이름을 불러드리고 싶어요 :)</string>
 
     <string name="string_onboarding_hello_next">위딛 시작하기</string>
+
+<!--    Calendar-->
+    <string name="string_schedule_title_text">어떤 일정인가요?</string>
 
 </resources>

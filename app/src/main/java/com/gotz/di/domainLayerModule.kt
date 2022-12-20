@@ -1,10 +1,8 @@
 package com.gotz.di
 
-import com.gotz.domain.usecase.user.CreateNameUseCase
-import com.gotz.domain.usecase.user.ReadSingleNameUseCase
-import com.gotz.presentation.view.onboarding.OnboardingViewModel
-import com.gotz.presentation.view.tutorial.TutorialViewModel
-import org.koin.androidx.viewmodel.dsl.viewModel
+import com.gotz.domain.usecase.schedule.*
+import com.gotz.domain.usecase.user.*
+import com.gotz.domain.usecase.weather.ReadWeatherUseCase
 import org.koin.dsl.module
 
 val domainLayerModule = module {
@@ -12,13 +10,26 @@ val domainLayerModule = module {
     /**
      * User UseCase
      */
-    factory{ ReadSingleNameUseCase(get())}
-    factory{ CreateNameUseCase(get()) }
+    factory { ReadNameUseCase(get())}
+    factory { CreateNameUseCase(get()) }
+    factory { ReadAgeUseCase(get()) }
+    factory { UpdateAgeUseCase(get()) }
+    factory { ReadGenderUseCase(get()) }
+    factory { UpdateGenderUseCase(get()) }
 
     /**
-     * ViewModel
+     * Schedule UseCase
      */
+    factory { CreateScheduleUseCase(get()) }
+    factory { ReadAllScheduleUseCase(get()) }
+    factory { ReadDailyScheduleUseCase(get()) }
+    factory { ReadMonthlyScheduleUseCase(get()) }
+    factory { UpdateScheduleUseCase(get()) }
+    factory { DeleteScheduleUseCase(get()) }
 
-    viewModel { OnboardingViewModel(get()) }
-    viewModel { TutorialViewModel() }
+    /**
+     * Weather UseCase
+     */
+    factory { ReadWeatherUseCase(get()) }
+
 }

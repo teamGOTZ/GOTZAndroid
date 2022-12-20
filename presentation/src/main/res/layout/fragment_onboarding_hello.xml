@@ -14,25 +14,40 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
 
-        <TextView
-            android:id="@+id/tv_onboarding_hello"
+        <ImageView
+            android:id="@+id/iv_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@{viewmodel.nameHello}"
-            style="@style/Text24Bold"
-            android:lineSpacingMultiplier="1.25"
-            android:layout_marginBottom="20dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/btn_onboarding_hello_next"
+            android:src="@drawable/ic_gotz_logo"
+            android:layout_marginTop="140dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_hello"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="80dp"
+            android:text="@{viewmodel.helloText}"
+            android:gravity="center"
+            android:background="@drawable/shape_rect_212121"
+            app:layout_constraintTop_toBottomOf="@id/iv_logo" />
+
+        <ImageView
+            android:id="@+id/iv_character"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_hello"/>
 
         <Button
             android:id="@+id/btn_onboarding_hello_next"
-            android:text="@string/string_onboarding_hello_next"
+            android:text="일상 추천 시작하기"
             android:onClick="@{() -> viewmodel.btnClick()}"
-            style="@style/OutlinedButtonStyle"
+            style="@style/ContainedButtonStyle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

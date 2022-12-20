@@ -23,11 +23,11 @@
                 android:id="@+id/tv_tutorial_3_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Keyword"
-                android:textSize="32dp"
+                android:text="GOT’Z에게 맡겨보세요!"
                 android:gravity="top"
                 android:lineSpacingExtra="-10dp"
-                android:layout_marginTop="140dp"
+                android:layout_marginTop="100dp"
+                style="@style/Text24Bold"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -35,32 +35,22 @@
                 android:id="@+id/tv_tutorial_3_contents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="책 속 문장으로 쉬운 독서를\n시작합니다. 마음에 드는 문장은\n스크랩의로 기록합니다."
+                android:text="평범한 하루를  조금 더 다채롭게!\nGOT’Z는 당신의 일상을 궁금해합니다 :)"
+                android:textColor="@color/Gray_700"
                 android:layout_marginTop="24dp"
+                style="@style/Text16Regular"
                 app:layout_constraintTop_toBottomOf="@id/tv_tutorial_3_title"
                 app:layout_constraintStart_toStartOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
-            android:id="@+id/iv_tutorial_3_character_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_character_tutorial_3"
-            android:layout_marginBottom="112dp"
-            android:translationX="-69dp"
-            app:layout_constraintStart_toStartOf="@id/guideline_start"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-        <ImageView
-            android:id="@+id/iv_tutorial_3_character_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_character_tutorial_4"
-            android:translationX="-69dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginBottom="107dp"
-            app:layout_constraintStart_toEndOf="@id/iv_tutorial_3_character_3"
+            android:id="@+id/iv_tutorial_3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_on_boarding_3"
+            android:layout_marginBottom="100dp"
+            app:layout_constraintDimensionRatio="h, 1:1"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <androidx.constraintlayout.widget.Guideline

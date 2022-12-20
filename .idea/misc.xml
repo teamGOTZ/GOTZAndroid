@@ -4,15 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_appicon_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.154" />
         <entry key="app/src/main/res/drawable/ic_appicon_background.xml" value="0.1385" />
+        <entry key="app/src/main/res/drawable/ic_delete_fill.xml" value="0.146" />
         <entry key="app/src/main/res/drawable/style_bottomsheet_base.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/style_button_base.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/style_cursor_black.xml" value="0.146" />
+        <entry key="app/src/main/res/layout/activity_calendar_memo.xml" value="0.21240942028985507" />
         <entry key="app/src/main/res/layout/activity_calendar_memo_detail.xml" value="0.39809570312500003" />
         <entry key="app/src/main/res/layout/activity_frame.xml" value="0.2078804347826087" />
         <entry key="app/src/main/res/layout/activity_main_prepare_hello.xml" value="0.21693840579710144" />
         <entry key="app/src/main/res/layout/activity_main_prepare_intro.xml" value="0.21693840579710144" />
         <entry key="app/src/main/res/layout/activity_main_prepare_name.xml" value="0.13323201621073963" />
         <entry key="app/src/main/res/layout/activity_main_prepare_splash.xml" value="0.2341485507246377" />
+        <entry key="app/src/main/res/layout/custom_edittext.xml" value="0.21240942028985507" />
         <entry key="app/src/main/res/layout/custom_edittext_black100.xml" value="0.23052536231884058" />
         <entry key="app/src/main/res/layout/custom_today_button.xml" value="0.2164855072463768" />
         <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.1" />
@@ -21,8 +27,20 @@
         <entry key="app/src/main/res/layout/fragment_calendar_long_legacy.xml" value="0.13125" />
         <entry key="app/src/main/res/layout/fragment_calendar_short.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_calendar_short_legacy.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/menu/popup_calendar_memo_detail.xml" value="0.3182291666666667" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_app_icon.xml" value="0.154" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_appicon.xml" value="0.137" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_appicon_round.xml" value="0.137" />
+        <entry key="base/src/main/res/drawable/ic_check_purple.xml" value="0.166" />
+        <entry key="base/src/main/res/drawable/ic_delete_fill.xml" value="0.146" />
+        <entry key="base/src/main/res/drawable/style_check_layout_disable.xml" value="0.166" />
+        <entry key="base/src/main/res/drawable/style_check_layout_enable.xml" value="0.166" />
+        <entry key="base/src/main/res/drawable/style_cursor_black.xml" value="0.146" />
+        <entry key="base/src/main/res/drawable/style_edittext_base.xml" value="0.146" />
+        <entry key="base/src/main/res/drawable/style_tag.xml" value="0.155" />
+        <entry key="base/src/main/res/layout/activity_webview.xml" value="0.1" />
+        <entry key="base/src/main/res/layout/layout_check.xml" value="0.2318840579710145" />
+        <entry key="base/src/main/res/layout/layout_custom_edit_text.xml" value="0.21240942028985507" />
         <entry key="base/src/main/res/layout/layout_one_depth_title.xml" value="0.19791666666666666" />
         <entry key="presentation/src/main/res/drawable/ic_arrow_down.xml" value="0.1" />
         <entry key="presentation/src/main/res/drawable/ic_arrow_left.xml" value="0.1" />
@@ -34,15 +52,32 @@
         <entry key="presentation/src/main/res/drawable/ic_character_tutorial_1.xml" value="0.1475" />
         <entry key="presentation/src/main/res/drawable/ic_character_tutorial_2.xml" value="0.1475" />
         <entry key="presentation/src/main/res/drawable/ic_flag.xml" value="0.1385" />
+        <entry key="presentation/src/main/res/drawable/ic_gotz_apostrophe.xml" value="0.146" />
+        <entry key="presentation/src/main/res/drawable/ic_gotz_logo.xml" value="0.15" />
+        <entry key="presentation/src/main/res/drawable/ic_weather_none.xml" value="0.1105" />
         <entry key="presentation/src/main/res/drawable/shape_btn_calendar.xml" value="0.14" />
+        <entry key="presentation/src/main/res/drawable/shape_circle_000000.xml" value="0.154" />
+        <entry key="presentation/src/main/res/drawable/shape_circle_d9d9d9.xml" value="0.154" />
+        <entry key="presentation/src/main/res/drawable/shape_circle_r106_d9d9d9.xml" value="0.15" />
+        <entry key="presentation/src/main/res/drawable/shape_rect_212121.xml" value="0.166" />
+        <entry key="presentation/src/main/res/drawable/shape_rect_d9d9d9.xml" value="0.15" />
+        <entry key="presentation/src/main/res/drawable/shape_rect_f5f5f5_stroke.xml" value="0.166" />
+        <entry key="presentation/src/main/res/drawable/shape_rect_gray_600_stroke.xml" value="0.154" />
+        <entry key="presentation/src/main/res/drawable/shape_rect_onboarding.xml" value="0.15" />
+        <entry key="presentation/src/main/res/drawable/shape_rect_purple.xml" value="0.154" />
+        <entry key="presentation/src/main/res/drawable/shape_rect_purple_stroke.xml" value="0.154" />
+        <entry key="presentation/src/main/res/drawable/shape_rect_schedule.xml" value="0.1425" />
         <entry key="presentation/src/main/res/drawable/style_btn_contained.xml" value="0.14" />
         <entry key="presentation/src/main/res/drawable/style_btn_outlined.xml" value="0.16848358154296877" />
         <entry key="presentation/src/main/res/drawable/style_button_base.xml" value="0.1475" />
         <entry key="presentation/src/main/res/drawable/style_button_calendar.xml" value="0.1475" />
         <entry key="presentation/src/main/res/drawable/style_button_calendar_today.xml" value="0.1475" />
         <entry key="presentation/src/main/res/drawable/style_edittext_base.xml" value="0.1" />
+        <entry key="presentation/src/main/res/layout-v28/fragment_calendar.xml" value="0.2318840579710145" />
+        <entry key="presentation/src/main/res/layout/activity_calendar_add_schedule.xml" value="0.25" />
         <entry key="presentation/src/main/res/layout/activity_calendar_memo.xml" value="0.2341485507246377" />
         <entry key="presentation/src/main/res/layout/activity_calendar_memo_detail.xml" value="0.2341485507246377" />
+        <entry key="presentation/src/main/res/layout/activity_calendar_show_schedule.xml" value="0.25" />
         <entry key="presentation/src/main/res/layout/activity_login.xml" value="0.22457954811994793" />
         <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="presentation/src/main/res/layout/activity_main_prepare_splash.xml" value="0.2341485507246377" />
@@ -50,27 +85,34 @@
         <entry key="presentation/src/main/res/layout/activity_onboarding_hello.xml" value="0.2246376811594203" />
         <entry key="presentation/src/main/res/layout/activity_onboarding_intro.xml" value="0.2246376811594203" />
         <entry key="presentation/src/main/res/layout/activity_onboarding_name.xml" value="0.1" />
+        <entry key="presentation/src/main/res/layout/activity_permission.xml" value="0.1259259259259259" />
+        <entry key="presentation/src/main/res/layout/activity_profile.xml" value="0.2318840579710145" />
         <entry key="presentation/src/main/res/layout/activity_splash.xml" value="0.25" />
-        <entry key="presentation/src/main/res/layout/activity_terms.xml" value="0.1" />
+        <entry key="presentation/src/main/res/layout/activity_terms.xml" value="0.25" />
         <entry key="presentation/src/main/res/layout/activity_tutorial.xml" value="0.2164855072463768" />
+        <entry key="presentation/src/main/res/layout/activity_webview.xml" value="0.2318840579710145" />
         <entry key="presentation/src/main/res/layout/custom_bar_button.xml" value="0.1" />
         <entry key="presentation/src/main/res/layout/custom_edittext_black100.xml" value="0.1" />
         <entry key="presentation/src/main/res/layout/custom_today_button.xml" value="0.3031400966183575" />
         <entry key="presentation/src/main/res/layout/fragement_home.xml" value="0.12037037037037036" />
-        <entry key="presentation/src/main/res/layout/fragment_calendar.xml" value="0.1821561338289963" />
+        <entry key="presentation/src/main/res/layout/fragment_calendar.xml" value="0.24467099165894346" />
         <entry key="presentation/src/main/res/layout/fragment_calendar_long.xml" value="0.1" />
         <entry key="presentation/src/main/res/layout/fragment_calendar_short.xml" value="0.19791666666666666" />
         <entry key="presentation/src/main/res/layout/fragment_home.xml" value="0.1" />
-        <entry key="presentation/src/main/res/layout/fragment_my.xml" value="0.11018518518518519" />
+        <entry key="presentation/src/main/res/layout/fragment_my.xml" value="0.2943969161422164" />
+        <entry key="presentation/src/main/res/layout/fragment_onboarding_age.xml" value="0.2318840579710145" />
+        <entry key="presentation/src/main/res/layout/fragment_onboarding_gender.xml" value="0.2318840579710145" />
         <entry key="presentation/src/main/res/layout/fragment_onboarding_hello.xml" value="0.2744094848632813" />
         <entry key="presentation/src/main/res/layout/fragment_onboarding_intro.xml" value="0.1" />
         <entry key="presentation/src/main/res/layout/fragment_onboarding_name.xml" value="0.2412261962890625" />
-        <entry key="presentation/src/main/res/layout/fragment_onboarding_terms.xml" value="0.2164855072463768" />
-        <entry key="presentation/src/main/res/layout/fragment_tutorial_1.xml" value="0.19192651819299775" />
-        <entry key="presentation/src/main/res/layout/fragment_tutorial_2.xml" value="0.3585647017867477" />
+        <entry key="presentation/src/main/res/layout/fragment_onboarding_terms.xml" value="0.25" />
+        <entry key="presentation/src/main/res/layout/fragment_tutorial_1.xml" value="0.22626892089843753" />
+        <entry key="presentation/src/main/res/layout/fragment_tutorial_2.xml" value="0.32763055872034147" />
         <entry key="presentation/src/main/res/layout/fragment_tutorial_3.xml" value="0.11018518518518519" />
+        <entry key="presentation/src/main/res/layout/item_calendar_schedule.xml" value="0.20425724637681159" />
         <entry key="presentation/src/main/res/layout/layout_one_depth_title.xml" value="0.1" />
         <entry key="presentation/src/main/res/menu/bottom_navigation_menu.xml" value="0.2760416666666667" />
+        <entry key="presentation/src/main/res/menu/menu_schedule.xml" value="0.3171875" />
         <entry key="presentation/src/main/res/xml/motion_scene_calendar.xml" value="0.2164855072463768" />
       </map>
     </option>

@@ -28,25 +28,44 @@ class OnboardingActivity: BaseActivity<ActivityOnboardingBinding>(R.layout.activ
     }
 
     override fun initObserver() {
-        viewModel.btnClickEvent.observe(this, EventObserver{
-            navController?.currentDestination?.label.let{ charSequence ->
-                when(charSequence.toString()){
-                    "OnboardingTermsFragment" -> {
-                        navController?.navigate(R.id.action_fragment_onboarding_terms_to_fragment_onboarding_intro)
-                    }
-                    "OnboardingIntroFragment" -> {
-                        navController?.navigate(R.id.action_fragment_onboarding_intro_to_fragment_onboarding_name)
-                    }
-                    "OnboardingNameFragment" -> {
-                        navController?.navigate(R.id.action_fragment_onboarding_name_to_fragment_onboarding_hello)
-                    }
-                    "OnboardingHelloFragment" -> {
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
+        viewModel.run{
+            btnClickEvent.observe(this@OnboardingActivity, EventObserver{
+                navController?.currentDestination?.label.let{ charSequence ->
+                    when(charSequence.toString()){
+                        "OnboardingTermsFragment" -> {
+                            navController?.navigate(R.id.action_fragment_onboarding_terms_to_fragment_onboarding_name)
+                        }
+                        "OnboardingNameFragment" -> {
+                            navController?.navigate(R.id.action_fragment_onboarding_name_to_fragment_onboarding_age)
+                        }
+                        "OnboardingAgeFragment" -> {
+                            navController?.navigate(R.id.action_fragment_onboarding_age_to_fragment_onboarding_gender)
+                        }
+                        "OnboardingGenderFragment" -> {
+                            navController?.navigate(R.id.action_fragment_onboarding_gender_to_fragment_onboarding_hello)
+                        }
+                        "OnboardingHelloFragment" -> {
+                            val intent = Intent(this@OnboardingActivity, MainActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
                     }
                 }
-            }
-        })
+            })
+
+            btnSkipEvent.observe(this@OnboardingActivity, EventObserver{
+                navController?.currentDestination?.label.let{ charSequence ->
+                    when(charSequence.toString()) {
+                        "OnboardingAgeFragment" -> {
+                            navController?.navigate(R.id.action_fragment_onboarding_age_to_fragment_onboarding_hello)
+                        }
+                        "OnboardingGenderFragment" -> {
+                            navController?.navigate(R.id.action_fragment_onboarding_gender_to_fragment_onboarding_hello)
+                        }
+                    }
+                }
+            })
+        }
     }
 
 }

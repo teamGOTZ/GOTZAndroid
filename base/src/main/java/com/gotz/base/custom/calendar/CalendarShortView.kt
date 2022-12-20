@@ -32,7 +32,7 @@ class CalendarShortView @JvmOverloads constructor(
     }
 
     override fun onLayout(p0: Boolean, p1: Int, p2: Int, p3: Int, p4: Int) {
-        val iWidth = (width/ DateTimeConstants.DAYS_PER_WEEK).toFloat()
+        val iWidth = (width/ DateTimeConstants.DAYS_PER_WEEK)
         val iHeight = height
 
         var index = 0
@@ -41,7 +41,7 @@ class CalendarShortView @JvmOverloads constructor(
             val top = 0
 
             //it.setBackgroundColor(Color.BLACK)
-            it.layout(left.toInt(), top.toInt(), (left+iWidth).toInt(), (top+iHeight).toInt())
+            it.layout(left, top, left+iWidth, top+iHeight)
             index++
         }
     }
@@ -57,6 +57,12 @@ class CalendarShortView @JvmOverloads constructor(
                 date = it,
                 dayOfWeek = dayOfWeek
             ))
+        }
+    }
+
+    fun updateCalendar(scheduleCountList: List<Int>) {
+        children.forEachIndexed { index, childView -> childView as DayItemShortView
+            childView.setScheduleCount(scheduleCountList[index])
         }
     }
 

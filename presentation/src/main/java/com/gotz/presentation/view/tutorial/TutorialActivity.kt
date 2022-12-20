@@ -9,7 +9,6 @@ import com.gotz.presentation.R
 import com.gotz.presentation.databinding.ActivityTutorialBinding
 import com.gotz.presentation.util.EventObserver
 import com.gotz.presentation.view.login.LoginActivity
-import com.gotz.presentation.view.onboarding.OnboardingActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TutorialActivity:BaseActivity<ActivityTutorialBinding>(R.layout.activity_tutorial) {
@@ -41,6 +40,7 @@ class TutorialActivity:BaseActivity<ActivityTutorialBinding>(R.layout.activity_t
                     "Tutorial3Fragment" -> {
                         val intent = Intent(this, LoginActivity::class.java)
                         startActivity(intent)
+                        finish()
                     }
                 }
             }

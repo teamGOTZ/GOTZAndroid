@@ -1,5 +1,6 @@
 package com.gotz.presentation.view.onboarding
 
+import com.bumptech.glide.Glide
 import com.gotz.presentation.R
 import com.gotz.base.BaseFragment
 import com.gotz.presentation.databinding.FragmentOnboardingHelloBinding
@@ -11,5 +12,6 @@ class OnboardingHelloFragment: BaseFragment<FragmentOnboardingHelloBinding>(R.la
 
     override fun initFragment() {
         binding.viewmodel = viewModel
+        Glide.with(this).load(R.raw.gif_on_boarding_6).into(binding.ivCharacter)
     }
 }

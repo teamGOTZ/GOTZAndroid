@@ -24,4 +24,6 @@ class CalendarLongAdapter(fragmentActivity: FragmentActivity): FragmentStateAdap
 
         return date.dayOfMonth == 1 && date.millisOfDay == 0
     }
+
+
 }

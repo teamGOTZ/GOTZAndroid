@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             motion:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/guideline_140_dp"/>
+            app:layout_constraintBottom_toTopOf="@+id/guideline_124_dp"/>
 
         <Constraint
             android:id="@+id/cl_btn_motion"
@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             motion:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/guideline_140_dp"/>
+            app:layout_constraintBottom_toTopOf="@+id/guideline_124_dp"/>
 
         <Constraint
             android:id="@+id/cl_btn_motion"

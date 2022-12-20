@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Text12Bold"
-            android:text="@string/string_today"/>
+            android:text="@string/string_today_upper"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

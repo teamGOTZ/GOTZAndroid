@@ -11,21 +11,7 @@
         android:label="OnboardingTermsFragment"
         tools:layout="@layout/fragment_onboarding_terms">
         <action
-            android:id="@+id/action_fragment_onboarding_terms_to_fragment_onboarding_intro"
-            app:destination="@id/fragment_onboarding_intro"
-            app:enterAnim="@anim/slide_from_right"
-            app:exitAnim="@anim/slide_to_left"
-            app:popExitAnim="@anim/slide_to_right"
-            app:popEnterAnim="@anim/slide_from_left"/>
-    </fragment>
-
-    <fragment
-        android:id="@+id/fragment_onboarding_intro"
-        android:name="com.gotz.presentation.view.onboarding.OnboardingIntroFragment"
-        android:label="OnboardingIntroFragment"
-        tools:layout="@layout/fragment_onboarding_intro">
-        <action
-            android:id="@+id/action_fragment_onboarding_intro_to_fragment_onboarding_name"
+            android:id="@+id/action_fragment_onboarding_terms_to_fragment_onboarding_name"
             app:destination="@id/fragment_onboarding_name"
             app:enterAnim="@anim/slide_from_right"
             app:exitAnim="@anim/slide_to_left"
@@ -33,13 +19,50 @@
             app:popEnterAnim="@anim/slide_from_left"/>
     </fragment>
 
+
     <fragment
         android:id="@+id/fragment_onboarding_name"
         android:name="com.gotz.presentation.view.onboarding.OnboardingNameFragment"
         android:label="OnboardingNameFragment"
         tools:layout="@layout/fragment_onboarding_name">
         <action
-            android:id="@+id/action_fragment_onboarding_name_to_fragment_onboarding_hello"
+            android:id="@+id/action_fragment_onboarding_name_to_fragment_onboarding_age"
+            app:destination="@id/fragment_onboarding_age"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popExitAnim="@anim/slide_to_right"
+            app:popEnterAnim="@anim/slide_from_left"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_onboarding_age"
+        android:name="com.gotz.presentation.view.onboarding.OnboardingAgeFragment"
+        android:label="OnboardingAgeFragment"
+        tools:layout="@layout/fragment_onboarding_age">
+        <action
+            android:id="@+id/action_fragment_onboarding_age_to_fragment_onboarding_gender"
+            app:destination="@id/fragment_onboarding_gender"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popExitAnim="@anim/slide_to_right"
+            app:popEnterAnim="@anim/slide_from_left"/>
+
+        <action
+            android:id="@+id/action_fragment_onboarding_age_to_fragment_onboarding_hello"
+            app:destination="@id/fragment_onboarding_hello"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popExitAnim="@anim/slide_to_right"
+            app:popEnterAnim="@anim/slide_from_left"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_onboarding_gender"
+        android:name="com.gotz.presentation.view.onboarding.OnboardingGenderFragment"
+        android:label="OnboardingGenderFragment"
+        tools:layout="@layout/fragment_onboarding_gender">
+        <action
+            android:id="@+id/action_fragment_onboarding_gender_to_fragment_onboarding_hello"
             app:destination="@id/fragment_onboarding_hello"
             app:enterAnim="@anim/slide_from_right"
             app:exitAnim="@anim/slide_to_left"

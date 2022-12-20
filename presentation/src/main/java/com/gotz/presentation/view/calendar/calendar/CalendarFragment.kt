@@ -1,20 +1,92 @@
 package com.gotz.presentation.view.calendar.calendar
 
-import android.util.Log
-import androidx.constraintlayout.motion.widget.MotionLayout
+import android.Manifest
+import android.annotation.SuppressLint
+import android.content.Intent
+import android.location.Geocoder
+import android.os.Looper
+import android.view.View
+import androidx.lifecycle.lifecycleScope
+import androidx.viewpager2.widget.ViewPager2
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
+import com.bumptech.glide.Glide
+import com.google.android.gms.location.*
 import com.gotz.presentation.R
 import com.gotz.base.BaseFragment
+import com.gotz.base.BaseRecyclerAdapter
+import com.gotz.base.extension.gone
+import com.gotz.base.extension.invisible
+import com.gotz.base.extension.setOnSingleClickListener
+import com.gotz.base.extension.visible
+import com.gotz.base.util.CalendarUtil
+import com.gotz.base.util.CalendarUtil.startDayOfWeek
+import com.gotz.base.util.GpsUtil
+import com.gotz.base.util.NetworkUtil
+import com.gotz.base.util.PermissionUtil.isPermissionGranted
+import com.gotz.base.util.StringUtil
+import com.gotz.domain.model.Schedule
+import com.gotz.presentation.BuildConfig
 import com.gotz.presentation.databinding.FragmentCalendarBinding
+import com.gotz.presentation.util.GLog
+import com.gotz.presentation.view.calendar.WeatherViewModel
+import com.gotz.presentation.view.calendar.calendar.CalendarViewModel.Companion.CALENDAR_MONTH
+import com.gotz.presentation.view.calendar.calendar.CalendarViewModel.Companion.CALENDAR_WEEK
 import com.gotz.presentation.view.calendar.calendar.adapter.CalendarLongAdapter
+import com.gotz.presentation.view.calendar.calendar.adapter.CalendarScheduleAdapter
+import com.gotz.presentation.view.calendar.calendar.adapter.CalendarScheduleItemDecoration
 import com.gotz.presentation.view.calendar.calendar.adapter.CalendarShortAdapter
+import com.gotz.presentation.view.calendar.schedule.CalendarAddScheduleActivity
+import com.gotz.presentation.view.calendar.schedule.CalendarShowScheduleActivity
+import com.gotz.presentation.view.calendar.schedule.CalendarShowScheduleActivity.Companion.EXTRA_SCHEDULE
+import com.gotz.presentation.view.calendar.schedule.ScheduleViewModel
+import com.gotz.presentation.view.webview.WebViewActivity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.joda.time.DateTime
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.concurrent.TimeUnit
 
-class CalendarFragment: BaseFragment<FragmentCalendarBinding>(R.layout.fragment_calendar) {
+class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment_calendar) {
+
+    private val calendarViewModel: CalendarViewModel by sharedViewModel()
+    private val scheduleViewModel: ScheduleViewModel by viewModel()
+    private val weatherViewModel: WeatherViewModel by viewModel()
 
     private lateinit var calendarShortAdapter: CalendarShortAdapter
     private lateinit var calendarLongAdapter: CalendarLongAdapter
+    private lateinit var calendarScheduleAdapter: CalendarScheduleAdapter
 
-    companion object{
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var locationRequest: LocationRequest
+    private lateinit var locationCallback: LocationCallback
+
+    private val vpCalendarLongCallback = object: OnPageChangeCallback() {
+        override fun onPageSelected(position: Int) {
+            super.onPageSelected(position)
+            GLog.messageLog("vpLong:onPageSelected ${position - START_POSITION}")
+            GLog.messageLog("vpLong:onPageSelected ${CalendarUtil.getDateTimeForMonthlyCalendar(DateTime.now(), position - START_POSITION).toString("yyyy-MM-dd")}")
+            val date = CalendarUtil.getDateTimeForMonthlyCalendar(DateTime.now(), position - START_POSITION).millis
+            calendarViewModel.setDateTime(date)
+        }
+    }
+
+    private val vpCalendarShortCallback = object: OnPageChangeCallback() {
+        override fun onPageSelected(position: Int) {
+            super.onPageSelected(position)
+            GLog.messageLog("vpShort:onPageSelected ${position - START_POSITION}")
+            GLog.messageLog("vpShort:onPageSelected ${CalendarUtil.getDateTimeForWeeklyCalendar(DateTime.now(), position - START_POSITION).toString("yyyy-MM-dd")}")
+            val date = CalendarUtil.getDateTimeForWeeklyCalendar(DateTime.now(), position - START_POSITION).millis
+            calendarViewModel.setDateTime(date)
+        }
+    }
+
+    companion object {
         const val START_POSITION = Int.MAX_VALUE / 2
+
+        const val DATE_MILLIS = "DATE_MILLIS"
 
         fun newInstance() = CalendarFragment()
     }
@@ -22,75 +94,315 @@ class CalendarFragment: BaseFragment<FragmentCalendarBinding>(R.layout.fragment_
     override fun initFragment() {
         calendarShortAdapter = CalendarShortAdapter(requireActivity())
         calendarLongAdapter = CalendarLongAdapter(requireActivity())
-    }
+        calendarScheduleAdapter = CalendarScheduleAdapter()
 
-    override fun initView() {
-        binding.run{
-            btnMotion.setOnClickListener{
-                if(mlCalendar.currentState == mlCalendar.startState){
-                    mlCalendar.transitionToEnd()
-                    Log.e("SEMIN", "START")
-                    Log.e("SEMIN", getStatus(mlCalendar))
-                }
-                else{
-                    mlCalendar.transitionToStart()
-                    Log.e("SEMIN", "END")
-                    Log.e("SEMIN", getStatus(mlCalendar))
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+
+        locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult) {
+                for (location in locationResult.locations){
+                    // Update UI with location data
+                    // ...
+                    val point = GpsUtil.convertToCoordinates(location.latitude, location.longitude)
+                    GLog.messageLog("${location.longitude} /// ${location.latitude}")
+                    GLog.messageLog("${point.x} /// ${point.y}")
+
+                    if(NetworkUtil.isNetworkEnable(context)) {
+                        val address = Geocoder(context).getFromLocation(location.latitude, location.longitude, 1)[0]?:Geocoder(context).getFromLocation(37.3957122, 127.1105181, 1)[0]
+                        binding.tvLocation.text = StringUtil.getAddressString(address)
+
+                        lifecycleScope.launch {
+                            val weather = weatherViewModel.readWeather(StringUtil.getBaseDate(DateTime.now()),
+                                StringUtil.getBaseTime(DateTime.now()),
+                                point.x,
+                                point.y).first()
+
+                            GLog.messageLog("$weather")
+
+                            setWeatherData(weather.temperature, weather.skyStatus)
+
+                        }
+                    }
                 }
             }
+        }
 
-            vpCalendarShort.run{
-                adapter = calendarShortAdapter
-                currentItem = START_POSITION
-            }
+        createLocationRequest()
+        startLocationUpdates()
 
-            vpCalendarLong.run{
-                adapter = calendarLongAdapter
-                currentItem = START_POSITION
+        lifecycleScope.launch(Dispatchers.IO) {
+            val scheduleWithDate = scheduleViewModel.readDailyScheduleUseCase(DateTime.now()).first()
+
+            withContext(Dispatchers.Main) {
+                binding.run {
+                    if(scheduleWithDate == null) {
+                        calendarScheduleAdapter.clearItems()
+                        rvCalendar.gone()
+                        clCalendarList.visible()
+                    }
+                    else {
+                        calendarScheduleAdapter.initItems(scheduleWithDate.schedule)
+                        rvCalendar.visible()
+                        clCalendarList.gone()
+                    }
+                }
             }
 
         }
     }
 
-    private fun getStatus(ml: MotionLayout): String{
-        if(ml.currentState == ml.startState) return "START_STATE"
-        else return "END_STATE"
+    private fun initWeatherData() {
+//        val latitude = 37.3957122
+//        val longitude = 127.1105181
+        //val address = Geocoder(context).getFromLocation(latitude, longitude, 1)[0]
+//        val point = GpsUtil.convertToCoordinates(latitude, longitude)
+
+        binding.run {
+            tvTemperature.text = "=="
+            tvLocation.text = "=="
+            tvWeatherUpdateAt.invisible()
+            Glide.with(this@CalendarFragment).load(R.drawable.ic_weather_none).into(ivWeather)
+        }
     }
 
-    //
-//    private val viewModel: CalendarViewModel by activityViewModels{
-//        CalendarViewModelFactory((requireActivity().application as BaseApplication).roomCalendarMemoRepositoryImpl)
-//    }
+    private fun setWeatherData(temperature: Float, skyStatus: Int) {
+        binding.run {
+            if(skyStatus == -1) {
+                tvTemperature.text = "=="
+                tvLocation.text = "=="
+                tvWeatherUpdateAt.invisible()
+            }
+            else {
+                tvTemperature.text = "$temperature"
+                tvWeatherUpdateAt.text = StringUtil.getUpdateAt(DateTime.now())
+                tvWeather.text = StringUtil.getWeatherString(skyStatus)
+                tvWeatherUpdateAt.visible()
+
+                getWeatherIcon(skyStatus)?.let { resId ->
+                    Glide.with(this@CalendarFragment).load(resId).into(ivWeather)
+                }
+            }
+        }
+    }
+
+    private fun getWeatherIcon(skyStatus: Int): Int? =
+        when(skyStatus) {
+            0 -> R.drawable.ic_weather_sun
+            1 -> R.drawable.ic_weather_rain
+            2 -> R.drawable.ic_weather_rain_snow
+            3 -> R.drawable.ic_weather_snow
+            else -> null
+        }
+
+    override fun initView() {
+        binding.run {
+            calendarVM = calendarViewModel
+
+            tvToday.text = DateTime.now().toString("MM/dd")
+
+            btnMotion.setOnSingleClickListener { btn ->
+                if (mlCalendar.currentState == mlCalendar.startState) {
+                    mlCalendar.transitionToEnd()
+                    calendarViewModel.setCalendarStatus(CALENDAR_WEEK)
+
+                    btn.setBackgroundResource(R.drawable.ic_calendar_btn_down)
+                } else {
+                    mlCalendar.transitionToStart()
+                    calendarViewModel.setCalendarStatus(CALENDAR_MONTH)
+
+                    btn.setBackgroundResource(R.drawable.ic_calendar_btn_up)
+                }
+            }
+
+            btnCalendarToday.setOnClickListener {
+                val now = DateTime.now()
+                binding.run {
+                    vpCalendarShort.currentItem = START_POSITION + getShortPosition(now)
+                    vpCalendarLong.currentItem = START_POSITION + getLongPosition(now)
+                }
+
+                calendarViewModel.setDateTime(now.millis)
+            }
+
+            vpCalendarShort.run {
+                adapter = calendarShortAdapter
+                currentItem = START_POSITION
+            }
+
+            vpCalendarLong.run {
+                adapter = calendarLongAdapter
+                currentItem = START_POSITION
+            }
+
+            fabCalendar.setOnClickListener {
+                val intent = Intent(context, CalendarAddScheduleActivity::class.java).apply {
+                    putExtra(DATE_MILLIS, calendarViewModel.dateTime.value?.millis)
+                }
+                startActivity(intent)
+            }
+
+            rvCalendar.run {
+                adapter = calendarScheduleAdapter.apply {
+                    setOnLayoutClickListener(object: CalendarScheduleAdapter.OnLayoutClickListener{
+                        override fun onLayoutClick(view: View, item: Schedule) {
+                            val intent = Intent(context, CalendarShowScheduleActivity::class.java).apply {
+                                putExtra(EXTRA_SCHEDULE, item)
+                            }
+                            startActivity(intent)
+                        }
+                    })
+//                    setOnItemClickListener(object : BaseRecyclerAdapter.OnItemClickListener{
+//                        override fun onItemClick(view: View, position: Int) {
+//                            val intent = Intent(context, CalendarShowScheduleActivity::class.java).apply {
+//                                putExtra(EXTRA_SCHEDULE, getItem(position))
+//                            }
+//                            startActivity(intent)
+//                        }
+//                    })
+                }
+
+                addItemDecoration(CalendarScheduleItemDecoration(context))
+            }
+
+            clGotzBanner.setOnClickListener {
+                val intent = Intent(context, WebViewActivity::class.java).apply {
+                    putExtra(WebViewActivity.EXTRA_LOAD_URL, BuildConfig.GOTZ_URL_ON_BOARDING)
+                    putExtra(WebViewActivity.EXTRA_TITLE, "GOT'Z를 알고싶다면?")
+                }
+                startActivity(intent)
+            }
+
+            tvCalendarAddSchedule.setOnClickListener {
+                val intent = Intent(context, CalendarAddScheduleActivity::class.java).apply {
+                    putExtra(DATE_MILLIS, calendarViewModel.dateTime.value?.millis)
+                }
+                startActivity(intent)
+            }
+        }
+
+        initWeatherData()
+    }
+
+    override fun initViewModel() {
+        calendarViewModel.run {
+            calendarStatus.observe(this@CalendarFragment) { status ->
+                when(status) {
+                    CALENDAR_MONTH -> {
+                        binding.run {
+                            vpCalendarShort.unregisterOnPageChangeCallback(vpCalendarShortCallback)
+                            vpCalendarLong.registerOnPageChangeCallback(vpCalendarLongCallback)
+                        }
+                    }
+                    CALENDAR_WEEK -> {
+                        binding.run {
+                            vpCalendarLong.unregisterOnPageChangeCallback(vpCalendarLongCallback)
+                            vpCalendarShort.registerOnPageChangeCallback(vpCalendarShortCallback)
+                        }
+                    }
+                    else -> {}
+                }
+            }
+
+            dateTime.observe(this@CalendarFragment) { dateTime ->
+                GLog.messageLog("dateTime:observe ${dateTime.toString("yyyy-MM-dd")}")
+                binding.run {
+                    vpCalendarLong.currentItem = START_POSITION + getLongPosition(dateTime)
+                    vpCalendarShort.currentItem = START_POSITION + getShortPosition(dateTime)
+                }
+
+                lifecycleScope.launch(Dispatchers.IO) {
+                    scheduleViewModel.readDailyScheduleUseCase(dateTime).collect{ scheduleWithDate ->
+
+                        withContext(Dispatchers.Main) {
+                            if(clickStatus.value == true) {
+                                binding.run {
+                                    if(scheduleWithDate == null) {
+                                        calendarScheduleAdapter.clearItems()
+                                        rvCalendar.gone()
+                                        clCalendarList.visible()
+                                    }
+                                    else {
+                                        calendarScheduleAdapter.initItems(scheduleWithDate.schedule)
+                                        rvCalendar.visible()
+                                        clCalendarList.gone()
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        lifecycleScope.launch(Dispatchers.IO) {
+            val dateTime = calendarViewModel.getDateTime()
+            val scheduleWithDate = scheduleViewModel.readDailyScheduleUseCase(dateTime).first()
+            withContext(Dispatchers.Main) {
+                binding.run {
+                    if(scheduleWithDate == null) calendarScheduleAdapter.clearItems()
+                    else calendarScheduleAdapter.initItems(scheduleWithDate.schedule)
+                }
+            }
+        }
+    }
+
+    private fun getLongPosition(dateTime: DateTime): Int {
+        val year1: Int = dateTime.year
+        val year2: Int = DateTime.now().year
+        val month1: Int = dateTime.monthOfYear
+        val month2: Int = DateTime.now().monthOfYear
+
+        return (year1 - year2) * 12 + (month1 - month2)
+    }
+
+    private fun getShortPosition(dateTime: DateTime): Int {
+        val dateTime1: DateTime = startDayOfWeek(dateTime)
+        val dateTime2: DateTime = startDayOfWeek(
+            DateTime(
+                DateTime.now().year,
+                DateTime.now().monthOfYear,
+                DateTime.now().dayOfMonth,
+                0,
+                0,
+                0
+            )
+        )
+
+        return ((dateTime1.millis - dateTime2.millis) / 604800000L).toInt()
+    }
+
+
+
+    private fun createLocationRequest() {
+        locationRequest = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, TimeUnit.HOURS.toMillis(1)).build()
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun startLocationUpdates() {
+        context?.let{
+            if (it.isPermissionGranted(
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+            ) {
+                fusedLocationClient.requestLocationUpdates(
+                    locationRequest,
+                    locationCallback,
+                    Looper.getMainLooper()
+                )
+            }
+        }
+    }
 //
 //    private lateinit var calendarRecyclerAdapter: CalendarRecyclerAdapter
-//
-//    private lateinit var calendarLongAdapter: CalendarLongAdapter
-//    private lateinit var calendarShortAdapter: CalendarShortAdapter
 //
 //    private val list: ArrayList<CalendarRecyclerItem> = ArrayList()
 //    private val doublelist: ArrayList<ArrayList<CalendarRecyclerItem>> = ArrayList()
 //
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?,
-//    ): View? {
-//        _binding = FragmentCalendarBinding.inflate(inflater, container, false)
-//        calendarLongAdapter = CalendarLongAdapter(requireActivity())
-//        calendarShortAdapter = CalendarShortAdapter(requireActivity())
-//        calendarRecyclerAdapter = CalendarRecyclerAdapter(requireActivity())
 //
-//        binding.rvList.adapter = calendarRecyclerAdapter
-//
-//        binding.vpCalendarLong.adapter = calendarLongAdapter
-//        binding.vpCalendarShort.adapter = calendarShortAdapter
-//
-//        binding.vpCalendarLong.setCurrentItem(CalendarLongAdapter.START_POSITION, false)
-//        binding.vpCalendarShort.setCurrentItem(CalendarShortAdapter.START_POSITION, false)
-//
-//
-//        return binding.root
-//    }
 //
 //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 //        super.onViewCreated(view, savedInstanceState)
@@ -100,113 +412,6 @@ class CalendarFragment: BaseFragment<FragmentCalendarBinding>(R.layout.fragment_
 //        btnClick()
 //        setDecoration()
 //        initViewModel()
-//    }
-//
-//    override fun onResume() {
-//        super.onResume()
-//        try{
-//            val dateTime = DateTime(viewModel.year.value!!, viewModel.month.value!!, viewModel.day.value!!, 0, 0, 0)
-//            setList(dateTime)
-//
-//            viewModel.calendarMemo.observe(requireActivity(), Observer {
-//                viewModel.flagForShortUpdate.value = true
-//                viewModel.flagForLongUpdate.value = true
-//            })
-//        }catch (e: Exception){
-//            Log.e("CalendarFragment", e.message.toString())
-//        }
-//
-//        viewModel.flagForList.observe(requireActivity(), Observer {
-//            if(viewModel.flagForList.value!!){
-//                setList(DateTime(viewModel.year.value!!, viewModel.month.value!!, viewModel.day.value!!,0,0,0))
-//                viewModel.flagForList.value = false
-//            }
-//        })
-//
-//    }
-//
-//    fun refreshFragment(){
-//        with(viewModel){
-//            val dateTime = DateTime.now()
-//            if(year.value != dateTime.year || month.value != dateTime.monthOfYear || day.value != dateTime.dayOfMonth){
-//                flagForSelectedItem.value = true
-//                flagForSelected.value = false
-//
-//                year.value = dateTime.year
-//                month.value = dateTime.monthOfYear
-//                day.value = dateTime.dayOfMonth
-//                closeCalendar()
-//            }
-//        }
-//    }
-//
-//    private fun initViewModel(){
-//        with(viewModel){
-//            year.value = DateTime.now().year
-//            month.value = DateTime.now().monthOfYear
-//            day.value = DateTime.now().dayOfMonth
-//
-//            flagForSelectedItem.value = true
-//            flagForSelected.value = false
-//        }
-//    }
-//
-//    private fun initObserver(){
-//        viewModel.year.observe( viewLifecycleOwner, Observer {
-//            binding.tvFragmentCalendarDate.text = viewModel.year.value.toString() + "년 " + viewModel.month.value.toString() + "월"
-//        })
-//
-//        viewModel.month.observe( viewLifecycleOwner, Observer {
-//            binding.tvFragmentCalendarDate.text = viewModel.year.value.toString() + "년 " + viewModel.month.value.toString() + "월"
-//        })
-//    }
-//
-//    private fun btnClick(){
-//
-//        binding.btnFragmentCalendarBefore.setOnClickListener{
-//            viewModel.flagForSelectedItem.value = true
-//            var dateTime = DateTime(viewModel.year.value!!, viewModel.month.value!!, 1, 0, 0, 0)
-//            dateTime = dateTime.minusMonths(1)
-//            setCalendar(dateTime)
-//        }
-//
-//        binding.btnFragmentCalendarAfter.setOnClickListener {
-//            viewModel.flagForSelectedItem.value = true
-//            var dateTime = DateTime(viewModel.year.value!!, viewModel.month.value!!, 1, 0, 0, 0)
-//            dateTime = dateTime.plusMonths(1)
-//            setCalendar(dateTime)
-//        }
-//
-//        binding.btnOpen.setOnClickListener {
-//            openCalendar()
-//        }
-//
-//        binding.btnClose.setOnClickListener {
-//            closeCalendar()
-//        }
-//
-//        binding.fabFragmentCalendar.setOnClickListener {
-//            if(viewModel.flagForSelected.value!!) (requireActivity() as FrameActivity).openActivityForResult(CalendarMemoActivity(),-1, DateTime(viewModel.year.value!!, viewModel.month.value!!, viewModel.day.value!!, 0, 0, 0).millis)
-//            else (requireActivity() as FrameActivity).openActivityForResult(CalendarMemoActivity(),-1)
-//        }
-//    }
-//
-//    private fun setCalendar(dateTime: DateTime){
-//        viewModel.year.value = dateTime.year
-//        viewModel.month.value = dateTime.monthOfYear
-//        viewModel.day.value = dateTime.dayOfMonth
-//
-//        val startState = binding.mlCalendar.startState
-//        val endState = binding.mlCalendar.endState
-//        if(binding.mlCalendar.currentState.equals(startState)){
-//            binding.vpCalendarShort.currentItem = CalendarShortAdapter.START_POSITION + getShortPosition(dateTime)
-//            viewModel.flagForShortPosition.value = true
-//        }
-//
-//        if(binding.mlCalendar.currentState.equals(endState)){
-//            binding.vpCalendarLong.currentItem = CalendarLongAdapter.START_POSITION + getLongPosition(dateTime)
-//            viewModel.flagForLongPosition.value = true
-//        }
 //    }
 //
 //    private fun setList(_dateTime: DateTime){
@@ -252,40 +457,5 @@ class CalendarFragment: BaseFragment<FragmentCalendarBinding>(R.layout.fragment_
 //    private fun setDecoration(){
 //        val decoration = CalendarRecyclerItemDecoration(requireContext())
 //        binding.rvList.addItemDecoration(decoration)
-//    }
-//
-//    fun openCalendar(){
-//        binding.mlCalendar.transitionToEnd()
-//        binding.fabFragmentCalendar.visibility = View.GONE
-//
-//        val dateTime = DateTime(viewModel.year.value!!, viewModel.month.value!!, viewModel.day.value!!, 0, 0, 0)
-//        setCalendar(dateTime)
-//    }
-//
-//    fun closeCalendar(){
-//        binding.mlCalendar.transitionToStart()
-//        binding.fabFragmentCalendar.visibility = View.VISIBLE
-//        viewModel.flagForSelectedItem.value = true
-//
-//        val dateTime = DateTime(viewModel.year.value!!, viewModel.month.value!!, viewModel.day.value!!, 0, 0, 0)
-//        setCalendar(dateTime)
-//    }
-//
-//    companion object{
-//        fun getLongPosition(dateTime: DateTime): Int{
-//            val year1:Int = dateTime.year
-//            val year2:Int = DateTime.now().year
-//            val month1:Int = dateTime.monthOfYear
-//            val month2:Int = DateTime.now().monthOfYear
-//
-//            return (year1 - year2)*12 + (month1 - month2)
-//        }
-//
-//        fun getShortPosition(dateTime: DateTime): Int{
-//            val dateTime1: DateTime = startDayOfWeek(dateTime)
-//            val dateTime2: DateTime = startDayOfWeek(DateTime(DateTime.now().year, DateTime.now().monthOfYear, DateTime.now().dayOfMonth, 0,0,0))
-//
-//            return ((dateTime1.millis - dateTime2.millis)/604800000L).toInt()
-//        }
 //    }
 }
