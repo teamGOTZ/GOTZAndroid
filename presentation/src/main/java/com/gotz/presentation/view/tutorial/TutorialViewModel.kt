@@ -3,7 +3,7 @@ package com.gotz.presentation.view.tutorial
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.gotz.base.BaseViewModel
-import com.gotz.presentation.util.Event
+import com.gotz.base.util.Event
 
 class TutorialViewModel: BaseViewModel() {
 

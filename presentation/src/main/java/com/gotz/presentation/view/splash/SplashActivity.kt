@@ -10,7 +10,7 @@ import com.gotz.domain.usecase.user.ReadNameUseCase
 import com.gotz.presentation.R
 import com.gotz.base.BaseActivity
 import com.gotz.presentation.databinding.ActivitySplashBinding
-import com.gotz.presentation.util.GLog
+import com.gotz.base.util.GLog
 import com.gotz.presentation.view.main.MainActivity
 import com.gotz.presentation.view.tutorial.TutorialActivity
 import kotlinx.coroutines.Dispatchers

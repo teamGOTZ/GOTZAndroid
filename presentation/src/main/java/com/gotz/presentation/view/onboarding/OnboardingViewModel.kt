@@ -5,14 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.gotz.base.BaseViewModel
 import com.gotz.domain.usecase.user.*
-import com.gotz.presentation.util.Event
-import com.gotz.presentation.util.GLog
+import com.gotz.base.util.Event
+import com.gotz.base.util.GLog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class OnboardingViewModel(
     private val createNameUseCase: CreateNameUseCase,

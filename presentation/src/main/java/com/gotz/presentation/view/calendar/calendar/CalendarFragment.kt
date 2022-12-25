@@ -7,13 +7,11 @@ import android.location.Geocoder
 import android.os.Looper
 import android.view.View
 import androidx.lifecycle.lifecycleScope
-import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.bumptech.glide.Glide
 import com.google.android.gms.location.*
 import com.gotz.presentation.R
 import com.gotz.base.BaseFragment
-import com.gotz.base.BaseRecyclerAdapter
 import com.gotz.base.extension.gone
 import com.gotz.base.extension.invisible
 import com.gotz.base.extension.setOnSingleClickListener
@@ -27,7 +25,7 @@ import com.gotz.base.util.StringUtil
 import com.gotz.domain.model.Schedule
 import com.gotz.presentation.BuildConfig
 import com.gotz.presentation.databinding.FragmentCalendarBinding
-import com.gotz.presentation.util.GLog
+import com.gotz.base.util.GLog
 import com.gotz.presentation.view.calendar.WeatherViewModel
 import com.gotz.presentation.view.calendar.calendar.CalendarViewModel.Companion.CALENDAR_MONTH
 import com.gotz.presentation.view.calendar.calendar.CalendarViewModel.Companion.CALENDAR_WEEK

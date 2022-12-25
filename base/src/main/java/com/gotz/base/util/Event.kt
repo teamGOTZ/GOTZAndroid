@@ -1,4 +1,4 @@
-package com.gotz.presentation.util
+package com.gotz.base.util
 
 import androidx.lifecycle.Observer
 

@@ -9,8 +9,7 @@ import com.gotz.base.util.CalendarUtil
 import com.gotz.domain.model.ScheduleWithDate
 import com.gotz.presentation.R
 import com.gotz.presentation.databinding.FragmentCalendarShortBinding
-import com.gotz.presentation.util.GLog
-import com.gotz.presentation.view.calendar.calendar.CalendarViewModel.Companion.CALENDAR_WEEK
+import com.gotz.base.util.GLog
 import com.gotz.presentation.view.calendar.schedule.ScheduleViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
