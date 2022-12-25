@@ -6,7 +6,7 @@
 
 
     <application
-        android:name="com.gotz.base_legacy.BaseApplication"
+        android:name="com.gotz.GotzApplication"
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_app_icon"
@@ -14,19 +14,6 @@
         android:roundIcon="@mipmap/ic_app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WGPGkt">
-
-        <activity android:name="com.gotz.views.calendar.memo.CalendarMemoActivity" android:exported="true" android:screenOrientation="portrait"></activity>
-        <activity android:name="com.gotz.views.calendar.memo.CalendarMemoDetailActivity" android:exported="true" android:screenOrientation="portrait"></activity>
-
-        <activity android:name="com.gotz.views.frame.FrameActivity" android:exported="true" android:screenOrientation="portrait"></activity>
-
-        <activity android:name="com.gotz.views.main.prepare.MainPrepareIntroActivity" android:exported="true" android:screenOrientation="portrait"></activity>
-        <activity android:name="com.gotz.views.main.prepare.MainPrepareNameActivity" android:exported="true" android:screenOrientation="portrait"></activity>
-        <activity android:name="com.gotz.views.main.prepare.MainPrepareHelloActivity" android:exported="true" android:screenOrientation="portrait"></activity>
-
-        <activity android:name="com.gotz.views.main.prepare.MainPrepareSplashActivity" android:exported="true" android:screenOrientation="portrait">
-
-        </activity>
     </application>
 
 </manifest>
