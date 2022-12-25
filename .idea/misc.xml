@@ -6,11 +6,25 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/ic_appicon_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.154" />
+        <entry key="app/src/main/res/drawable/drawable_shadow.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/ic_3dots.xml" value="0.166" />
         <entry key="app/src/main/res/drawable/ic_appicon_background.xml" value="0.1385" />
+        <entry key="app/src/main/res/drawable/ic_arrow_down.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/ic_arrow_left.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/ic_arrow_right.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/ic_calendar.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/ic_calendar_button.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/ic_clock.xml" value="0.1415" />
         <entry key="app/src/main/res/drawable/ic_delete_fill.xml" value="0.146" />
+        <entry key="app/src/main/res/drawable/ic_flag.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/ic_plus_floating.xml" value="0.1415" />
         <entry key="app/src/main/res/drawable/style_bottomsheet_base.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/style_button_base.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/style_button_calendar.xml" value="0.1415" />
         <entry key="app/src/main/res/drawable/style_cursor_black.xml" value="0.146" />
+        <entry key="app/src/main/res/drawable/style_edittext_black100.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/style_edittext_white.xml" value="0.166" />
         <entry key="app/src/main/res/layout/activity_calendar_memo.xml" value="0.21240942028985507" />
         <entry key="app/src/main/res/layout/activity_calendar_memo_detail.xml" value="0.39809570312500003" />
         <entry key="app/src/main/res/layout/activity_frame.xml" value="0.2078804347826087" />
@@ -18,6 +32,7 @@
         <entry key="app/src/main/res/layout/activity_main_prepare_intro.xml" value="0.21693840579710144" />
         <entry key="app/src/main/res/layout/activity_main_prepare_name.xml" value="0.13323201621073963" />
         <entry key="app/src/main/res/layout/activity_main_prepare_splash.xml" value="0.2341485507246377" />
+        <entry key="app/src/main/res/layout/custom_bar_button.xml" value="0.2318840579710145" />
         <entry key="app/src/main/res/layout/custom_edittext.xml" value="0.21240942028985507" />
         <entry key="app/src/main/res/layout/custom_edittext_black100.xml" value="0.23052536231884058" />
         <entry key="app/src/main/res/layout/custom_today_button.xml" value="0.2164855072463768" />
@@ -27,10 +42,15 @@
         <entry key="app/src/main/res/layout/fragment_calendar_long_legacy.xml" value="0.13125" />
         <entry key="app/src/main/res/layout/fragment_calendar_short.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_calendar_short_legacy.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/recycler_calendar.xml" value="0.13125" />
         <entry key="app/src/main/res/menu/popup_calendar_memo_detail.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_app_icon.xml" value="0.154" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_appicon.xml" value="0.137" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_appicon_round.xml" value="0.137" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.166" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.166" />
+        <entry key="app/src/release/res/mipmap-anydpi-v26/ic_app_icon.xml" value="0.166" />
+        <entry key="app/src/release/res/mipmap-anydpi-v26/ic_app_icon_round.xml" value="0.166" />
         <entry key="base/src/main/res/drawable/ic_check_purple.xml" value="0.166" />
         <entry key="base/src/main/res/drawable/ic_delete_fill.xml" value="0.146" />
         <entry key="base/src/main/res/drawable/style_check_layout_disable.xml" value="0.166" />
@@ -51,9 +71,11 @@
         <entry key="presentation/src/main/res/drawable/ic_character_logo.xml" value="0.1475" />
         <entry key="presentation/src/main/res/drawable/ic_character_tutorial_1.xml" value="0.1475" />
         <entry key="presentation/src/main/res/drawable/ic_character_tutorial_2.xml" value="0.1475" />
+        <entry key="presentation/src/main/res/drawable/ic_clock.xml" value="0.1415" />
         <entry key="presentation/src/main/res/drawable/ic_flag.xml" value="0.1385" />
         <entry key="presentation/src/main/res/drawable/ic_gotz_apostrophe.xml" value="0.146" />
         <entry key="presentation/src/main/res/drawable/ic_gotz_logo.xml" value="0.15" />
+        <entry key="presentation/src/main/res/drawable/ic_plus_floating.xml" value="0.166" />
         <entry key="presentation/src/main/res/drawable/ic_weather_none.xml" value="0.1105" />
         <entry key="presentation/src/main/res/drawable/shape_btn_calendar.xml" value="0.14" />
         <entry key="presentation/src/main/res/drawable/shape_circle_000000.xml" value="0.154" />
@@ -73,6 +95,7 @@
         <entry key="presentation/src/main/res/drawable/style_button_calendar.xml" value="0.1475" />
         <entry key="presentation/src/main/res/drawable/style_button_calendar_today.xml" value="0.1475" />
         <entry key="presentation/src/main/res/drawable/style_edittext_base.xml" value="0.1" />
+        <entry key="presentation/src/main/res/drawable/style_edittext_white.xml" value="0.1415" />
         <entry key="presentation/src/main/res/layout-v28/fragment_calendar.xml" value="0.2318840579710145" />
         <entry key="presentation/src/main/res/layout/activity_calendar_add_schedule.xml" value="0.25" />
         <entry key="presentation/src/main/res/layout/activity_calendar_memo.xml" value="0.2341485507246377" />
