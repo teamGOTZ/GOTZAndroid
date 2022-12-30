@@ -33,7 +33,7 @@
                 android:id="@+id/tv_skip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="건너뛰기"
+                android:text="@string/skip_kr"
                 android:textStyle="bold"
                 android:textSize="14dp"
                 android:layout_marginEnd="16dp"
@@ -98,7 +98,7 @@
 
             <Button
                 android:id="@+id/btn_main_onboarding_gender"
-                android:text="@string/string_next"
+                android:text="@string/next_kr"
                 android:onClick="@{() -> viewmodel.btnClickAndUpdateAge()}"
                 android:enabled="@{viewmodel.age != 0}"
                 android:layout_marginStart="20dp"

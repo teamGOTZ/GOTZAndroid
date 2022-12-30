@@ -4,7 +4,7 @@
         android:state_enabled="true"
         android:state_pressed="false">
         <shape>
-            <solid android:color="@color/black_900"/>
+            <solid android:color="@color/Gray_900"/>
             <size
                 android:width="320dp"
                 android:height="56dp"/>
@@ -17,7 +17,7 @@
         android:state_enabled="true"
         android:state_pressed="true">
         <shape>
-            <solid android:color="@color/black_800"/>
+            <solid android:color="@color/Gray_800"/>
             <size
                 android:width="320dp"
                 android:height="56dp"/>
@@ -30,7 +30,7 @@
         android:state_enabled="false"
         android:state_pressed="false">
         <shape>
-            <solid android:color="@color/black_300"/>
+            <solid android:color="@color/Gray_300"/>
             <size
                 android:width="320dp"
                 android:height="56dp"/>

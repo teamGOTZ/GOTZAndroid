@@ -61,6 +61,7 @@
                 android:gravity="center_vertical"
                 android:padding="24dp"
                 android:layout_marginStart="20dp"
+                android:text="@string/on_boarding_name_text"
                 style="@style/Text16Regular"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guideline_62_5"
@@ -81,7 +82,7 @@
 
             <Button
                 android:id="@+id/btn_main_onboarding_next"
-                android:text="@string/string_next"
+                android:text="@string/next_kr"
                 android:onClick="@{() -> viewmodel.btnClickAndInsertName()}"
                 android:enabled="@{viewmodel.btnVisibility}"
                 android:layout_marginStart="20dp"

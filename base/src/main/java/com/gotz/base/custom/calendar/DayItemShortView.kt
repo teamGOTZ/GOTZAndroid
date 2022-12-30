@@ -26,7 +26,6 @@ class DayItemShortView@JvmOverloads constructor(
     private var scheduleCount: Int = 0
 ) : View(ContextThemeWrapper(context, defStyleRes), attrs, defStyleAttr) {
     private val listDay: List<String> = listOf(" ","월", "화", "수", "목", "금", "토", "일" )
-    //private val bounds = Rect()
 
     private var paint: Paint = Paint()
     private var paintText: Paint = Paint()
@@ -131,7 +130,6 @@ class DayItemShortView@JvmOverloads constructor(
             val marginY = dpToPx(context,80F)/2F
             val centerX = width/2F
             val centerY = (height/2F) + dpToPx(context, 2F)
-            ////canvas.drawRoundRect(centerX - marginX, centerY - marginY, centerX + marginX, centerY + marginY, dpToPx(50F),dpToPx(50F), paintRectFill)
             canvas.drawRoundRect(centerX - marginX + offset, centerY - marginY + offset, centerX + marginX - offset, centerY + marginY - offset, dpToPx(context,50F),dpToPx(context,50F), paintRectFill)
 
         }

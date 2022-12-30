@@ -1,31 +1,71 @@
 <resources>
 
-    <string name="string_today_upper">TODAY</string>
-    <string name="string_today_lower">today</string>
-    <string name="string_weather">weather</string>
-    <string name="string_next">다음</string>
-    <string name="string_save">저장</string>
-    <string name="string_btn_text_calendar">캘린더</string>
-    <string name="string_all_day">하루종일</string>
+    <string name="next_kr">다음</string>
+    <string name="save_kr">저장</string>
+    <string name="calendar_kr">캘린더</string>
+    <string name="all_day_kr">하루종일</string>
 
-    <string name="string_calendar">Calendar</string>
-    <string name="string_schedule_content">일정 내용</string>
-    <string name="string_schedule_add">일정 추가</string>
-    <string name="string_schedule_describe">일정 설명</string>
+    <string name="My_Page">My Page</string>
+    <string name="Schedule">Schedule</string>
+    <string name="today_upper">TODAY</string>
+    <string name="today_lower">today</string>
+    <string name="weather">weather</string>
 
-    <string name="string_edit_text_hint">입력하세요</string>
+    <string name="age_kr">나이</string>
+    <string name="age_select_kr">나이 선택</string>
+    <string name="agree_all_kr">전체 동의</string>
+    <string name="delete_kr">삭제</string>
+    <string name="edit_kr">수정</string>
+    <string name="edit_text_hint_kr">입력하세요</string>
+    <string name="privacy_policy_kr">개인 정보 보호 방침</string>
+    <string name="gender_kr">성별</string>
+    <string name="gender_etc_kr">그 외</string>
+    <string name="gender_man_kr">남자</string>
+    <string name="gender_woman_kr">여자</string>
+    <string name="gotz_kr">갓찌</string>
+    <string name="hello_kr">안녕하세요</string>
+    <string name="more_kr">더보기</string>
+    <string name="my_info_kr">내 정보</string>
+    <string name="schedule_content_kr">일정 내용</string>
+    <string name="schedule_add_kr">일정 추가</string>
+    <string name="schedule_describe_kr">일정 설명</string>
+    <string name="skip_kr">건너뛰기</string>
+    <string name="terms_of_service_kr">서비스 이용 약관</string>
+    <string name="version_info_kr">버전 정보 v %s</string>
+    <string name="want_to_know_gotz">GOT\'Z를 알고싶다면?</string>
 
-    <string name="string_star_1">*</string>
+    <string name="star_1">*</string>
 
-<!--    Onboarding-->
-    <string name="string_onboarding_intro">WEDID과 함께\n당신의 다음을 기록하세요</string>
+    <!--    Splash -->
+    <string name="splash_text">나의 일상이 제안하는 오늘</string>
 
-    <string name="string_onboarding_name_1">이름을 입력해주세요</string>
-    <string name="string_onboarding_name_2">위딛은 이름을 불러드리고 싶어요 :)</string>
+    <!--    Tutorial -->
+    <string name="tutorial_1_title">당신의 일상이 궁금해요</string>
+    <string name="tutorial_1_content">오늘은 어떤 하루를 보내시나요?\n캘린더에 하루의 일과를 기록해보세요</string>
+    <string name="tutorial_2_title">매일 달라지는 오늘의 추천</string>
+    <string name="tutorial_2_content">당신의 일상에 따라\n매일 달라지는 GOT’Z 제안!\n첫 화면에서 확인해보세요</string>
+    <string name="tutorial_3_title">GOT’Z에게 맡겨보세요!</string>
+    <string name="tutorial_3_content">평범한 하루를 조금 더 다채롭게!\nGOT’Z는 당신의 일상을 궁금해합니다 :)</string>
 
-    <string name="string_onboarding_hello_next">위딛 시작하기</string>
+    <!--    Login-->
+    <string name="login_contents_1">여러분들의 일상을 함께 할\u0020</string>
+    <string name="login_contents_2">\u0020예요.</string>
+    <string name="login_button_text">일상을 함께 하기</string>
 
-<!--    Calendar-->
-    <string name="string_schedule_title_text">어떤 일정인가요?</string>
+    <!--    On_boarding-->
+    <string name="on_boarding_privacy_title">[필수] 개인정보 이용 방침</string>
+    <string name="on_boarding_terms_title">[필수] 서비스 이용 약관</string>
+    <string name="on_boarding_terms_text">일상 추천을 위해\n약관에 동의해주세요</string>
+    <string name="on_boarding_name_text">제가 어떻게\n불러드릴까요?</string>
+    <string name="on_boarding_age_text">%s님을\n조금 더 알고 싶어요!</string>
+    <string name="on_boarding_gender_text">%s님의\n성별을 선택해주세요</string>
+    <string name="on_boarding_button_text">일상 추천 시작하기</string>
+
+    <!--    My-->
+    <string name="my_empty_schedule_title">오늘은 어떤 하루를 보내시나요?</string>
+    <string name="my_empty_schedule_add">일정 추가하기</string>
+
+    <!--    Calendar -->
+    <string name="schedule_title_text_kr">어떤 일정인가요?</string>
 
 </resources>

@@ -14,7 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class OnboardingGenderFragment: BaseFragment<FragmentOnboardingGenderBinding>(R.layout.fragment_onboarding_gender) {
     private val viewModel: OnboardingViewModel by sharedViewModel()
-    private val genderList = listOf("남자", "여자", "그 외")
+    private val genderList: List<String> by lazy { listOf(getString(R.string.gender_man_kr), getString(R.string.gender_woman_kr), getString(R.string.gender_etc_kr)) }
 
     override fun initFragment() {
         binding.viewmodel = viewModel
@@ -24,7 +24,7 @@ class OnboardingGenderFragment: BaseFragment<FragmentOnboardingGenderBinding>(R.
             val name = viewModel.readName().first()
 
             withContext(Dispatchers.Main) {
-                binding.tvContents.text = "${name}님의\n성별을 선택해주세요"
+                binding.tvContents.text = getString(R.string.on_boarding_gender_text, name)
             }
         }
     }

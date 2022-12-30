@@ -23,7 +23,6 @@ class OnboardingTermsFragment: BaseFragment<FragmentOnboardingTermsBinding>(R.la
         binding.viewmodel = viewModel
 
         Glide.with(this).load(R.raw.gif_on_boarding_5).into(binding.ivContents)
-        binding.tvContents.text = "일상 추천을 위해\n약관에 동의해주세요"
     }
 
     override fun initView() {

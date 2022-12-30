@@ -37,7 +37,7 @@ class MyFragment: BaseFragment<FragmentMyBinding>(R.layout.fragment_my)  {
                 context?.let {
                     val intent = Intent(it, WebViewActivity::class.java).apply {
                         putExtra(WebViewActivity.EXTRA_LOAD_URL, BuildConfig.GOTZ_URL_TERMS_AND_CONDITIONS)
-                        putExtra(WebViewActivity.EXTRA_TITLE, "서비스 이용 약관")
+                        putExtra(WebViewActivity.EXTRA_TITLE, getString(R.string.terms_of_service_kr))
                     }
                     startActivity(intent)
                 }
@@ -47,7 +47,7 @@ class MyFragment: BaseFragment<FragmentMyBinding>(R.layout.fragment_my)  {
                 context?.let {
                     val intent = Intent(it, WebViewActivity::class.java).apply {
                         putExtra(WebViewActivity.EXTRA_LOAD_URL, BuildConfig.GOTZ_URL_PRIVACY)
-                        putExtra(WebViewActivity.EXTRA_TITLE, "개인 정보 보호 방침")
+                        putExtra(WebViewActivity.EXTRA_TITLE, getString(R.string.privacy_policy_kr))
                     }
                     startActivity(intent)
                 }
@@ -57,13 +57,13 @@ class MyFragment: BaseFragment<FragmentMyBinding>(R.layout.fragment_my)  {
                 context?.let {
                     val intent = Intent(it, WebViewActivity::class.java).apply {
                         putExtra(WebViewActivity.EXTRA_LOAD_URL, BuildConfig.GOTZ_URL_ON_BOARDING)
-                        putExtra(WebViewActivity.EXTRA_TITLE, "GOT'Z를 알고싶다면?")
+                        putExtra(WebViewActivity.EXTRA_TITLE, getString(R.string.want_to_know_gotz))
                     }
                     startActivity(intent)
                 }
             }
 
-            tvVersion.text = StringUtil.appVersionString(BuildConfig.GOTZ_APP_VERSION)
+            tvVersion.text = getString(R.string.version_info_kr, BuildConfig.GOTZ_APP_VERSION)
         }
 
         setName()

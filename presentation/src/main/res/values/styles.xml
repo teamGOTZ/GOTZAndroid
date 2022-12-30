@@ -28,7 +28,7 @@
         <item name ="android:layout_height">28dp</item>
         <item name ="android:background">@drawable/style_button_calendar_today</item>
         <item name ="android:textSize">12dp</item>
-        <item name ="android:textColor">@color/gray_600</item>
+        <item name ="android:textColor">@color/Gray_600</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -37,7 +37,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/style_button_calendar</item>
         <item name="android:textSize">12dp</item>
-        <item name="android:textColor">@color/black_400</item>
+        <item name="android:textColor">@color/Gray_400</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:outlineProvider">none</item>
     </style>
@@ -46,7 +46,7 @@
         <item name="android:textSize">11dp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/black_900</item>
+        <item name="android:textColor">@color/Gray_900</item>
     </style>
 
     <style name="Text12Bold">
@@ -58,77 +58,77 @@
         <item name="android:textSize">12dp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/black_900</item>
+        <item name="android:textColor">@color/Gray_900</item>
     </style>
 
     <style name="Text14Bold">
         <item name="android:textSize">14dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/black_900</item>
+        <item name="android:textColor">@color/Gray_900</item>
     </style>
 
     <style name="Text14Regular">
         <item name="android:textSize">14dp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/black_900</item>
+        <item name="android:textColor">@color/Gray_900</item>
     </style>
 
     <style name="Text15Bold">
         <item name="android:textSize">15dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/black_900</item>
+        <item name="android:textColor">@color/Gray_900</item>
     </style>
 
     <style name="Text15Regular">
         <item name="android:textSize">15dp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/black_900</item>
+        <item name="android:textColor">@color/Gray_900</item>
     </style>
 
     <style name="Text16Bold">
         <item name="android:textSize">16dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/black_900</item>
+        <item name="android:textColor">@color/Gray_900</item>
     </style>
 
     <style name="Text16Regular">
         <item name="android:textSize">16dp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/black_900</item>
+        <item name="android:textColor">@color/Gray_900</item>
     </style>
 
     <style name="Text20Bold">
         <item name="android:textSize">20dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/black_900</item>
+        <item name="android:textColor">@color/Gray_900</item>
     </style>
 
     <style name="Text20Regular">
         <item name="android:textSize">20dp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/black_900</item>
+        <item name="android:textColor">@color/Gray_900</item>
     </style>
 
     <style name="Text24Bold">
         <item name="android:textSize">24dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/black_900</item>
+        <item name="android:textColor">@color/Gray_900</item>
     </style>
 
     <style name="Text24Regular">
         <item name="android:textSize">24dp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/black_900</item>
+        <item name="android:textColor">@color/Gray_900</item>
     </style>
 
     <style name="Calendar"/>

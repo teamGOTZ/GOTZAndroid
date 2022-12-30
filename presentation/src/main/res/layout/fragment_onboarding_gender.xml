@@ -111,7 +111,7 @@
 
             <Button
                 android:id="@+id/btn_main_onboarding_gender"
-                android:text="@string/string_next"
+                android:text="@string/next_kr"
                 android:onClick="@{() -> viewmodel.btnClickAndUpdateGender()}"
                 android:enabled="@{!viewmodel.gender.isEmpty()}"
                 android:layout_marginStart="20dp"

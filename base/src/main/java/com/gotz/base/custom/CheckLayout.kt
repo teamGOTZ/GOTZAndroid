@@ -46,7 +46,7 @@ class CheckLayout @JvmOverloads constructor(
         if(layoutStatus == STATUS_ENABLE) {
             layout.background = resources.getDrawable(R.drawable.style_check_layout_enable)
             imageView.visible()
-            textView.setTextColor(resources.getColor(R.color.colorPrimary))
+            textView.setTextColor(resources.getColor(R.color.Primary))
         }
 
         else {

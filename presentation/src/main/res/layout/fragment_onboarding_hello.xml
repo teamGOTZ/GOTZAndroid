@@ -45,7 +45,7 @@
 
         <Button
             android:id="@+id/btn_onboarding_hello_next"
-            android:text="일상 추천 시작하기"
+            android:text="@string/on_boarding_button_text"
             android:onClick="@{() -> viewmodel.btnClick()}"
             style="@style/ContainedButtonStyle"
             app:layout_constraintBottom_toBottomOf="parent"

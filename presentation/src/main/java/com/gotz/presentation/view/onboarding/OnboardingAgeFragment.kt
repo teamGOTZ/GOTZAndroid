@@ -27,7 +27,7 @@ class OnboardingAgeFragment: BaseFragment<FragmentOnboardingAgeBinding>(R.layout
             val name = viewModel.readName().first()
 
             withContext(Dispatchers.Main) {
-                binding.tvContents.text = "${name}님을\n조금 더 알고 싶어요!"
+                binding.tvContents.text = getString(R.string.on_boarding_age_text, name)
             }
         }
 

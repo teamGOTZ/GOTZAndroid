@@ -193,14 +193,12 @@ class CalendarAddScheduleActivity: BaseActivity<ActivityCalendarAddScheduleBindi
             etCalendarAddScheduleTitle.text.observe(this@CalendarAddScheduleActivity) { text ->
                 if (text.isNotEmpty()){
                     tvCalendarAddScheduleSave.clickable()
-                    tvCalendarAddScheduleSave.setTextColor(resources.getColor(R.color.point_purple))
+                    tvCalendarAddScheduleSave.setTextColor(resources.getColor(R.color.Primary))
                 }
                 else{
                     tvCalendarAddScheduleSave.clickableNot()
                     tvCalendarAddScheduleSave.setTextColor(resources.getColor(R.color.Gray_400))
                 }
-
-//            viewModel.title.value = it
             }
         }
 

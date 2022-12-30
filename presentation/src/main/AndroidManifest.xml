@@ -2,13 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gotz.presentation">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-
-    <application
-        android:theme="@style/Theme.WGPGkt">
+    <application>
 
         <activity android:name=".view.calendar.schedule.CalendarAddScheduleActivity"
             android:exported="true"/>
@@ -40,9 +34,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".view.terms.TermsActivity"
-            android:exported="true"/>
 
         <activity android:name=".view.tutorial.TutorialActivity"
             android:exported="true"/>

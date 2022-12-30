@@ -29,7 +29,7 @@
                 android:id="@+id/tv_login_contents_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="안녕하세요"
+                android:text="@string/hello_kr"
                 android:textSize="18dp"
                 android:layout_marginTop="24dp"
                 android:letterSpacing="-0.05"
@@ -40,7 +40,7 @@
                 android:id="@+id/tv_login_contents_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="여러분들의 일상을 함께 할 "
+                android:text="@string/login_contents_1"
                 android:textSize="18dp"
                 android:letterSpacing="-0.05"
                 app:layout_constraintTop_toBottomOf="@id/tv_login_contents_1"
@@ -50,9 +50,9 @@
                 android:id="@+id/tv_login_contents_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="갓찌"
+                android:text="@string/gotz_kr"
                 android:textSize="18dp"
-                android:textColor="@color/point_purple"
+                android:textColor="@color/Primary"
                 android:textStyle="bold"
                 android:letterSpacing="-0.05"
                 app:layout_constraintStart_toEndOf="@id/tv_login_contents_2"
@@ -69,13 +69,11 @@
                 android:id="@+id/tv_login_contents_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" 예요."
+                android:text="@string/login_contents_2"
                 android:textSize="18dp"
                 android:letterSpacing="-0.05"
                 app:layout_constraintStart_toEndOf="@id/tv_login_contents_3"
                 app:layout_constraintBaseline_toBaselineOf="@id/tv_login_contents_2"/>
-
-
 
             <ImageView
                 android:id="@+id/iv_login_character"
@@ -90,7 +88,7 @@
                 android:id="@+id/btn_login_next"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="일상을 함께 하기"
+                android:text="@string/login_button_text"
                 style="@style/ContainedButtonStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

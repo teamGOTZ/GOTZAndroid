@@ -23,7 +23,7 @@ class ProfileActivity: BaseActivity<ActivityProfileBinding>(R.layout.activity_pr
 
     private val onboardingViewModel: OnboardingViewModel by viewModel()
 
-    private val genderList = listOf("남자", "여자", "그 외")
+    private val genderList: List<String> by lazy { listOf(getString(R.string.gender_man_kr), getString(R.string.gender_woman_kr), getString(R.string.gender_etc_kr)) }
 
     private var nickname = ""
     private var age = 0
@@ -91,7 +91,7 @@ class ProfileActivity: BaseActivity<ActivityProfileBinding>(R.layout.activity_pr
             etNickname.text.observe(this@ProfileActivity) { text ->
                 if (text.isNotEmpty()){
                     tvSave.clickable()
-                    tvSave.setTextColor(resources.getColor(R.color.point_purple))
+                    tvSave.setTextColor(resources.getColor(R.color.Primary))
                 }
                 else{
                     tvSave.clickableNot()
@@ -123,19 +123,19 @@ class ProfileActivity: BaseActivity<ActivityProfileBinding>(R.layout.activity_pr
     private fun setGender() {
         val checkLayout = listOf(binding.checkLayout1, binding.checkLayout2, binding.checkLayout3)
         when(gender) {
-            "남자" -> {
+            getString(R.string.gender_man_kr) -> {
                 checkLayout.forEachIndexed { index, it ->
                     if(index == 0) it.setLayoutStatus(CheckLayout.STATUS_ENABLE)
                     else it.setLayoutStatus(CheckLayout.STATUS_DISABLE)
                 }
             }
-            "여자" -> {
+            getString(R.string.gender_woman_kr) -> {
                 checkLayout.forEachIndexed { index, it ->
                     if(index == 1) it.setLayoutStatus(CheckLayout.STATUS_ENABLE)
                     else it.setLayoutStatus(CheckLayout.STATUS_DISABLE)
                 }
             }
-            "그 외" -> {
+            getString(R.string.gender_etc_kr) -> {
                 checkLayout.forEachIndexed { index, it ->
                     if(index == 2) it.setLayoutStatus(CheckLayout.STATUS_ENABLE)
                     else it.setLayoutStatus(CheckLayout.STATUS_DISABLE)

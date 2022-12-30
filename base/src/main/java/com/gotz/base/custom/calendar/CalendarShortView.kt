@@ -40,7 +40,6 @@ class CalendarShortView @JvmOverloads constructor(
             val left = index * iWidth
             val top = 0
 
-            //it.setBackgroundColor(Color.BLACK)
             it.layout(left, top, left+iWidth, top+iHeight)
             index++
         }

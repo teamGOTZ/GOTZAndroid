@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray_050">
+        android:background="@color/Gray_050">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_bar"
@@ -34,7 +34,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="내 정보"
+                android:text="@string/my_info_kr"
                 style="@style/Text16Bold"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -45,7 +45,7 @@
                 android:id="@+id/tv_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string_save"
+                android:text="@string/save_kr"
                 android:textStyle="bold"
                 android:textSize="14dp"
                 android:layout_marginEnd="16dp"
@@ -99,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="나이"
+                android:text="@string/age_kr"
                 style="@style/Text16Regular"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
@@ -110,7 +110,7 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="12dp"
                 android:layout_centerHorizontal="true"
-                android:autofillHints="나이 선택"
+                android:autofillHints="@string/age_select_kr"
                 android:dropDownWidth="match_parent"
                 android:overlapAnchor="false"
                 android:background="@drawable/shape_rect_f5f5f5_stroke"
@@ -121,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="성별"
+                android:text="@string/gender_kr"
                 style="@style/Text16Regular"
                 app:layout_constraintTop_toBottomOf="@id/spn_age"
                 app:layout_constraintStart_toStartOf="parent"/>

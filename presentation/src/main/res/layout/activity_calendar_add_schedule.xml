@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:background="@color/black_100">
+        android:background="@color/Gray_100">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string_schedule_add"
+                android:text="@string/schedule_add_kr"
                 style="@style/Text16Bold"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -41,7 +41,7 @@
                 android:id="@+id/tv_calendar_add_schedule_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string_save"
+                android:text="@string/save_kr"
                 android:textStyle="bold"
                 android:textSize="14dp"
                 android:layout_marginEnd="16dp"
@@ -57,7 +57,7 @@
             android:layout_weight="1">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -79,14 +79,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="@string/string_schedule_title_text" />
+                            android:text="@string/schedule_title_text_kr" />
 
                         <TextView
                             style="@style/Text16Bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="20dp"
-                            android:text="@string/string_star_1"
+                            android:text="@string/star_1"
                             android:textColor="#f44336" />
                     </LinearLayout>
 
@@ -121,7 +121,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:text="@string/string_all_day"
+                            android:text="@string/all_day_kr"
                             style="@style/Text16Regular"
                             android:gravity="center_vertical"
                             android:layout_marginStart="12dp"/>
@@ -165,7 +165,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/ic_arrow_down"
-                                android:backgroundTint="@color/black_400"
+                                android:backgroundTint="@color/Gray_400"
                                 android:layout_marginEnd="12dp"/>
 
                         </LinearLayout>
@@ -251,7 +251,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/string_schedule_describe"
+                        android:text="@string/schedule_describe_kr"
                         android:layout_marginBottom="12dp"
                         style="@style/Text16Regular"/>
 
@@ -260,7 +260,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="500dp"
                         android:background="@drawable/style_custom_edit_text"
-                        android:hint="@string/string_edit_text_hint"
+                        android:hint="@string/edit_text_hint_kr"
                         android:padding="12dp"
                         android:gravity="start|top"
                         android:textCursorDrawable="@drawable/style_custom_edit_text_cursor_black"
@@ -274,7 +274,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/black_100"/>
+            android:background="@color/Gray_100"/>
 
     </LinearLayout>
 

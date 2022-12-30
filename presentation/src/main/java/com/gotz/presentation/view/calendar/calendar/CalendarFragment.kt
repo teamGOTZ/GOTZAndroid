@@ -99,8 +99,6 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
         locationCallback = object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult) {
                 for (location in locationResult.locations){
-                    // Update UI with location data
-                    // ...
                     val point = GpsUtil.convertToCoordinates(location.latitude, location.longitude)
                     GLog.messageLog("${location.longitude} /// ${location.latitude}")
                     GLog.messageLog("${point.x} /// ${point.y}")
@@ -150,11 +148,6 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
     }
 
     private fun initWeatherData() {
-//        val latitude = 37.3957122
-//        val longitude = 127.1105181
-        //val address = Geocoder(context).getFromLocation(latitude, longitude, 1)[0]
-//        val point = GpsUtil.convertToCoordinates(latitude, longitude)
-
         binding.run {
             tvTemperature.text = "=="
             tvLocation.text = "=="
@@ -249,14 +242,6 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
                             startActivity(intent)
                         }
                     })
-//                    setOnItemClickListener(object : BaseRecyclerAdapter.OnItemClickListener{
-//                        override fun onItemClick(view: View, position: Int) {
-//                            val intent = Intent(context, CalendarShowScheduleActivity::class.java).apply {
-//                                putExtra(EXTRA_SCHEDULE, getItem(position))
-//                            }
-//                            startActivity(intent)
-//                        }
-//                    })
                 }
 
                 addItemDecoration(CalendarScheduleItemDecoration(context))
@@ -394,66 +379,4 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
             }
         }
     }
-//
-//    private lateinit var calendarRecyclerAdapter: CalendarRecyclerAdapter
-//
-//    private val list: ArrayList<CalendarRecyclerItem> = ArrayList()
-//    private val doublelist: ArrayList<ArrayList<CalendarRecyclerItem>> = ArrayList()
-//
-//
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        binding.tvFragmentCalendarDate.text = viewModel.year.toString() + "년 " + viewModel.month.toString() + "월"
-//        initObserver()
-//        btnClick()
-//        setDecoration()
-//        initViewModel()
-//    }
-//
-//    private fun setList(_dateTime: DateTime){
-//        val dateTime = startDayOfWeek(_dateTime)
-//
-//        viewModel.calendarMemo.observe(requireActivity(), Observer {
-//            doublelist.clear()
-//            for (idx in 0 until 7) {
-//                // 여기서 SELECT 조건 하루치만 설정해서 데이터 조정
-//                val idxDateTime = dateTime.plusDays(idx)
-//                val tmp = arrayListOf<CalendarRecyclerItem>()
-//                for (item in it) {
-//                    if (item.start >= idxDateTime.millis && item.start < idxDateTime.plusDays(1).millis)
-//                        tmp.add(CalendarRecyclerItem(-1,
-//                            item.title,
-//                            item.content,
-//                            item.isAllDay,
-//                            item.start,
-//                            item.end,
-//                            item.uid))
-//                }
-//                if(tmp.size == 0)tmp.add(CalendarRecyclerItem(title = "일정이 없습니다.", idx = -3))
-//                doublelist.add(tmp)
-//            }
-//            list.clear()
-//            list.add(CalendarRecyclerItem(start = 1, end = 0, idx = -2))
-//            for (idx in doublelist.indices) {
-//                list.add(CalendarRecyclerItem(dateTime.plusDays(idx).dayOfMonth, start = dateTime.plusDays(idx).millis))
-//
-//                for (item in doublelist.get(idx)) {
-//                    list.add(item)
-//                }
-//
-//                if(idx != 6)list.add(CalendarRecyclerItem(start = 0, end = 0, idx = -2))
-//            }
-//            list.add(CalendarRecyclerItem(start = 0, end = 1, idx = -2))
-//
-//            calendarRecyclerAdapter.setData(list)
-//            binding.rvList.scrollToPosition(0)
-//        })
-//    }
-//
-//    private fun setDecoration(){
-//        val decoration = CalendarRecyclerItemDecoration(requireContext())
-//        binding.rvList.addItemDecoration(decoration)
-//    }
 }

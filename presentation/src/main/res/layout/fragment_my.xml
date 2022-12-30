@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="My Page"
+                android:text="@string/My_Page"
                 android:textSize="24dp"
                 android:textStyle="bold"
                 android:textColor="@color/Gray_900"
@@ -66,7 +66,7 @@
                     android:id="@+id/tv_my_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black_900"
+                    android:textColor="@color/Gray_900"
                     android:lineHeight="28dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="100dp"
@@ -89,12 +89,12 @@
                     android:id="@+id/tv_my_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="gottz_zz@naver.com"
                     android:textSize="16dp"
                     android:layout_marginTop="8dp"
                     android:visibility="gone"
                     app:layout_constraintStart_toStartOf="@id/tv_my_name"
-                    app:layout_constraintTop_toBottomOf="@id/tv_my_name"/>
+                    app:layout_constraintTop_toBottomOf="@id/tv_my_name"
+                    tools:text="gottz_zz@naver.com"/>
 
                 <ImageView
                     android:id="@+id/iv_my_icon"
@@ -110,13 +110,13 @@
                     android:id="@+id/tv_schedule_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/my_empty_schedule_title"
                     android:gravity="center"
                     android:layout_marginTop="15dp"
                     style="@style/Text14Regular"
                     app:layout_constraintTop_toBottomOf="@id/iv_my_icon"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    tools:text="오늘은 어떤 하루를 보내시나요?"/>
+                    app:layout_constraintEnd_toEndOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_schedule_move"
@@ -124,12 +124,12 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:layout_marginTop="8dp"
-                    android:textColor="@color/point_purple"
+                    android:textColor="@color/Primary"
+                    android:text="@string/my_empty_schedule_add"
                     style="@style/Text14Bold"
                     app:layout_constraintTop_toBottomOf="@id/tv_schedule_count"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    tools:text="일정 추가하기"/>
+                    app:layout_constraintEnd_toEndOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_terms"
@@ -139,7 +139,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:gravity="center_vertical"
-                    android:text="서비스 이용 약관"
+                    android:text="@string/terms_of_service_kr"
                     style="@style/Text14Regular"
                     app:layout_constraintTop_toBottomOf="@id/tv_schedule_move"/>
 
@@ -158,7 +158,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:gravity="center_vertical"
-                    android:text="개인 정보 보호 방침"
+                    android:text="@string/privacy_policy_kr"
                     style="@style/Text14Regular"
                     app:layout_constraintTop_toBottomOf="@id/tv_terms"/>
 
@@ -177,7 +177,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:gravity="center_vertical"
-                    android:text="버전 정보 v 1.0.0"
+                    android:text=""
                     style="@style/Text14Regular"
                     app:layout_constraintTop_toBottomOf="@id/tv_privacy"/>
 

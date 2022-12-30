@@ -15,7 +15,6 @@ class OnboardingNameFragment: BaseFragment<FragmentOnboardingNameBinding>(R.layo
         binding.viewmodel = viewModel
 
         Glide.with(this).load(R.raw.gif_on_boarding_5).into(binding.ivContents)
-        binding.tvContents.text = "제가 어떻게\n불러드릴까요?"
     }
 
     override fun initView() {

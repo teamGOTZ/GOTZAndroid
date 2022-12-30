@@ -6,11 +6,11 @@
         android:id="@+id/btn_calendar"
         android:enabled="true"
         android:icon="@drawable/ic_calendar"
-        android:title="Schedule" />
+        android:title="@string/Schedule" />
 
     <item
         android:id="@+id/btn_my"
         android:enabled="true"
         android:icon="@drawable/ic_my"
-        android:title="My page"/>
+        android:title="@string/My_Page"/>
 </menu>

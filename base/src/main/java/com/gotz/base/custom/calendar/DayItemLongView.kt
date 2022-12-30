@@ -66,7 +66,6 @@ class DayItemLongView@JvmOverloads constructor(
             paintRect = Paint().apply {
                 textSize = getDimensionPixelSize(R.styleable.CalendarView_scheduleTextSize,0).toFloat()
                 color = Color.parseColor("#EEEEEE")
-                //alpha = 50
             }
 
             paintText = Paint().apply {
@@ -117,7 +116,6 @@ class DayItemLongView@JvmOverloads constructor(
         if(dayText == -1){
             drawPosition(canvas)
             drawCalendar(canvas)
-            //drawSchedule(canvas)
             drawToday(canvas)
         }else{
             drawTitle(canvas)
@@ -189,8 +187,6 @@ class DayItemLongView@JvmOverloads constructor(
                     canvas.drawCircle(x- d - (d/2), y, r, paintCircle)
                     canvas.drawCircle(x- (d/2), y, r, paintCircle)
                     canvas.drawCircle(x+ (d/2), y, r, paintCircle)
-
-                    //paintCircle.color = Color.parseColor("#757575")
 
                     canvas.drawLine(x+ d + (d/2) - r, y, x+ d + (d/2) + r, y, paintPlus)
                     canvas.drawLine(x+d+(d/2), y-r, x+d+(d/2), y+r, paintPlus)

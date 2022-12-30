@@ -26,7 +26,7 @@
 
         <Button
             android:id="@+id/btn_tutorial_next"
-            android:text="@string/string_next"
+            android:text="@string/next_kr"
             android:onClick="@{() -> viewmodel.btnClick()}"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
