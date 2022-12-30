@@ -29,8 +29,8 @@ android {
         applicationId "com.gotz"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
-        versionCode 1
-        versionName rootProject.gotzVersion
+        versionCode rootProject.gotzVersionCode
+        versionName rootProject.gotzVersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
