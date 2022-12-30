@@ -18,6 +18,18 @@ android {
         buildConfigField('String', 'GOTZ_URL_WEATHER', '"http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/"')
     }
 
+    buildTypes {
+        debug {
+            debuggable = true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            debuggable = false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

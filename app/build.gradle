@@ -5,6 +5,20 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            keyAlias 'key00'
+            keyPassword 'gotzdebug'
+            storeFile file("../gotz_debug.keystore")
+            storePassword 'gotzdebug'
+        }
+        release {
+            keyAlias 'key00'
+            keyPassword 'gotzmaster'
+            storeFile file("../gotz.keystore")
+            storePassword 'gotzmaster'
+        }
+    }
     compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion "30.0.3"
 
@@ -23,11 +37,13 @@ android {
             debuggable = true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
         release {
             debuggable = false
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
