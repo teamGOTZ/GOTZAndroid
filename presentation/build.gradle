@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion rootProject.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion 23
-        targetSdkVersion 32
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -18,7 +18,7 @@ android {
         buildConfigField('String', 'GOTZ_URL_TERMS_AND_CONDITIONS', '"https://freezing-lyre-e84.notion.site/a9048dae6fd841feb6026c71647d34be"')
         buildConfigField('String', 'GOTZ_URL_ON_BOARDING', '"https://freezing-lyre-e84.notion.site/GOT-Z-83e464b7c1184ea380a82e4fe4b8738c"')
 
-        buildConfigField('String', 'GOTZ_APP_VERSION', '"beta 0.0.0"')
+        buildConfigField ("String", "GOTZ_APP_VERSION", "\"${rootProject.gotzVersion}\"")
     }
 
     buildTypes {
@@ -46,11 +46,6 @@ dependencies {
 
     implementation project(":base")
     implementation project(":domain")
-    implementation 'com.google.android.gms:play-services-location:21.0.1'
-
-    def roomVersion = "2.4.1"
-    def lifecycle_version = "2.4.0"
-    def nav_version = "2.3.5"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
@@ -59,15 +54,13 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    // ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    // LiveData
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-    // Ktx
+    // ViewModel, Lifecycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycleVersion"
     implementation 'androidx.activity:activity-ktx:1.3.0'
 
     // Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutineVersion"
 
     // koin
     implementation "org.koin:koin-android:$rootProject.koinVersion"
@@ -77,17 +70,12 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
 
+    implementation "com.google.android.gms:play-services-location:$rootProject.playServiceLocationVersion"
 
-    implementation "io.reactivex.rxjava2:rxkotlin:$rootProject.rxKotlinVersion"
-    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
-
-    // Joda time
-    implementation 'joda-time:joda-time:2.10.6'
-
-    // 3rd etc....
-    implementation 'io.github.ParkSangGwon:tedpermission-normal:3.3.0'
-
-    implementation 'com.github.bumptech.glide:glide:4.13.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
+    // 3rd etc...
+    implementation "io.github.ParkSangGwon:tedpermission-normal:$rootProject.tedPermissionVersion"
+    implementation "joda-time:joda-time:$rootProject.jodaTimeVersion"
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
 
 }

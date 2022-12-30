@@ -1,7 +1,6 @@
 package com.gotz
 
 import android.app.Application
-import com.gotz.di.cacheLayerModule
 import com.gotz.di.dataLayerModule
 import com.gotz.di.domainLayerModule
 import com.gotz.di.presentationLayerModule
@@ -17,7 +16,6 @@ class GotzApplication : Application() {
             androidContext(this@GotzApplication.applicationContext)
             modules(
                 listOf(
-                    cacheLayerModule,
                     dataLayerModule,
                     domainLayerModule,
                     presentationLayerModule

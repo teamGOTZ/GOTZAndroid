@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
-        android:hint="@string/string_custom_edit_text_hint"
+        android:hint="@string/edit_text_hint_kr"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="8dp"
         android:background="@null"

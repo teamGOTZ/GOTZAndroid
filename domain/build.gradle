@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion rootProject.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 32
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
 
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -24,9 +24,9 @@ android {
 
 dependencies {
 
-    implementation "io.reactivex.rxjava2:rxkotlin:$rootProject.rxKotlinVersion"
-    implementation 'androidx.annotation:annotation:1.4.0'
+    // Android Annotation
+    implementation "androidx.annotation:annotation:$rootProject.androidAnnotationVersion"
 
     // Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutineVersion"
 }

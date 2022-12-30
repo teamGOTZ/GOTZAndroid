@@ -62,6 +62,10 @@
         <entry key="base/src/main/res/layout/layout_check.xml" value="0.2318840579710145" />
         <entry key="base/src/main/res/layout/layout_custom_edit_text.xml" value="0.21240942028985507" />
         <entry key="base/src/main/res/layout/layout_one_depth_title.xml" value="0.19791666666666666" />
+        <entry key="presentation/src/main/res/drawable-v24/ic_appicon_foreground.xml" value="0.166" />
+        <entry key="presentation/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.166" />
+        <entry key="presentation/src/main/res/drawable/drawable_shadow.xml" value="0.166" />
+        <entry key="presentation/src/main/res/drawable/ic_appicon_background.xml" value="0.166" />
         <entry key="presentation/src/main/res/drawable/ic_arrow_down.xml" value="0.1" />
         <entry key="presentation/src/main/res/drawable/ic_arrow_left.xml" value="0.1" />
         <entry key="presentation/src/main/res/drawable/ic_arrow_right.xml" value="0.1" />
@@ -71,10 +75,16 @@
         <entry key="presentation/src/main/res/drawable/ic_character_logo.xml" value="0.1475" />
         <entry key="presentation/src/main/res/drawable/ic_character_tutorial_1.xml" value="0.1475" />
         <entry key="presentation/src/main/res/drawable/ic_character_tutorial_2.xml" value="0.1475" />
+        <entry key="presentation/src/main/res/drawable/ic_check_purple.xml" value="0.166" />
         <entry key="presentation/src/main/res/drawable/ic_clock.xml" value="0.1415" />
+        <entry key="presentation/src/main/res/drawable/ic_delete_fill.xml" value="0.166" />
         <entry key="presentation/src/main/res/drawable/ic_flag.xml" value="0.1385" />
         <entry key="presentation/src/main/res/drawable/ic_gotz_apostrophe.xml" value="0.146" />
         <entry key="presentation/src/main/res/drawable/ic_gotz_logo.xml" value="0.15" />
+        <entry key="presentation/src/main/res/drawable/ic_home.xml" value="0.166" />
+        <entry key="presentation/src/main/res/drawable/ic_launcher_background.xml" value="0.166" />
+        <entry key="presentation/src/main/res/drawable/ic_logo_white.xml" value="0.166" />
+        <entry key="presentation/src/main/res/drawable/ic_my.xml" value="0.166" />
         <entry key="presentation/src/main/res/drawable/ic_plus_floating.xml" value="0.166" />
         <entry key="presentation/src/main/res/drawable/ic_weather_none.xml" value="0.1105" />
         <entry key="presentation/src/main/res/drawable/shape_btn_calendar.xml" value="0.14" />
@@ -94,6 +104,7 @@
         <entry key="presentation/src/main/res/drawable/style_button_base.xml" value="0.1475" />
         <entry key="presentation/src/main/res/drawable/style_button_calendar.xml" value="0.1475" />
         <entry key="presentation/src/main/res/drawable/style_button_calendar_today.xml" value="0.1475" />
+        <entry key="presentation/src/main/res/drawable/style_cursor_black.xml" value="0.1415" />
         <entry key="presentation/src/main/res/drawable/style_edittext_base.xml" value="0.1" />
         <entry key="presentation/src/main/res/drawable/style_edittext_white.xml" value="0.1415" />
         <entry key="presentation/src/main/res/layout-v28/fragment_calendar.xml" value="0.2318840579710145" />
