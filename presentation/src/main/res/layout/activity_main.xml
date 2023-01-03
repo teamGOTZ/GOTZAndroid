@@ -22,7 +22,7 @@
             android:id="@+id/bnv_main"
             android:layout_width="match_parent"
             android:layout_height="58dp"
-            app:menu="@menu/bottom_navigation_menu"
+            app:menu="@menu/menu_bottom_navigation"
             app:itemBackground="@color/white" />
 
 

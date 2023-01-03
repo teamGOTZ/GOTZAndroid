@@ -32,16 +32,6 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="CalendarButtonStyle" parent="Widget.AppCompat.Button">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/style_button_calendar</item>
-        <item name="android:textSize">12dp</item>
-        <item name="android:textColor">@color/Gray_400</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:outlineProvider">none</item>
-    </style>
-
     <style name="Text11Regular">
         <item name="android:textSize">11dp</item>
         <item name="android:textStyle">normal</item>

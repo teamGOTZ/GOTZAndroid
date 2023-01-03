@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.res.ResourcesCompat
 import com.gotz.base.R
 import com.gotz.base.extension.gone
 import com.gotz.base.extension.visible
@@ -44,15 +45,15 @@ class CheckLayout @JvmOverloads constructor(
 
     private fun setView() {
         if(layoutStatus == STATUS_ENABLE) {
-            layout.background = resources.getDrawable(R.drawable.style_check_layout_enable)
+            layout.background = ResourcesCompat.getDrawable(resources, R.drawable.style_check_layout_enable, null)
             imageView.visible()
-            textView.setTextColor(resources.getColor(R.color.Primary))
+            textView.setTextColor(resources.getColor(R.color.Primary, null))
         }
 
         else {
-            layout.background = resources.getDrawable(R.drawable.style_check_layout_disable)
+            layout.background = ResourcesCompat.getDrawable(resources, R.drawable.style_check_layout_disable, null)
             imageView.gone()
-            textView.setTextColor(resources.getColor(R.color.Gray_900))
+            textView.setTextColor(resources.getColor(R.color.Gray_900, null))
         }
     }
 

@@ -57,7 +57,7 @@ class MyFragment: BaseFragment<FragmentMyBinding>(R.layout.fragment_my)  {
                 context?.let {
                     val intent = Intent(it, WebViewActivity::class.java).apply {
                         putExtra(WebViewActivity.EXTRA_LOAD_URL, BuildConfig.GOTZ_URL_ON_BOARDING)
-                        putExtra(WebViewActivity.EXTRA_TITLE, getString(R.string.want_to_know_gotz))
+                        putExtra(WebViewActivity.EXTRA_TITLE, getString(R.string.want_to_know_gotz_kr))
                     }
                     startActivity(intent)
                 }

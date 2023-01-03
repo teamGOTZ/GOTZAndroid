@@ -1,25 +1,23 @@
 package com.gotz.presentation.view.calendar.schedule
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.view.View
 import android.widget.PopupMenu
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.MenuRes
 import com.gotz.base.BaseActivity
 import com.gotz.base.extension.gone
 import com.gotz.base.util.StringUtil.getStrDate
 import com.gotz.base.util.StringUtil.getStrTime2
-import com.gotz.base.util.StringUtil.getStrTime3
+import com.gotz.base.util.StringUtil.getAmPm
 import com.gotz.domain.model.Schedule
 import com.gotz.presentation.R
-import com.gotz.presentation.databinding.ActivityCalendarShowScheduleBinding
+import com.gotz.presentation.databinding.ActivityScheduleShowBinding
 import org.joda.time.DateTime
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CalendarShowScheduleActivity: BaseActivity<ActivityCalendarShowScheduleBinding>(R.layout.activity_calendar_show_schedule) {
+class ScheduleShowActivity: BaseActivity<ActivityScheduleShowBinding>(R.layout.activity_schedule_show) {
 
     private val scheduleViewModel: ScheduleViewModel by viewModel()
 
@@ -58,7 +56,7 @@ class CalendarShowScheduleActivity: BaseActivity<ActivityCalendarShowScheduleBin
     }
 
     private fun getTimeStartEnd(start: Long, end: Long) =
-        "${getStrTime2(DateTime(start))}${getStrTime3(DateTime(start))} - ${getStrTime2(DateTime(end))}${getStrTime3(DateTime(end))}"
+        "${getStrTime2(DateTime(start))}${getAmPm(DateTime(start))} - ${getStrTime2(DateTime(end))}${getAmPm(DateTime(end))}"
 
     private fun showMenu(view: View, @MenuRes menuRes: Int){
         val popup = PopupMenu(this, view)
@@ -66,7 +64,7 @@ class CalendarShowScheduleActivity: BaseActivity<ActivityCalendarShowScheduleBin
 
         popup.setOnMenuItemClickListener{
             if(it.itemId == R.id.option_modify){    // 수정
-                val intent = Intent(this, CalendarAddScheduleActivity::class.java).apply {
+                val intent = Intent(this, ScheduleAddActivity::class.java).apply {
                     putExtra(EXTRA_SCHEDULE, schedule)
                 }
                 startActivity(intent)
@@ -74,15 +72,19 @@ class CalendarShowScheduleActivity: BaseActivity<ActivityCalendarShowScheduleBin
             }
 
             if(it.itemId == R.id.option_delete){    // 삭제
-                val dlg : AlertDialog.Builder = AlertDialog.Builder(this)
-                dlg.setMessage("일정을 삭제하시겠습니까?")
-                dlg.setPositiveButton("삭제", DialogInterface.OnClickListener{ _, _ ->
-                    scheduleViewModel.deleteSchedule(schedule)
-                    finish()
-                })
-                dlg.setNegativeButton("취소", DialogInterface.OnClickListener { _, _ ->
+                val dlg : AlertDialog.Builder = AlertDialog.Builder(this).apply {
+                    setMessage("일정을 삭제하시겠습니까?")
 
-                })
+                    setPositiveButton("삭제") { _, _ ->
+                        scheduleViewModel.deleteSchedule(schedule)
+                        finish()
+                    }
+
+                    setNegativeButton("취소") { _, _ ->
+
+                    }
+                }
+
                 dlg.show()
             }
             false

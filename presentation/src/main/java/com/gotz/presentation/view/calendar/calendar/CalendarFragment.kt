@@ -33,9 +33,9 @@ import com.gotz.presentation.view.calendar.calendar.adapter.CalendarLongAdapter
 import com.gotz.presentation.view.calendar.calendar.adapter.CalendarScheduleAdapter
 import com.gotz.presentation.view.calendar.calendar.adapter.CalendarScheduleItemDecoration
 import com.gotz.presentation.view.calendar.calendar.adapter.CalendarShortAdapter
-import com.gotz.presentation.view.calendar.schedule.CalendarAddScheduleActivity
-import com.gotz.presentation.view.calendar.schedule.CalendarShowScheduleActivity
-import com.gotz.presentation.view.calendar.schedule.CalendarShowScheduleActivity.Companion.EXTRA_SCHEDULE
+import com.gotz.presentation.view.calendar.schedule.ScheduleAddActivity
+import com.gotz.presentation.view.calendar.schedule.ScheduleShowActivity
+import com.gotz.presentation.view.calendar.schedule.ScheduleShowActivity.Companion.EXTRA_SCHEDULE
 import com.gotz.presentation.view.calendar.schedule.ScheduleViewModel
 import com.gotz.presentation.view.webview.WebViewActivity
 import kotlinx.coroutines.Dispatchers
@@ -165,8 +165,8 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
             }
             else {
                 tvTemperature.text = "$temperature"
-                tvWeatherUpdateAt.text = StringUtil.getUpdateAt(DateTime.now())
-                tvWeather.text = StringUtil.getWeatherString(skyStatus)
+                tvWeatherUpdateAt.text = getUpdatedAt(DateTime.now())
+                tvWeather.text = getWeatherStr(skyStatus)
                 tvWeatherUpdateAt.visible()
 
                 getWeatherIcon(skyStatus)?.let { resId ->
@@ -176,6 +176,15 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
         }
     }
 
+    private fun getWeatherStr(skyStatus: Int): String =
+        when(skyStatus) {
+            0 -> getString(R.string.weather_is_sun_kr)
+            1 -> getString(R.string.weather_is_rain_kr)
+            2 -> getString(R.string.weather_is_rain_snow_kr)
+            3 -> getString(R.string.weather_is_snow_kr)
+            else -> getString(R.string.weather_is_none_kr)
+        }
+
     private fun getWeatherIcon(skyStatus: Int): Int? =
         when(skyStatus) {
             0 -> R.drawable.ic_weather_sun
@@ -184,6 +193,9 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
             3 -> R.drawable.ic_weather_snow
             else -> null
         }
+
+    private fun getUpdatedAt(dateTime: DateTime): String =
+        getString(R.string.updated_kr, StringUtil.getUpdateAt(dateTime))
 
     override fun initView() {
         binding.run {
@@ -226,7 +238,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
             }
 
             fabCalendar.setOnClickListener {
-                val intent = Intent(context, CalendarAddScheduleActivity::class.java).apply {
+                val intent = Intent(context, ScheduleAddActivity::class.java).apply {
                     putExtra(DATE_MILLIS, calendarViewModel.dateTime.value?.millis)
                 }
                 startActivity(intent)
@@ -236,7 +248,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
                 adapter = calendarScheduleAdapter.apply {
                     setOnLayoutClickListener(object: CalendarScheduleAdapter.OnLayoutClickListener{
                         override fun onLayoutClick(view: View, item: Schedule) {
-                            val intent = Intent(context, CalendarShowScheduleActivity::class.java).apply {
+                            val intent = Intent(context, ScheduleShowActivity::class.java).apply {
                                 putExtra(EXTRA_SCHEDULE, item)
                             }
                             startActivity(intent)
@@ -256,7 +268,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
             }
 
             tvCalendarAddSchedule.setOnClickListener {
-                val intent = Intent(context, CalendarAddScheduleActivity::class.java).apply {
+                val intent = Intent(context, ScheduleAddActivity::class.java).apply {
                     putExtra(DATE_MILLIS, calendarViewModel.dateTime.value?.millis)
                 }
                 startActivity(intent)

@@ -21,6 +21,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+gradle.properties
 
 .idea/
 *.md

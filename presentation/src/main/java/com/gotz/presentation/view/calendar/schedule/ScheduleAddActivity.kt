@@ -8,13 +8,13 @@ import com.gotz.base.util.StringUtil.getStrDate
 import com.gotz.base.util.StringUtil.getStrTime
 import com.gotz.domain.model.Schedule
 import com.gotz.presentation.R
-import com.gotz.presentation.databinding.ActivityCalendarAddScheduleBinding
+import com.gotz.presentation.databinding.ActivityScheduleAddBinding
 import com.gotz.presentation.view.calendar.calendar.CalendarFragment.Companion.DATE_MILLIS
-import com.gotz.presentation.view.calendar.schedule.CalendarShowScheduleActivity.Companion.EXTRA_SCHEDULE
+import com.gotz.presentation.view.calendar.schedule.ScheduleShowActivity.Companion.EXTRA_SCHEDULE
 import org.joda.time.DateTime
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CalendarAddScheduleActivity: BaseActivity<ActivityCalendarAddScheduleBinding>(R.layout.activity_calendar_add_schedule) {
+class ScheduleAddActivity: BaseActivity<ActivityScheduleAddBinding>(R.layout.activity_schedule_add) {
 
     private val now: DateTime = DateTime.now()
 
@@ -79,9 +79,9 @@ class CalendarAddScheduleActivity: BaseActivity<ActivityCalendarAddScheduleBindi
 
             cvCalendarAddSchedule.setOnDateChangeListener { _, year, month, day ->
                 tvCalendarAddScheduleDate.text = getStrDate(year, month +1, day)
-                this@CalendarAddScheduleActivity.year = year
-                this@CalendarAddScheduleActivity.month = month +1
-                this@CalendarAddScheduleActivity.day = day
+                this@ScheduleAddActivity.year = year
+                this@ScheduleAddActivity.month = month +1
+                this@ScheduleAddActivity.day = day
             }
 
             tpCalendarAddScheduleStart.setOnTimeChangedListener { _, hour, minute ->
@@ -190,14 +190,14 @@ class CalendarAddScheduleActivity: BaseActivity<ActivityCalendarAddScheduleBindi
 
     override fun initObserver() {
         binding.run{
-            etCalendarAddScheduleTitle.text.observe(this@CalendarAddScheduleActivity) { text ->
+            etCalendarAddScheduleTitle.text.observe(this@ScheduleAddActivity) { text ->
                 if (text.isNotEmpty()){
                     tvCalendarAddScheduleSave.clickable()
-                    tvCalendarAddScheduleSave.setTextColor(resources.getColor(R.color.Primary))
+                    tvCalendarAddScheduleSave.setTextColor(resources.getColor(R.color.Primary, null))
                 }
                 else{
                     tvCalendarAddScheduleSave.clickableNot()
-                    tvCalendarAddScheduleSave.setTextColor(resources.getColor(R.color.Gray_400))
+                    tvCalendarAddScheduleSave.setTextColor(resources.getColor(R.color.Gray_400, null))
                 }
             }
         }

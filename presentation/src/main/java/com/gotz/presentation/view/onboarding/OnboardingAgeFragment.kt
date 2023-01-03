@@ -48,8 +48,8 @@ class OnboardingAgeFragment: BaseFragment<FragmentOnboardingAgeBinding>(R.layout
                     ): View {
                         val view = super.getDropDownView(position, convertView, parent)
                         val textView = view as TextView
-                        if(position == 0) textView.setTextColor(resources.getColor(R.color.Gray_200))
-                        else textView.setTextColor(resources.getColor(R.color.Gray_900))
+                        if(position == 0) textView.setTextColor(resources.getColor(R.color.Gray_200, null))
+                        else textView.setTextColor(resources.getColor(R.color.Gray_900, null))
                         return view
                     }
 

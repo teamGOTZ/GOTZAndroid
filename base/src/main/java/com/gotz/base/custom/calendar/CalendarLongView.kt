@@ -54,7 +54,7 @@ class CalendarLongView @JvmOverloads constructor(
                 it.layout(left, 0, (left+iWidth), dpToPx(context,54F).toInt())
             }
             else{
-                it.layout(left.toInt(), top.toInt(), (left+iWidth).toInt(), (top+iHeight).toInt())
+                it.layout(left, top.toInt(), (left+iWidth), (top+iHeight).toInt())
             }
             index++
         }
@@ -67,9 +67,7 @@ class CalendarLongView @JvmOverloads constructor(
                 dayText = idx
             ))
         }
-        list.forEachIndexed { index, dateTime ->
-            val start = dateTime.millis
-            val end = dateTime.plusDays(1).millis
+        list.forEach { dateTime ->
 
             addView(DayItemLongView(
                 context = context,

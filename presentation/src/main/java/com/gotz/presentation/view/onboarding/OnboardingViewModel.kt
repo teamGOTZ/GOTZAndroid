@@ -52,14 +52,6 @@ class OnboardingViewModel(
         _gender.value = ""
     }
 
-    fun checkTerms(enabled: Boolean) {
-
-    }
-
-    fun checkPrivacy(enabled: Boolean) {
-
-    }
-
     fun setGender(gender: String) {
         _gender.value = gender
     }

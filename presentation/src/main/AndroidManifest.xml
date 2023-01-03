@@ -4,10 +4,10 @@
 
     <application>
 
-        <activity android:name=".view.calendar.schedule.CalendarAddScheduleActivity"
+        <activity android:name=".view.calendar.schedule.ScheduleAddActivity"
             android:exported="true"/>
 
-        <activity android:name=".view.calendar.schedule.CalendarShowScheduleActivity"
+        <activity android:name=".view.calendar.schedule.ScheduleShowActivity"
             android:exported="true"/>
 
         <activity android:name=".view.login.LoginActivity"

@@ -8,7 +8,7 @@ import com.gotz.base.BaseRecyclerViewHolder
 import com.gotz.base.extension.invisible
 import com.gotz.base.extension.visible
 import com.gotz.base.util.StringUtil.getStrTime2
-import com.gotz.base.util.StringUtil.getStrTime3
+import com.gotz.base.util.StringUtil.getAmPm
 import com.gotz.domain.model.Schedule
 import com.gotz.presentation.R
 import com.gotz.presentation.databinding.ItemCalendarScheduleBinding
@@ -42,7 +42,7 @@ class CalendarScheduleAdapter: BaseRecyclerAdapter<Schedule, ItemCalendarSchedul
                     tvAmPm.visible()
 
                     tvStartTime.text = getStrTime2(DateTime(item.start))
-                    tvAmPm.text = getStrTime3(DateTime(item.start))
+                    tvAmPm.text = getAmPm(DateTime(item.start))
                 }
 
                 tvTitle.text = item.title

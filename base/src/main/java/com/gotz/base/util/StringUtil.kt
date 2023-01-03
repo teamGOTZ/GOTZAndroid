@@ -5,21 +5,8 @@ import org.joda.time.DateTime
 
 object StringUtil {
 
-    fun appVersionString(appVersion: String): String =
-        "버전 정보 v $appVersion"
-
-    fun getWeatherString(skyStatus: Int): String =
-        when(skyStatus) {
-            -1 -> ""
-            0 -> "는 맑음!"
-            1 -> "는 비!"
-            2 -> "는 비/눈!"
-            3 -> "는 눈!"
-            else -> ""
-        }
-
     fun getUpdateAt(now: DateTime): String =
-        "${now.toString("hh:mm")} ${getStrTime3(now)} 업데이트됨"
+        "${now.toString("hh:mm")} ${getAmPm(now)}"
 
     fun getAddressString(address: Address): String{
         return if(address.locality == null) address.adminArea
@@ -142,7 +129,7 @@ object StringUtil {
         return sb.toString()
     }
 
-    fun getStrTime3(dateTime: DateTime): String{
+    fun getAmPm(dateTime: DateTime): String{
         val hour = dateTime.hourOfDay
 
         return if (hour > 11) {

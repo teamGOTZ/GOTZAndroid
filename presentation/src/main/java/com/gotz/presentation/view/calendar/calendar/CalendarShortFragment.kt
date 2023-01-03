@@ -42,7 +42,7 @@ class CalendarShortFragment :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            millis = it.getLong(CalendarShortFragment.MILLIS_SHORT)
+            millis = it.getLong(MILLIS_SHORT)
         }
     }
 
@@ -52,7 +52,6 @@ class CalendarShortFragment :
 
     override fun initView() {
         binding.calendarShortView.initCalendar(
-            DateTime(millis),
             CalendarUtil.getWeekList(DateTime(millis)),
             0
         )

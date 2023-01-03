@@ -61,8 +61,8 @@ class ProfileActivity: BaseActivity<ActivityProfileBinding>(R.layout.activity_pr
                     ): View {
                         val view = super.getDropDownView(position, convertView, parent)
                         val textView = view as TextView
-                        if(position == 0) textView.setTextColor(resources.getColor(R.color.Gray_200))
-                        else textView.setTextColor(resources.getColor(R.color.Gray_900))
+                        if(position == 0) textView.setTextColor(resources.getColor(R.color.Gray_200, null))
+                        else textView.setTextColor(resources.getColor(R.color.Gray_900, null))
                         return view
                     }
 
@@ -91,11 +91,11 @@ class ProfileActivity: BaseActivity<ActivityProfileBinding>(R.layout.activity_pr
             etNickname.text.observe(this@ProfileActivity) { text ->
                 if (text.isNotEmpty()){
                     tvSave.clickable()
-                    tvSave.setTextColor(resources.getColor(R.color.Primary))
+                    tvSave.setTextColor(resources.getColor(R.color.Primary, null))
                 }
                 else{
                     tvSave.clickableNot()
-                    tvSave.setTextColor(resources.getColor(R.color.Gray_400))
+                    tvSave.setTextColor(resources.getColor(R.color.Gray_400, null))
                 }
             }
 

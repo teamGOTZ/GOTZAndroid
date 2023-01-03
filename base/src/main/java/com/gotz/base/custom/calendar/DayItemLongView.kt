@@ -30,8 +30,6 @@ class DayItemLongView@JvmOverloads constructor(
     private var scheduleCount: Int = 0
 ) : View(ContextThemeWrapper(context, defStyleRes), attrs, defStyleAttr) {
 
-    val str:String = "${date.monthOfYear}/${date.dayOfMonth}"
-
     private val bounds = Rect()
 
     private var paint: Paint = Paint()
@@ -51,7 +49,6 @@ class DayItemLongView@JvmOverloads constructor(
     init{
         context.withStyledAttributes(attrs, R.styleable.CalendarView, defStyleAttr, defStyleRes){
             val dayTextSize = getDimensionPixelSize(R.styleable.CalendarView_dayTextSize, 0).toFloat()
-            val calendarTextSize = getDimensionPixelSize(R.styleable.CalendarView_calendarTextSize,0).toFloat()
             /* 흰색 배경에 유색 글씨 */
             paint = TextPaint().apply {
                 textAlign = Paint.Align.CENTER

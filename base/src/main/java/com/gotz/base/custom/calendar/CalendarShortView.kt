@@ -45,11 +45,8 @@ class CalendarShortView @JvmOverloads constructor(
         }
     }
 
-    fun initCalendar(firstDayOfWeek: DateTime, list: List<DateTime>, dayOfWeek: Int){
+    fun initCalendar(list: List<DateTime>, dayOfWeek: Int){
         list.forEach{
-            var count:Int = 0
-            val start = it.millis
-            val end = it.plusDays(1).millis
 
             addView(DayItemShortView(
                 context = context,

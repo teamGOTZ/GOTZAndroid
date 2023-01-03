@@ -55,5 +55,7 @@ class OnboardingGenderFragment: BaseFragment<FragmentOnboardingGenderBinding>(R.
                 }
             }
         }
+
+        // todo setGender on clickListener and set View on genderObserver
     }
 }

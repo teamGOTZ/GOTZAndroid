@@ -31,8 +31,14 @@
     <string name="schedule_describe_kr">일정 설명</string>
     <string name="skip_kr">건너뛰기</string>
     <string name="terms_of_service_kr">서비스 이용 약관</string>
+    <string name="updated_kr">\u0020%s업데이트됨</string>
     <string name="version_info_kr">버전 정보 v %s</string>
-    <string name="want_to_know_gotz">GOT\'Z를 알고싶다면?</string>
+    <string name="want_to_know_gotz_kr">GOT\'Z를 알고싶다면?</string>
+    <string name="weather_is_none_kr"> </string>
+    <string name="weather_is_sun_kr">는 맑음!</string>
+    <string name="weather_is_rain_kr">는 비!</string>
+    <string name="weather_is_rain_snow_kr">는 비/눈!</string>
+    <string name="weather_is_snow_kr">는 눈!</string>
 
     <string name="star_1">*</string>
 
