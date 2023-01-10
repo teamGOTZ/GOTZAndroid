@@ -1,12 +1,11 @@
 package com.gotz.presentation.view.onboarding
 
 import android.content.Intent
-import android.view.View
 import com.bumptech.glide.Glide
 import com.gotz.presentation.R
 import com.gotz.base.BaseFragment
-import com.gotz.base.extension.invisible
-import com.gotz.base.extension.visible
+import com.gotz.base.extension.disable
+import com.gotz.base.extension.enable
 import com.gotz.presentation.BuildConfig
 import com.gotz.presentation.databinding.FragmentOnboardingTermsBinding
 import com.gotz.presentation.view.webview.WebViewActivity
@@ -32,18 +31,18 @@ class OnboardingTermsFragment: BaseFragment<FragmentOnboardingTermsBinding>(R.la
             }
 
             llAgreeAll.setOnClickListener {
-                if(ivCheck.visibility == View.INVISIBLE) {
-                    ivCheck.visible()
-                    ivTermsCheck.visible()
-                    ivPrivacyCheck.visible()
+                if(!termsChecked || !privacyChecked) {
+                    ivCheck.enable()
+                    ivTermsCheck.enable()
+                    ivPrivacyCheck.enable()
                     btnNext.isEnabled = true
                     termsChecked = true
                     privacyChecked = true
                 }
                 else {
-                    ivCheck.invisible()
-                    ivTermsCheck.invisible()
-                    ivPrivacyCheck.invisible()
+                    ivCheck.disable()
+                    ivTermsCheck.disable()
+                    ivPrivacyCheck.disable()
                     btnNext.isEnabled = false
                     termsChecked = false
                     privacyChecked = false
@@ -92,15 +91,15 @@ class OnboardingTermsFragment: BaseFragment<FragmentOnboardingTermsBinding>(R.la
         binding.run {
             if(termsChecked) {
                 termsChecked = false
-                ivCheck.invisible()
-                ivTermsCheck.invisible()
+                ivCheck.disable()
+                ivTermsCheck.disable()
                 btnNext.isEnabled = false
             }
             else {
                 termsChecked = true
-                ivTermsCheck.visible()
+                ivTermsCheck.enable()
                 if(privacyChecked) {
-                    ivCheck.visible()
+                    ivCheck.enable()
                     btnNext.isEnabled = true
                 }
             }
@@ -111,15 +110,15 @@ class OnboardingTermsFragment: BaseFragment<FragmentOnboardingTermsBinding>(R.la
         binding.run {
             if(privacyChecked) {
                 privacyChecked = false
-                ivCheck.invisible()
-                ivPrivacyCheck.invisible()
+                ivCheck.disable()
+                ivPrivacyCheck.disable()
                 btnNext.isEnabled = false
             }
             else {
                 privacyChecked = true
-                ivPrivacyCheck.visible()
+                ivPrivacyCheck.enable()
                 if(termsChecked) {
-                    ivCheck.visible()
+                    ivCheck.enable()
                     btnNext.isEnabled = true
                 }
             }

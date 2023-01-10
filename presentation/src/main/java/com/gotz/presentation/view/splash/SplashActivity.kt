@@ -23,21 +23,7 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(R.layout.activity_spla
     val readNameUseCase: ReadNameUseCase by inject()
 
     override fun initActivity(){
-        setAnimation()
         startActivityWithDelay(3000L)
-    }
-
-    private fun setAnimation(){
-        val fadeIn = AlphaAnimation(0f, 1f)
-        val animation = AnimationSet(false)
-
-        fadeIn.apply {
-            interpolator = FastOutLinearInInterpolator()
-            duration = 3000
-        }
-
-        animation.addAnimation(fadeIn)
-        binding.ivGotzLogo.animation = animation
     }
 
     private fun startActivityWithDelay(millis: Long){
@@ -52,7 +38,7 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(R.layout.activity_spla
             readNameUseCase().catch { flowCollector ->
                 GLog.messageLog(flowCollector.message.toString())
             }.collect{ name ->
-                if(name.isNullOrEmpty()){
+                if(name.isEmpty()){
                     val intent = Intent(this@SplashActivity, TutorialActivity::class.java)
                     startActivity(intent)
                     finish()

@@ -85,9 +85,9 @@
                     android:id="@+id/iv_check"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_check_purple"
+                    android:background="@drawable/ic_check_purple"
+                    android:backgroundTint="@color/Gray_400"
                     android:layout_marginStart="20dp"
-                    android:visibility="invisible"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
@@ -99,6 +99,7 @@
                     android:layout_marginStart="8dp"
                     android:text="@string/agree_all_kr"
                     android:textSize="16dp"
+                    android:textStyle="bold"
                     android:textColor="@color/Primary"
                     app:layout_constraintStart_toEndOf="@id/iv_check"/>
 
@@ -117,8 +118,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:src="@drawable/ic_check_purple"
-                    android:visibility="invisible"
+                    android:background="@drawable/ic_check_purple"
+                    android:backgroundTint="@color/Gray_400"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
@@ -157,8 +158,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:src="@drawable/ic_check_purple"
-                    android:visibility="invisible"
+                    android:background="@drawable/ic_check_purple"
+                    android:backgroundTint="@color/Gray_400"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>

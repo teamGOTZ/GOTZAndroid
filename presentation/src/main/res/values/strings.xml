@@ -33,6 +33,7 @@
     <string name="terms_of_service_kr">서비스 이용 약관</string>
     <string name="updated_kr">\u0020%s업데이트됨</string>
     <string name="version_info_kr">버전 정보 v %s</string>
+    <string name="want_to_know_kr">를 알고싶다면?</string>
     <string name="want_to_know_gotz_kr">GOT\'Z를 알고싶다면?</string>
     <string name="weather_is_none_kr"> </string>
     <string name="weather_is_sun_kr">는 맑음!</string>
@@ -67,9 +68,9 @@
     <string name="on_boarding_gender_text">%s님의\n성별을 선택해주세요</string>
     <string name="on_boarding_button_text">일상 추천 시작하기</string>
 
-    <!--    My-->
-    <string name="my_empty_schedule_title">오늘은 어떤 하루를 보내시나요?</string>
-    <string name="my_empty_schedule_add">일정 추가하기</string>
+    <!--    Schedule-->
+    <string name="empty_schedule_title">오늘은 어떤 하루를 보내시나요?</string>
+    <string name="empty_schedule_add">일정 추가하기</string>
 
     <!--    Calendar -->
     <string name="schedule_title_text_kr">어떤 일정인가요?</string>

@@ -208,12 +208,12 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
                     mlCalendar.transitionToEnd()
                     calendarViewModel.setCalendarStatus(CALENDAR_WEEK)
 
-                    btn.setBackgroundResource(R.drawable.ic_calendar_btn_down)
+                    btn.setBackgroundResource(R.drawable.img_calendar_btn_down)
                 } else {
                     mlCalendar.transitionToStart()
                     calendarViewModel.setCalendarStatus(CALENDAR_MONTH)
 
-                    btn.setBackgroundResource(R.drawable.ic_calendar_btn_up)
+                    btn.setBackgroundResource(R.drawable.img_calendar_btn_up)
                 }
             }
 
