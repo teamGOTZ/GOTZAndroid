@@ -1,5 +1,6 @@
 package com.gotz.presentation.view.calendar.schedule
 
+import android.content.Intent
 import android.widget.TimePicker
 import androidx.core.view.isGone
 import com.gotz.base.BaseActivity
@@ -9,6 +10,7 @@ import com.gotz.base.util.StringUtil.getStrTime
 import com.gotz.domain.model.Schedule
 import com.gotz.presentation.R
 import com.gotz.presentation.databinding.ActivityScheduleAddBinding
+import com.gotz.presentation.receiver.ScheduleChangeReceiver
 import com.gotz.presentation.view.calendar.calendar.CalendarFragment.Companion.DATE_MILLIS
 import com.gotz.presentation.view.calendar.schedule.ScheduleShowActivity.Companion.EXTRA_SCHEDULE
 import org.joda.time.DateTime
@@ -144,6 +146,7 @@ class ScheduleAddActivity: BaseActivity<ActivityScheduleAddBinding>(R.layout.act
                             end = getMillisForTimePicker(tpCalendarAddScheduleEnd)
                         )
                     )
+                    sendBroadcast(Intent(ScheduleChangeReceiver.ACTION_SCHEDULE_ADD))
                 }
                 else {
                     scheduleViewModel.updateSchedule(
@@ -157,6 +160,7 @@ class ScheduleAddActivity: BaseActivity<ActivityScheduleAddBinding>(R.layout.act
                             end = getMillisForTimePicker(tpCalendarAddScheduleEnd)
                         )
                     )
+                    sendBroadcast(Intent(ScheduleChangeReceiver.ACTION_SCHEDULE_UPDATE))
                 }
                 finish()
             }

@@ -8,12 +8,15 @@ import com.gotz.base.util.StringUtil
 import com.gotz.domain.usecase.user.ReadNameUseCase
 import com.gotz.presentation.BuildConfig
 import com.gotz.presentation.databinding.FragmentMyBinding
+import com.gotz.presentation.view.calendar.calendar.CalendarFragment
+import com.gotz.presentation.view.calendar.schedule.ScheduleAddActivity
 import com.gotz.presentation.view.profile.ProfileActivity
 import com.gotz.presentation.view.webview.WebViewActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.joda.time.DateTime
 import org.koin.android.ext.android.inject
 
 class MyFragment: BaseFragment<FragmentMyBinding>(R.layout.fragment_my)  {
@@ -61,6 +64,13 @@ class MyFragment: BaseFragment<FragmentMyBinding>(R.layout.fragment_my)  {
                     }
                     startActivity(intent)
                 }
+            }
+
+            tvScheduleMove.setOnClickListener {
+                val intent = Intent(context, ScheduleAddActivity::class.java).apply {
+                    putExtra(CalendarFragment.DATE_MILLIS, DateTime.now().millis)
+                }
+                startActivity(intent)
             }
 
             tvVersion.text = getString(R.string.version_info_kr, BuildConfig.GOTZ_APP_VERSION)

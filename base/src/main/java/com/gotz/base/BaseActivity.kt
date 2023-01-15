@@ -26,8 +26,13 @@ abstract class BaseActivity<T: ViewDataBinding>(@LayoutRes val layoutResID: Int)
         initNavigation()
         initObserver()
         initData()
-
+        registerReceiver()
         hideNavigationBar()
+    }
+
+    override fun onDestroy() {
+        unregisterReceiver()
+        super.onDestroy()
     }
 
     abstract fun initActivity()
@@ -39,6 +44,10 @@ abstract class BaseActivity<T: ViewDataBinding>(@LayoutRes val layoutResID: Int)
     open fun initObserver(){}
 
     open fun initData(){}
+
+    open fun registerReceiver(){}
+
+    open fun unregisterReceiver(){}
 
     final override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
         val focusView = currentFocus

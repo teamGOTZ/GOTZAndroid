@@ -14,6 +14,7 @@ import com.gotz.base.util.StringUtil.getAmPm
 import com.gotz.domain.model.Schedule
 import com.gotz.presentation.R
 import com.gotz.presentation.databinding.ActivityScheduleShowBinding
+import com.gotz.presentation.receiver.ScheduleChangeReceiver
 import org.joda.time.DateTime
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -76,6 +77,7 @@ class ScheduleShowActivity: BaseActivity<ActivityScheduleShowBinding>(R.layout.a
                     setMessage("일정을 삭제하시겠습니까?")
 
                     setPositiveButton("삭제") { _, _ ->
+                        sendBroadcast(Intent(ScheduleChangeReceiver.ACTION_SCHEDULE_DELETE))
                         scheduleViewModel.deleteSchedule(schedule)
                         finish()
                     }

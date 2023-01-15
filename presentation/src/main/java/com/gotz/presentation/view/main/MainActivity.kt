@@ -3,6 +3,7 @@ package com.gotz.presentation.view.main
 import com.gotz.presentation.R
 import com.gotz.base.BaseActivity
 import com.gotz.presentation.databinding.ActivityMainBinding
+import com.gotz.presentation.receiver.ScheduleChangeReceiver
 import com.gotz.presentation.view.calendar.calendar.CalendarViewModel
 import com.gotz.presentation.view.main.MainViewPagerAdapter.Companion.INDEX_CALENDAR
 import com.gotz.presentation.view.main.MainViewPagerAdapter.Companion.INDEX_MY
@@ -12,9 +13,9 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private val calendarViewModel: CalendarViewModel by viewModel()
 
-
-
     private val mainViewPagerAdapter = MainViewPagerAdapter(this)
+
+    private val scheduleChangeReceiver: ScheduleChangeReceiver = ScheduleChangeReceiver()
     override fun initActivity() {
 
     }
@@ -44,4 +45,11 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         }
     }
 
+    override fun registerReceiver() {
+        registerReceiver(scheduleChangeReceiver, scheduleChangeReceiver.filter)
+    }
+
+    override fun unregisterReceiver() {
+        unregisterReceiver(scheduleChangeReceiver)
+    }
 }

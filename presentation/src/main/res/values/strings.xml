@@ -28,7 +28,10 @@
     <string name="my_info_kr">내 정보</string>
     <string name="schedule_content_kr">일정 내용</string>
     <string name="schedule_add_kr">일정 추가</string>
+    <string name="schedule_added_kr">일정이 추가되었습니다.</string>
+    <string name="schedule_deleted_kr">일정이 삭제되었습니다.</string>
     <string name="schedule_describe_kr">일정 설명</string>
+    <string name="schedule_updated_kr">일정이 수정되었습니다.</string>
     <string name="skip_kr">건너뛰기</string>
     <string name="terms_of_service_kr">서비스 이용 약관</string>
     <string name="updated_kr">\u0020%s업데이트됨</string>

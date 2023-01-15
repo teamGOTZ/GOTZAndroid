@@ -304,26 +304,33 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
                     vpCalendarLong.currentItem = START_POSITION + getLongPosition(dateTime)
                     vpCalendarShort.currentItem = START_POSITION + getShortPosition(dateTime)
                 }
-
                 lifecycleScope.launch(Dispatchers.IO) {
-                    scheduleViewModel.readDailyScheduleUseCase(dateTime).collect{ scheduleWithDate ->
+                    observeDailySchedule(dateTime, clickStatus.value)
+                }
+            }
 
-                        withContext(Dispatchers.Main) {
-                            if(clickStatus.value == true) {
-                                binding.run {
-                                    if(scheduleWithDate == null) {
-                                        calendarScheduleAdapter.clearItems()
-                                        rvCalendar.gone()
-                                        clCalendarList.visible()
-                                    }
-                                    else {
-                                        calendarScheduleAdapter.initItems(scheduleWithDate.schedule)
-                                        rvCalendar.visible()
-                                        clCalendarList.gone()
-                                    }
-                                }
-                            }
+            lifecycleScope.launch(Dispatchers.IO) {
+                dateTime.value?.let{ dateTime ->
+                    observeDailySchedule(dateTime, clickStatus.value)
+                }
+            }
+        }
+    }
 
+    suspend fun observeDailySchedule(dateTime: DateTime, clickStatus: Boolean?) {
+        scheduleViewModel.readDailyScheduleUseCase(dateTime).collect{ scheduleWithDate ->
+            withContext(Dispatchers.Main) {
+                if(clickStatus == true) {
+                    binding.run {
+                        if(scheduleWithDate == null) {
+                            calendarScheduleAdapter.clearItems()
+                            rvCalendar.gone()
+                            clCalendarList.visible()
+                        }
+                        else {
+                            calendarScheduleAdapter.initItems(scheduleWithDate.schedule)
+                            rvCalendar.visible()
+                            clCalendarList.gone()
                         }
                     }
                 }
