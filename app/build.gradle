@@ -8,6 +8,8 @@ plugins {
 
 android {
     def applicationName = "GOTZ"
+    def time = new SimpleDateFormat('yyMMdd_HHmm').format(new Date())
+
     signingConfigs {
         debug {
             keyAlias 'key00'
@@ -33,6 +35,8 @@ android {
         versionName rootProject.gotzVersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        setProperty("archivesBaseName", "${applicationName}_${versionName}(${time})")
     }
 
     buildTypes {
@@ -64,7 +68,6 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all {
-            def time = new SimpleDateFormat('MMddHHmm').format(new Date())
             outputFileName = "${applicationName}-${variant.buildType.name}-v${defaultConfig.versionName}(${time}).apk"
         }
     }
