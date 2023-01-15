@@ -68,7 +68,7 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "${applicationName}-${variant.buildType.name}-v${defaultConfig.versionName}(${time}).apk"
+            outputFileName = "${applicationName}_${versionName}(${time})-${variant.buildType.name}.apk"
         }
     }
 
