@@ -22,7 +22,7 @@ buildscript {
         compileSdkVersion = 32
         minSdkVersion = 23
         gotzVersionName = "beta 0.0.2"
-        gotzVersionCode = 3
+        gotzVersionCode = 4
     }
     repositories {
         google()

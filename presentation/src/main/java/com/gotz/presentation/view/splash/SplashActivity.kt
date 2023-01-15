@@ -1,9 +1,7 @@
 package com.gotz.presentation.view.splash
 
 import android.content.Intent
-import android.view.animation.AlphaAnimation
-import android.view.animation.AnimationSet
-import androidx.interpolator.view.animation.FastOutLinearInInterpolator
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.gotz.domain.usecase.user.ReadNameUseCase
@@ -33,21 +31,20 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(R.layout.activity_spla
         }
     }
 
-    private fun startActivityWithReadName(){
-        lifecycleScope.launch(Dispatchers.IO) {
-            readNameUseCase().catch { flowCollector ->
-                GLog.messageLog(flowCollector.message.toString())
-            }.collect{ name ->
-                if(name.isEmpty()){
-                    val intent = Intent(this@SplashActivity, TutorialActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                else{
-                    val intent = Intent(this@SplashActivity, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
+    private suspend fun startActivityWithReadName(){
+        readNameUseCase().catch { flowCollector ->
+            GLog.messageLog(flowCollector.message.toString())
+            Toast.makeText(this@SplashActivity, flowCollector.message.toString(), Toast.LENGTH_LONG).show()
+        }.collect{ name ->
+            if(name.isEmpty()){
+                val intent = Intent(this@SplashActivity, TutorialActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            else{
+                val intent = Intent(this@SplashActivity, MainActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
     }
