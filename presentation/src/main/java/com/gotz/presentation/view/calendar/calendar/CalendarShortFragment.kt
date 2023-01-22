@@ -118,8 +118,8 @@ class CalendarShortFragment :
         for (i in 0 until totalDay) {
             val day = startValue.plusDays(i-1)
             result.add(getScheduleCount(day, list))
-            GLog.messageLog(day.toString("yyyy-MM-dd"))
-            GLog.messageLog(getScheduleCount(day, list).toString())
+//            GLog.messageLog(day.toString("yyyy-MM-dd"))
+//            GLog.messageLog(getScheduleCount(day, list).toString())
         }
         return result
     }

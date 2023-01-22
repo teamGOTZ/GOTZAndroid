@@ -21,8 +21,8 @@ buildscript {
         targetSdkVersion = 32
         compileSdkVersion = 32
         minSdkVersion = 23
-        gotzVersionName = "beta 0.0.2"
-        gotzVersionCode = 4
+        gotzVersionName = "1.0.0"
+        gotzVersionCode = 5
     }
     repositories {
         google()

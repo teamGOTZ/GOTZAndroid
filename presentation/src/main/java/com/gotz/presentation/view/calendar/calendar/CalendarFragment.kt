@@ -64,20 +64,44 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
     private val vpCalendarLongCallback = object: OnPageChangeCallback() {
         override fun onPageSelected(position: Int) {
             super.onPageSelected(position)
-            GLog.messageLog("vpLong:onPageSelected ${position - START_POSITION}")
-            GLog.messageLog("vpLong:onPageSelected ${CalendarUtil.getDateTimeForMonthlyCalendar(DateTime.now(), position - START_POSITION).toString("yyyy-MM-dd")}")
-            val date = CalendarUtil.getDateTimeForMonthlyCalendar(DateTime.now(), position - START_POSITION).millis
-            calendarViewModel.setDateTime(date)
+            GLog.messageLog("vpLong:onPageSelected")
+            binding.mlCalendar.run {
+                if(currentState == endState) {
+                    GLog.messageLog("vpLong:onPageSelected ${position - START_POSITION}")
+                    GLog.messageLog("vpLong:onPageSelected ${CalendarUtil.getDateTimeForMonthlyCalendar(DateTime.now(), position - START_POSITION).toString("yyyy-MM-dd")}")
+                    val date = CalendarUtil.getDateTimeForMonthlyCalendar(DateTime.now(), position - START_POSITION).millis
+                    calendarViewModel.setDateTime(date)
+                }
+            }
         }
     }
 
     private val vpCalendarShortCallback = object: OnPageChangeCallback() {
         override fun onPageSelected(position: Int) {
             super.onPageSelected(position)
-            GLog.messageLog("vpShort:onPageSelected ${position - START_POSITION}")
-            GLog.messageLog("vpShort:onPageSelected ${CalendarUtil.getDateTimeForWeeklyCalendar(DateTime.now(), position - START_POSITION).toString("yyyy-MM-dd")}")
-            val date = CalendarUtil.getDateTimeForWeeklyCalendar(DateTime.now(), position - START_POSITION).millis
-            calendarViewModel.setDateTime(date)
+            GLog.messageLog("vpShort:onPageSelected")
+            binding.mlCalendar.run {
+                if(currentState == startState) {
+                    GLog.messageLog("vpShort:onPageSelected ${position - START_POSITION}")
+                    GLog.messageLog("vpShort:onPageSelected ${CalendarUtil.getDateTimeForWeeklyCalendar(DateTime.now(), position - START_POSITION).toString("yyyy-MM-dd")}")
+                    val date = CalendarUtil.getDateTimeForWeeklyCalendar(DateTime.now(), position - START_POSITION).millis
+                    calendarViewModel.setDateTime(date)
+                }
+            }
+        }
+
+        override fun onPageScrolled(
+            position: Int,
+            positionOffset: Float,
+            positionOffsetPixels: Int
+        ) {
+            super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+            GLog.messageLog("vpShort:onPageScrolled")
+        }
+
+        override fun onPageScrollStateChanged(state: Int) {
+            super.onPageScrollStateChanged(state)
+            GLog.messageLog("vpShort:onPageScrollStateChanged")
         }
     }
 
@@ -280,24 +304,6 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
 
     override fun initViewModel() {
         calendarViewModel.run {
-            calendarStatus.observe(this@CalendarFragment) { status ->
-                when(status) {
-                    CALENDAR_MONTH -> {
-                        binding.run {
-                            vpCalendarShort.unregisterOnPageChangeCallback(vpCalendarShortCallback)
-                            vpCalendarLong.registerOnPageChangeCallback(vpCalendarLongCallback)
-                        }
-                    }
-                    CALENDAR_WEEK -> {
-                        binding.run {
-                            vpCalendarLong.unregisterOnPageChangeCallback(vpCalendarLongCallback)
-                            vpCalendarShort.registerOnPageChangeCallback(vpCalendarShortCallback)
-                        }
-                    }
-                    else -> {}
-                }
-            }
-
             dateTime.observe(this@CalendarFragment) { dateTime ->
                 GLog.messageLog("dateTime:observe ${dateTime.toString("yyyy-MM-dd")}")
                 binding.run {
@@ -315,6 +321,8 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
                 }
             }
         }
+
+        registerCallback()
     }
 
     suspend fun observeDailySchedule(dateTime: DateTime, clickStatus: Boolean?) {
@@ -349,6 +357,25 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
                     else calendarScheduleAdapter.initItems(scheduleWithDate.schedule)
                 }
             }
+        }
+    }
+
+    override fun onDestroy() {
+        unregisterCallback()
+        super.onDestroy()
+    }
+
+    private fun registerCallback() {
+        binding.run {
+            vpCalendarShort.registerOnPageChangeCallback(vpCalendarShortCallback)
+            vpCalendarLong.registerOnPageChangeCallback(vpCalendarLongCallback)
+        }
+    }
+
+    private fun unregisterCallback() {
+        binding.run {
+            vpCalendarShort.unregisterOnPageChangeCallback(vpCalendarShortCallback)
+            vpCalendarLong.unregisterOnPageChangeCallback(vpCalendarLongCallback)
         }
     }
 
