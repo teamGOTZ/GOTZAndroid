@@ -80,7 +80,6 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_arrow_right"
-                    android:layout_marginStart="11dp"
                     app:layout_constraintStart_toEndOf="@id/tv_my_name"
                     app:layout_constraintTop_toTopOf="@id/tv_my_name"
                     app:layout_constraintBottom_toBottomOf="@id/tv_my_name"/>

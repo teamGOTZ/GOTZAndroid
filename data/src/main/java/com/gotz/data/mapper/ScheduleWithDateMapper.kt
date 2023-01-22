@@ -12,9 +12,10 @@ object ScheduleWithDateMapper {
         return ScheduleWithDate(
             date.toMapper(),
             schedule.sortedWith(comparator)
-            .map
-            { scheduleEntity ->
+            .map { scheduleEntity ->
                 scheduleEntity.toMapper()
+            }.sortedBy {
+                it.start
             }
         )
     }
@@ -24,6 +25,8 @@ object ScheduleWithDateMapper {
             date.toMapper(),
             schedule.map { schedule ->
                 schedule.toMapper()
+            }.sortedBy {
+                it.start
             }
         )
 
