@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.gotz.base.custom.calendar.CalendarLongView
+        <com.gotz.presentation.custom.calendar.CalendarLongView
             android:id="@+id/calendarLongView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

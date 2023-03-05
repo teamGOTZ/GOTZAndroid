@@ -3,9 +3,9 @@ package com.gotz.presentation.view.onboarding
 import android.content.Intent
 import com.bumptech.glide.Glide
 import com.gotz.presentation.R
-import com.gotz.base.BaseFragment
-import com.gotz.base.extension.disable
-import com.gotz.base.extension.enable
+import com.gotz.presentation.base.BaseFragment
+import com.gotz.presentation.extension.disable
+import com.gotz.presentation.extension.enable
 import com.gotz.presentation.BuildConfig
 import com.gotz.presentation.databinding.FragmentOnboardingTermsBinding
 import com.gotz.presentation.view.webview.WebViewActivity

@@ -3,13 +3,12 @@ package com.gotz.presentation.view.calendar.calendar
 import android.os.Bundle
 import androidx.core.view.children
 import androidx.lifecycle.lifecycleScope
-import com.gotz.base.BaseFragment
-import com.gotz.base.custom.calendar.DayItemShortView
-import com.gotz.base.util.CalendarUtil
+import com.gotz.presentation.base.BaseFragment
+import com.gotz.presentation.custom.calendar.DayItemShortView
+import com.gotz.presentation.util.CalendarUtil
 import com.gotz.domain.model.ScheduleWithDate
 import com.gotz.presentation.R
 import com.gotz.presentation.databinding.FragmentCalendarShortBinding
-import com.gotz.base.util.GLog
 import com.gotz.presentation.view.calendar.schedule.ScheduleViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first

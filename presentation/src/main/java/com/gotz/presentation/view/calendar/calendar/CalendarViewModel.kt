@@ -2,7 +2,7 @@ package com.gotz.presentation.view.calendar.calendar
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.gotz.base.BaseViewModel
+import com.gotz.presentation.base.BaseViewModel
 import org.joda.time.DateTime
 
 class CalendarViewModel : BaseViewModel() {

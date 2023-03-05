@@ -8,8 +8,8 @@ import android.graphics.Rect
 import android.view.View
 import androidx.core.view.children
 import androidx.recyclerview.widget.RecyclerView
-import com.gotz.base.util.DimensionUtil.dpToPx
-import com.gotz.base.util.GLog
+import com.gotz.presentation.util.DimensionUtil.dpToPx
+import com.gotz.presentation.util.GLog
 
 class CalendarScheduleItemDecoration(val context: Context): RecyclerView.ItemDecoration()  {
 

@@ -1,16 +1,15 @@
 package com.gotz.presentation.view.calendar.schedule
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.view.View
 import android.widget.PopupMenu
 import androidx.annotation.MenuRes
-import com.gotz.base.BaseActivity
-import com.gotz.base.extension.gone
-import com.gotz.base.util.StringUtil.getStrDate
-import com.gotz.base.util.StringUtil.getStrTime2
-import com.gotz.base.util.StringUtil.getAmPm
+import com.gotz.presentation.base.BaseActivity
+import com.gotz.presentation.extension.gone
+import com.gotz.presentation.util.StringUtil.getStrDate
+import com.gotz.presentation.util.StringUtil.getStrTime2
+import com.gotz.presentation.util.StringUtil.getAmPm
 import com.gotz.domain.model.Schedule
 import com.gotz.presentation.R
 import com.gotz.presentation.databinding.ActivityScheduleShowBinding

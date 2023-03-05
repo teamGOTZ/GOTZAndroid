@@ -69,7 +69,7 @@
                 app:layout_constraintBottom_toTopOf="@id/iv_contents"
                 app:layout_constraintDimensionRatio="h, 1:0.44"/>
 
-            <com.gotz.base.custom.CustomEditText
+            <com.gotz.presentation.custom.CustomEditText
                 android:id="@+id/et_onboarding_name"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"

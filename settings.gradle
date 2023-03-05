@@ -1,6 +1,5 @@
 rootProject.name = "Gotz"
 include ':app'
-include ':base'
 include ':data'
 include ':domain'
 include ':presentation'

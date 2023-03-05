@@ -2,8 +2,8 @@ package com.gotz.presentation.view.tutorial
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.gotz.base.BaseViewModel
-import com.gotz.base.util.Event
+import com.gotz.presentation.base.BaseViewModel
+import com.gotz.presentation.util.Event
 
 class TutorialViewModel: BaseViewModel() {
 

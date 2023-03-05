@@ -2,7 +2,7 @@ package com.gotz.presentation.view.login
 
 import android.content.Intent
 import com.bumptech.glide.Glide
-import com.gotz.base.BaseActivity
+import com.gotz.presentation.base.BaseActivity
 import com.gotz.presentation.R
 import com.gotz.presentation.databinding.ActivityLoginBinding
 import com.gotz.presentation.view.permission.PermissionActivity

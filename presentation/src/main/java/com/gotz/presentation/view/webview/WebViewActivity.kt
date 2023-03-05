@@ -4,8 +4,8 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.view.View
 import android.webkit.*
-import com.gotz.base.BaseActivity
-import com.gotz.base.custom.CustomWebView
+import com.gotz.presentation.base.BaseActivity
+import com.gotz.presentation.custom.CustomWebView
 import com.gotz.presentation.R
 import com.gotz.presentation.databinding.ActivityWebviewBinding
 

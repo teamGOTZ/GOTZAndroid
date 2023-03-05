@@ -90,7 +90,7 @@
                             android:textColor="#f44336" />
                     </LinearLayout>
 
-                    <com.gotz.base.custom.CustomEditText
+                    <com.gotz.presentation.custom.CustomEditText
                         android:id="@+id/et_calendar_add_schedule_title"
                         android:layout_width="match_parent"
                         android:layout_height="58dp" />
@@ -189,7 +189,7 @@
                             android:background="@drawable/ic_clock"
                             android:layout_marginEnd="12dp"/>
 
-                        <com.gotz.base.custom.TimePickerLayout
+                        <com.gotz.presentation.custom.TimePickerLayout
                             android:id="@+id/ll_calendar_add_schedule_time"
                             android:layout_width="match_parent"
                             android:layout_height="58dp"
@@ -221,7 +221,7 @@
                                 android:padding="12dp"
                                 style="@style/Text16Regular"
                                 tools:text="오전 11:00"/>
-                        </com.gotz.base.custom.TimePickerLayout>
+                        </com.gotz.presentation.custom.TimePickerLayout>
                     </LinearLayout>
 
                     <TimePicker

@@ -73,7 +73,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
 
-            <com.gotz.base.custom.CustomEditText
+            <com.gotz.presentation.custom.CustomEditText
                 android:id="@+id/et_nickname"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -126,7 +126,7 @@
                 app:layout_constraintTop_toBottomOf="@id/spn_age"
                 app:layout_constraintStart_toStartOf="parent"/>
 
-            <com.gotz.base.custom.CheckLayout
+            <com.gotz.presentation.custom.CheckLayout
                 android:id="@+id/checkLayout_1"
                 android:layout_width="0dp"
                 android:layout_height="56dp"
@@ -138,7 +138,7 @@
                 app:layout_constraintEnd_toStartOf="@id/checkLayout_2"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <com.gotz.base.custom.CheckLayout
+            <com.gotz.presentation.custom.CheckLayout
                 android:id="@+id/checkLayout_2"
                 android:layout_width="0dp"
                 android:layout_height="56dp"
@@ -148,7 +148,7 @@
                 app:layout_constraintEnd_toStartOf="@id/checkLayout_3"
                 app:layout_constraintStart_toEndOf="@id/checkLayout_1"/>
 
-            <com.gotz.base.custom.CheckLayout
+            <com.gotz.presentation.custom.CheckLayout
                 android:id="@+id/checkLayout_3"
                 android:layout_width="0dp"
                 android:layout_height="56dp"

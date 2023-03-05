@@ -2,7 +2,7 @@ package com.gotz.presentation.view.permission
 
 import android.Manifest
 import android.content.Intent
-import com.gotz.base.BaseActivity
+import com.gotz.presentation.base.BaseActivity
 import com.gotz.presentation.R
 import com.gotz.presentation.databinding.ActivityPermissionBinding
 import com.gotz.presentation.view.onboarding.OnboardingActivity

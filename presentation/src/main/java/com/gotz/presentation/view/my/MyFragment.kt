@@ -3,8 +3,7 @@ package com.gotz.presentation.view.my
 import android.content.Intent
 import androidx.lifecycle.lifecycleScope
 import com.gotz.presentation.R
-import com.gotz.base.BaseFragment
-import com.gotz.base.util.StringUtil
+import com.gotz.presentation.base.BaseFragment
 import com.gotz.domain.usecase.user.ReadNameUseCase
 import com.gotz.presentation.BuildConfig
 import com.gotz.presentation.databinding.FragmentMyBinding

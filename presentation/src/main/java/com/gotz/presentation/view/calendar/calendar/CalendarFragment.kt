@@ -11,21 +11,21 @@ import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.bumptech.glide.Glide
 import com.google.android.gms.location.*
 import com.gotz.presentation.R
-import com.gotz.base.BaseFragment
-import com.gotz.base.extension.gone
-import com.gotz.base.extension.invisible
-import com.gotz.base.extension.setOnSingleClickListener
-import com.gotz.base.extension.visible
-import com.gotz.base.util.CalendarUtil
-import com.gotz.base.util.CalendarUtil.startDayOfWeek
-import com.gotz.base.util.GpsUtil
-import com.gotz.base.util.NetworkUtil
-import com.gotz.base.util.PermissionUtil.isPermissionGranted
-import com.gotz.base.util.StringUtil
+import com.gotz.presentation.base.BaseFragment
+import com.gotz.presentation.extension.gone
+import com.gotz.presentation.extension.invisible
+import com.gotz.presentation.extension.setOnSingleClickListener
+import com.gotz.presentation.extension.visible
+import com.gotz.presentation.util.CalendarUtil
+import com.gotz.presentation.util.CalendarUtil.startDayOfWeek
+import com.gotz.presentation.util.GpsUtil
+import com.gotz.presentation.util.NetworkUtil
+import com.gotz.presentation.util.PermissionUtil.isPermissionGranted
+import com.gotz.presentation.util.StringUtil
 import com.gotz.domain.model.Schedule
 import com.gotz.presentation.BuildConfig
 import com.gotz.presentation.databinding.FragmentCalendarBinding
-import com.gotz.base.util.GLog
+import com.gotz.presentation.util.GLog
 import com.gotz.presentation.view.calendar.WeatherViewModel
 import com.gotz.presentation.view.calendar.calendar.CalendarViewModel.Companion.CALENDAR_MONTH
 import com.gotz.presentation.view.calendar.calendar.CalendarViewModel.Companion.CALENDAR_WEEK
@@ -40,6 +40,7 @@ import com.gotz.presentation.view.calendar.schedule.ScheduleViewModel
 import com.gotz.presentation.view.webview.WebViewActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.joda.time.DateTime
@@ -132,7 +133,8 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
                         binding.tvLocation.text = StringUtil.getAddressString(address)
 
                         lifecycleScope.launch {
-                            val weather = weatherViewModel.readWeather(StringUtil.getBaseDate(DateTime.now()),
+                            val weather = weatherViewModel.readWeather(
+                                StringUtil.getBaseDate(DateTime.now()),
                                 StringUtil.getBaseTime(DateTime.now()),
                                 point.x,
                                 point.y).first()

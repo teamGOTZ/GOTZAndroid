@@ -3,7 +3,7 @@ package com.gotz.presentation.view.onboarding
 import androidx.core.widget.doOnTextChanged
 import com.bumptech.glide.Glide
 import com.gotz.presentation.R
-import com.gotz.base.BaseFragment
+import com.gotz.presentation.base.BaseFragment
 import com.gotz.presentation.databinding.FragmentOnboardingNameBinding
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 

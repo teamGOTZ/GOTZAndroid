@@ -3,13 +3,14 @@ package com.gotz.presentation.view.onboarding
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.gotz.base.BaseViewModel
+import com.gotz.presentation.base.BaseViewModel
 import com.gotz.domain.usecase.user.*
-import com.gotz.base.util.Event
-import com.gotz.base.util.GLog
+import com.gotz.presentation.util.Event
+import com.gotz.presentation.util.GLog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class OnboardingViewModel(

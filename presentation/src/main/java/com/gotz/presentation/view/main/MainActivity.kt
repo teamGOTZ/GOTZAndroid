@@ -1,7 +1,7 @@
 package com.gotz.presentation.view.main
 
 import com.gotz.presentation.R
-import com.gotz.base.BaseActivity
+import com.gotz.presentation.base.BaseActivity
 import com.gotz.presentation.databinding.ActivityMainBinding
 import com.gotz.presentation.receiver.ScheduleChangeReceiver
 import com.gotz.presentation.view.calendar.calendar.CalendarViewModel

@@ -107,6 +107,7 @@
         <entry key="presentation/src/main/res/drawable/style_cursor_black.xml" value="0.1415" />
         <entry key="presentation/src/main/res/drawable/style_edittext_base.xml" value="0.1" />
         <entry key="presentation/src/main/res/drawable/style_edittext_white.xml" value="0.1415" />
+        <entry key="presentation/src/main/res/drawable/style_tag.xml" value="0.166" />
         <entry key="presentation/src/main/res/layout-v28/fragment_calendar.xml" value="0.2318840579710145" />
         <entry key="presentation/src/main/res/layout/activity_calendar_add_schedule.xml" value="0.25" />
         <entry key="presentation/src/main/res/layout/activity_calendar_memo.xml" value="0.2341485507246377" />

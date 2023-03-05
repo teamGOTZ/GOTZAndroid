@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.gotz.presentation.R
-import com.gotz.base.BaseActivity
+import com.gotz.presentation.base.BaseActivity
 import com.gotz.presentation.databinding.ActivityOnboardingBinding
-import com.gotz.base.util.EventObserver
+import com.gotz.presentation.util.EventObserver
 import com.gotz.presentation.view.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

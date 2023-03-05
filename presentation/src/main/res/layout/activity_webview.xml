@@ -41,7 +41,7 @@
             tools:text="My Page" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.gotz.base.custom.CustomWebView
+        <com.gotz.presentation.custom.CustomWebView
             android:id="@+id/webView"
             android:layout_width="0dp"
             android:layout_height="0dp"

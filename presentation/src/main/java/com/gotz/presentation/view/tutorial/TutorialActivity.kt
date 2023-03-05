@@ -4,14 +4,14 @@ import android.content.Intent
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.gotz.base.BaseActivity
+import com.gotz.presentation.base.BaseActivity
 import com.gotz.presentation.R
 import com.gotz.presentation.databinding.ActivityTutorialBinding
-import com.gotz.base.util.EventObserver
+import com.gotz.presentation.util.EventObserver
 import com.gotz.presentation.view.login.LoginActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class TutorialActivity:BaseActivity<ActivityTutorialBinding>(R.layout.activity_tutorial) {
+class TutorialActivity: BaseActivity<ActivityTutorialBinding>(R.layout.activity_tutorial) {
 
     private val viewModel: TutorialViewModel by viewModel()
 

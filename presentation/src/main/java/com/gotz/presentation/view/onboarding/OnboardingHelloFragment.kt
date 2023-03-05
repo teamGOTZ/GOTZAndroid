@@ -2,7 +2,7 @@ package com.gotz.presentation.view.onboarding
 
 import com.bumptech.glide.Glide
 import com.gotz.presentation.R
-import com.gotz.base.BaseFragment
+import com.gotz.presentation.base.BaseFragment
 import com.gotz.presentation.databinding.FragmentOnboardingHelloBinding
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 

@@ -1,7 +1,7 @@
 package com.gotz.presentation.view.calendar.schedule
 
 import androidx.lifecycle.viewModelScope
-import com.gotz.base.BaseViewModel
+import com.gotz.presentation.base.BaseViewModel
 import com.gotz.domain.model.Schedule
 import com.gotz.domain.model.ScheduleWithDate
 import com.gotz.domain.usecase.schedule.*

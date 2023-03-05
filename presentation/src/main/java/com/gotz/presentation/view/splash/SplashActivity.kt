@@ -6,14 +6,15 @@ import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.gotz.domain.usecase.user.ReadNameUseCase
 import com.gotz.presentation.R
-import com.gotz.base.BaseActivity
+import com.gotz.presentation.base.BaseActivity
 import com.gotz.presentation.databinding.ActivitySplashBinding
-import com.gotz.base.util.GLog
+import com.gotz.presentation.util.GLog
 import com.gotz.presentation.view.main.MainActivity
 import com.gotz.presentation.view.tutorial.TutorialActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 

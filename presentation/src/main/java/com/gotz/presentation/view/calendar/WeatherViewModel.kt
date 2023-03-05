@@ -1,6 +1,6 @@
 package com.gotz.presentation.view.calendar
 
-import com.gotz.base.BaseViewModel
+import com.gotz.presentation.base.BaseViewModel
 import com.gotz.domain.model.Weather
 import com.gotz.domain.usecase.weather.ReadWeatherUseCase
 import kotlinx.coroutines.flow.Flow

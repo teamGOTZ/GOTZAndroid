@@ -6,10 +6,10 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
-import com.gotz.base.BaseActivity
-import com.gotz.base.custom.CheckLayout
-import com.gotz.base.extension.clickable
-import com.gotz.base.extension.clickableNot
+import com.gotz.presentation.base.BaseActivity
+import com.gotz.presentation.custom.CheckLayout
+import com.gotz.presentation.extension.clickable
+import com.gotz.presentation.extension.clickableNot
 import com.gotz.presentation.R
 import com.gotz.presentation.databinding.ActivityProfileBinding
 import com.gotz.presentation.view.onboarding.OnboardingViewModel
