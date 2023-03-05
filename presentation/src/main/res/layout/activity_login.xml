@@ -93,7 +93,7 @@
                 app:layout_constraintBottom_toTopOf="@id/btn_login_next"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:backgroundTint="@null"/>
+                app:backgroundTint="@null"/>
 
             <Button
                 android:id="@+id/btn_login_next"

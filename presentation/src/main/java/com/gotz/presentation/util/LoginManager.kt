@@ -20,6 +20,8 @@ class LoginManager(val context: Context) {
                 }
                 else if (user != null) {
                     GLog.messageLog("사용자 정보 요청 성공 $user")
+                    GLog.messageLog("nickname::${user.kakaoAccount?.profile?.nickname}")
+                    GLog.messageLog("email::${user.kakaoAccount?.email}")
                 }
             }
         }
