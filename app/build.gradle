@@ -36,6 +36,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
+        buildConfigField('String', 'KAKAO_NATIVE_KEY', '"043d14f093512f2a864a613d1dc5a1fa"')
+
         setProperty("archivesBaseName", "${applicationName}_${versionName}(${time})")
     }
 
@@ -114,4 +116,7 @@ dependencies {
     implementation "androidx.datastore:datastore-rxjava2:$rootProject.dataStoreVersion"
     implementation "com.google.protobuf:protobuf-javalite:$rootProject.protocolBufferVersion"
 
+
+    // kakao
+    implementation "com.kakao.sdk:v2-all:$rootProject.kakaoVersion"
 }

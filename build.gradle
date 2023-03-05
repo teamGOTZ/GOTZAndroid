@@ -9,6 +9,7 @@ buildscript {
         glideVersion = "4.13.0"
         jodaTimeVersion = "2.10.6"
         lifecycleVersion = "2.4.0"
+        kakaoVersion = "2.13.0"
         koinVersion = '2.0.1'
         navigationVersion = '2.3.5'
         okhttpVersion = "4.9.0"
@@ -42,6 +43,8 @@ allprojects {
         google()
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
+
+        maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/'}
     }
 }
 
