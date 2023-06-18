@@ -65,6 +65,10 @@ android {
         dataBinding = true
         viewBinding = true
     }
+    namespace 'com.gotz'
+    lint {
+        checkReleaseBuilds false
+    }
 
     applicationVariants.all { variant ->
         variant.outputs.all {
@@ -72,9 +76,6 @@ android {
         }
     }
 
-    lintOptions {
-        checkReleaseBuilds false
-    }
 }
 
 dependencies {

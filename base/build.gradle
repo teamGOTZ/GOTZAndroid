@@ -17,12 +17,10 @@ android {
 
     buildTypes {
         debug {
-            debuggable = true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
-            debuggable = false
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -37,6 +35,7 @@ android {
     buildFeatures{
         dataBinding = true
     }
+    namespace 'com.gotz.base'
 }
 
 dependencies {
